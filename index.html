@@ -1,0 +1,900 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cloud Interactive</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="bar1">
+    <a class="logo" href="#home"><span class="logo-ic">☁</span> Cloud<span>Interactive</span></a>
+    <nav class="nav">
+      <a href="#home" data-page="home">🏠 Home</a>
+      <a href="#review" data-page="review">🧠 Review <span class="badge" id="dueBadge" hidden>0</span></a>
+      <a href="#exam" data-page="exam">🎯 Exam Mode</a>
+      <a href="#cheat" data-page="cheat">📄 Cheat Sheet</a>
+    </nav>
+    <button class="theme-btn" id="themeBtn" title="Toggle light/dark">🌓</button>
+  </div>
+  <div class="rail-wrap">
+    <button class="rail-arrow" data-dir="-1" aria-label="Scroll lectures left">‹</button>
+    <nav class="rail" id="rail" aria-label="Lectures"></nav>
+    <button class="rail-arrow" data-dir="1" aria-label="Scroll lectures right">›</button>
+  </div>
+  <div class="read-bar"><i id="readBar"></i></div>
+</header>
+<button class="to-top" id="toTop" aria-label="Back to top">↑</button>
+<div class="toast" id="toast" role="status"></div>
+
+<main>
+
+<!-- =============================== HOME =============================== -->
+<section class="page" id="home">
+  <div class="hero">
+    <div class="clouds">☁️ 🌍 🖥️ 🌐 🔐 🐳</div>
+    <h1>Learn <span class="grad">Cloud Computing</span><br>the fun way</h1>
+    <p>Every lecture turned into short chapters, memory tricks, games, calculators, simulators, quizzes and flashcards. Every slide is covered.</p>
+    <div class="overall"><div class="bar"><i id="overallBar"></i></div><span id="overallLbl">0% of the course learned</span></div>
+  </div>
+
+  <div class="dash" id="dash"></div>
+
+  <div class="lecture-grid" id="lecGrid"></div>
+
+  <h3>How to study with this site</h3>
+  <div class="howto">
+    <div><b>1 · Read a chapter</b>Short, plain-English explanation of each slide.</div>
+    <div><b>2 · Play with it</b>Click the steppers, games and simulators. Doing beats reading.</div>
+    <div><b>3 · Lock it in</b>Yellow <b style="display:inline;color:var(--warn)">Memory hook</b> boxes give tricks. Red <b style="display:inline;color:var(--bad)">Exam tip</b> boxes show what gets asked.</div>
+    <div><b>4 · Test yourself</b>Quiz + flashcards at the end of each lecture, then Exam Mode mixes all three.</div>
+  </div>
+</section>
+
+<!-- Lectures 01–08 are injected here by lectures/*.js -->
+<div id="early"></div>
+
+<!-- =============================== L10 =============================== -->
+<section class="page" id="l10" style="--accent:var(--l10)">
+  <div class="lec-head">
+    <div class="kicker">Lecture 10 · Cloud Computing</div>
+    <h1>Cloud Migrations 🚚</h1>
+    <p class="lead">Think of this lecture as <b>moving house</b>. Your company's IT stuff lives in an old house (on-premise data center). Migration = moving it to a new house (the cloud).</p>
+    <div class="toc" data-toc></div>
+  </div>
+
+  <article class="chapter" id="l10-what" data-ch="l10">
+    <h2><span class="n">1</span>What is Cloud Migration?</h2>
+    <div class="box key"><b>Definition (learn word-for-word)</b>
+      Cloud migration is <b>the movement of a meaningful portion of your organization's existing IT assets to the cloud.</b></div>
+    <p>Break the definition into 3 parts:</p>
+    <div class="grid3">
+      <div class="tile"><h4>"Meaningful portion"</h4>Not one tiny file. A real chunk of the IT estate.</div>
+      <div class="tile"><h4>"Existing IT assets"</h4>Apps, servers, databases you already have today.</div>
+      <div class="tile"><h4>"To the cloud"</h4>From your own data center to AWS / Azure / GCP etc.</div>
+    </div>
+  </article>
+
+  <article class="chapter" id="l10-process" data-ch="l10">
+    <h2><span class="n">2</span>The Migration Process (5 stages)</h2>
+    <p>The slide diagram flows left to right: <b>Opportunity Evaluation → Portfolio Discovery &amp; Planning → Application Design ⇄ Migration &amp; Validation → Operate</b>. Click each stage.</p>
+    <div class="box mem"><b>Memory hook: "O.P.D.M.O" — "Only People Doing Moves Operate"</b>
+      Opportunity · Portfolio · Design · Migrate &amp; validate · Operate. Design and Migrate loop together (the orange arrows) — you repeat them for each app.</div>
+
+    <div class="stepper">
+      <div class="steps">
+        <button class="on">① Opportunity Evaluation<small>WHY move?</small></button>
+        <button>② Portfolio Discovery &amp; Planning<small>WHAT do we have?</small></button>
+        <button>③ Application Design<small>HOW for each app</small></button>
+        <button>④ Migration &amp; Validation<small>DO it + test</small></button>
+        <button>⑤ Operate<small>RUN it well</small></button>
+      </div>
+      <div class="panel on">
+        <h3>① Opportunity Evaluation — "Why are we moving?"</h3>
+        <p>Find the <b>business case</b> or the <b>compelling event</b> that drives the migration. Click the drivers from the slide:</p>
+        <div class="chips" data-explain="drv">
+          <button class="chip" data-x="Servers are old and need replacing. Instead of buying new hardware, move to cloud.">🖥 Hardware recycle / renewal</button>
+          <button class="chip" data-x="The contract for the rented data center building is ending. Perfect moment to leave.">🏢 Data center lease expires</button>
+          <button class="chip" data-x="Cloud lets teams provision resources in minutes, so people get more done.">⚡ Gain more productivity</button>
+          <button class="chip" data-x="Cloud regions exist worldwide, so you can serve new countries without building data centers.">🌍 Global expansion</button>
+          <button class="chip" data-x="Two companies join — the cloud is a neutral common platform to combine their IT.">🤝 Mergers &amp; Acquisitions</button>
+          <button class="chip" data-x="The drive to use standard architectures and approaches across the company over time.">📐 Drive for standardized architectures</button>
+        </div>
+        <div class="box eg" data-explain-out="drv"><b>Tap a driver</b>to see what it means.</div>
+        <div class="box mem"><b>Memory hook: "HD GGM S"</b> — <i>Hard Drives Get Grandma's Money Soon</i>: Hardware · Data center lease · Gain productivity · Global expansion · Mergers · Standardization.</div>
+      </div>
+      <div class="panel">
+        <h3>② Portfolio Discovery &amp; Planning — "What's in the house?"</h3>
+        <p>Before moving house you make a list of every item. Here you answer 4 questions:</p>
+        <div class="grid2">
+          <div class="tile">❓ <b>What is in your environment?</b><br>Inventory of all apps, servers, data.</div>
+          <div class="tile">🔗 <b>What are the interdependencies?</b><br>Which app talks to which (don't move the TV without its cable box!).</div>
+          <div class="tile">🥇 <b>What will you migrate first?</b><br>Priority order.</div>
+          <div class="tile">🛠 <b>How will you migrate it?</b><br>Pick a strategy (the 6 R's — chapter 3).</div>
+        </div>
+        <h4 style="margin-top:14px">Tools</h4>
+        <div class="chips"><span class="chip">AWS Discovery Service</span><span class="chip">Azure Migrate Service</span><span class="chip">3rd Party Cloud Migration Tools &amp; Services</span></div>
+      </div>
+      <div class="panel">
+        <h3>③ + ④ Designing, Migrating &amp; Validating — "Move each item"</h3>
+        <p>This is where <b>individual applications</b> are migrated. Steps in order:</p>
+        <ol class="clean">
+          <li><b>Design, migrate and validate each application</b> according to a migration strategy.</li>
+          <li><b>Start with the least complex applications</b>, then move towards more complex ones. (Pack the books before the piano!)</li>
+          <li><b>Testing and decommissioning</b> old applications / hardware.</li>
+        </ol>
+        <p>The slide shows how the switch-over happens gradually:</p>
+        <div class="grid3">
+          <div class="tile">🔁 <b>Running parallel environments</b> temporarily if needed (old + new both live).</div>
+          <div class="tile">🔀 <b>Switching traffic, users and content partially</b>.</div>
+          <div class="tile">✅ <b>Full cutover to cloud</b>, when everything works as expected.</div>
+        </div>
+      </div>
+      <div class="panel">
+        <h3>④ Migration &amp; Validation</h3>
+        <p>In the diagram, Design and Migration &amp; Validation are linked by two arrows forming a loop. You design an app, migrate it, validate (test) it, then go back and design the next app. Repeat until done.</p>
+        <div class="box key"><b>Key idea</b>Validation = proving the app works correctly in the cloud before you switch everyone over.</div>
+      </div>
+      <div class="panel">
+        <h3>⑤ Operating — "Living in the new house"</h3>
+        <ul class="clean">
+          <li>Operating in cloud requires a <b>modern operating model</b>: <b>DevOps, NoOps, FinOps, SecOps</b>.</li>
+          <li>It can be considered an <b>evergreen</b> set of <b>people, process and technology</b> that <b>constantly improves</b> as you migrate more applications.</li>
+          <li>Use the <b>first set of application migrations</b> to build the foundation of the modern operating model, and <b>improve it continuously</b>.</li>
+        </ul>
+        <div class="grid3">
+          <div class="tile"><b>DevOps</b><br><small>Dev + Ops work together</small></div>
+          <div class="tile"><b>NoOps</b><br><small>Ops automated away</small></div>
+          <div class="tile"><b>FinOps</b><br><small>Managing cloud cost/finance</small></div>
+          <div class="tile"><b>SecOps</b><br><small>Security + Ops together</small></div>
+        </div>
+        <div class="box mem"><b>Memory hook</b>"Evergreen" = a tree that stays green all year = the operating model never stops improving.</div>
+      </div>
+    </div>
+  </article>
+
+  <article class="chapter" id="l10-rs" data-ch="l10">
+    <h2><span class="n">3</span>Migration Strategies — Gartner vs Azure vs AWS</h2>
+    <p>Three organisations named their strategies with words starting with <b>"R"</b>. Know the counts and the lists:</p>
+    <div class="table-wrap"><table>
+      <tr><th>Gartner's 5 R's</th><th>Azure's 4 R's</th><th>AWS's 6 R's</th></tr>
+      <tr><td>Rehost</td><td>Rehost</td><td>Rehost</td></tr>
+      <tr><td>Refactor</td><td>Refactor</td><td>Re-platform</td></tr>
+      <tr><td>Revise</td><td>Re-architect</td><td>Repurchase</td></tr>
+      <tr><td>Rebuild</td><td>Rebuild</td><td>Refactor / Re-architect</td></tr>
+      <tr><td>Replace</td><td>—</td><td>Retire</td></tr>
+      <tr><td>—</td><td>—</td><td>Retain</td></tr>
+    </table></div>
+    <div class="box mem"><b>Memory hook: counts go 5 · 4 · 6 → "G-A-A" = Gartner 5, Azure 4, AWS 6</b>
+      Alphabetical: <b>A</b>WS is biggest (6), <b>A</b>zure smallest (4), <b>G</b>artner in the middle (5).<br>
+      All three start with <b>Rehost</b>. Gartner ends with <b>Re-place</b>, Azure ends with <b>Re-build</b>, AWS ends with the two "Ret-" twins <b>Retire, Retain</b>.</div>
+    <details class="ask"><summary>Which R appears in all three lists?</summary><b>Rehost</b> (lift-and-shift). Refactor also appears in all three (in AWS as "Refactor / Re-architect").</details>
+  </article>
+
+  <article class="chapter" id="l10-aws6" data-ch="l10">
+    <h2><span class="n">4</span>AWS's 6 R's in detail</h2>
+    <p>The house-moving analogy makes all 6 easy. Click each card to flip it for the lecture details.</p>
+    <div class="house">
+      <div class="flip"><div class="inner">
+        <div class="face front"><div class="emo">📦</div><div class="big">Rehost</div><small>Move the furniture exactly as it is</small></div>
+        <div class="face back"><ul><li>Known as <b>lift-and-shift</b></li><li><b>No</b> application / code changes</li><li>Migrate apps <b>as-is</b> to cloud</li><li>Optimize / re-architect <b>after</b> they're in cloud</li></ul></div>
+      </div></div>
+      <div class="flip"><div class="inner">
+        <div class="face front"><div class="emo">🔧</div><div class="big">Re-platform</div><small>Move it, but swap a few parts on the way</small></div>
+        <div class="face back"><ul><li>Known as <b>lift-tinker-and-shift</b></li><li>Different platform, <b>core architecture unchanged</b></li></ul><span class="hint">Examples below ↓</span></div>
+      </div></div>
+      <div class="flip"><div class="inner">
+        <div class="face front"><div class="emo">🛒</div><div class="big">Repurchase</div><small>Sell the old sofa, buy a new one</small></div>
+        <div class="face back"><ul><li>Move to a different platform, <b>mainly SaaS</b></li><li>CRM → Salesforce.com</li><li>HRIS → Workday</li><li>CMS → SharePoint</li></ul></div>
+      </div></div>
+      <div class="flip"><div class="inner">
+        <div class="face front"><div class="emo">🏗</div><div class="big">Refactor / Re-architect / Rebuild</div><small>Redesign the house from scratch</small></div>
+        <div class="face back"><ul><li>Re-imagine the app using <b>cloud-native features</b></li><li>Monolith → service-oriented / serverless</li><li><b>Most expensive</b> strategy</li></ul></div>
+      </div></div>
+      <div class="flip"><div class="inner">
+        <div class="face front"><div class="emo">🗑</div><div class="big">Retire</div><small>Throw it away — nobody uses it</small></div>
+        <div class="face back"><ul><li>Get rid of apps no longer useful</li><li>More attention to important apps</li><li>Reduce security risks</li><li>Cost savings</li></ul></div>
+      </div></div>
+      <div class="flip"><div class="inner">
+        <div class="face front"><div class="emo">⏸</div><div class="big">Retain</div><small>Leave it in the old house for now</small></div>
+        <div class="face back"><ul><li>Revisit later, or do nothing for now</li><li>Recently purchased / upgraded apps</li><li>Sunsetting apps</li><li>Low priority apps</li></ul></div>
+      </div></div>
+    </div>
+    <p class="hint">Tap a card to flip it.</p>
+
+    <h3 style="margin-top:20px">Re-platform examples (from the slide)</h3>
+    <div class="table-wrap"><table>
+      <tr><th>What changes</th><th>Example</th></tr>
+      <tr><td>Web sites: VMs → PaaS</td><td>Azure App Service, Amazon Elastic Beanstalk</td></tr>
+      <tr><td>Databases: VMs → PaaS</td><td>Amazon RDS, Azure SQL</td></tr>
+      <tr><td>Database platform</td><td>Oracle → PostgreSQL</td></tr>
+      <tr><td>Application logic platform</td><td>Oracle WebLogic → Apache Tomcat</td></tr>
+    </table></div>
+
+    <h3 style="margin-top:20px">Refactor — why bother?</h3>
+    <p>Get optimal usage of cloud-native features to improve:</p>
+    <div class="chips"><span class="chip">Application performance</span><span class="chip">Scalability</span><span class="chip">Addition of new features</span><span class="chip">Agility</span><span class="chip">Business continuity</span></div>
+    <div class="box exam"><b>Exam tip</b>
+      <b>Rehost vs Re-platform</b> is the classic trap. Rehost = <b>zero changes</b> (lift-and-shift). Re-platform = <b>small platform changes, same core architecture</b> (lift-<b>tinker</b>-and-shift). Re-architect = <b>big redesign</b>, most expensive.</div>
+    <div class="box mem"><b>Memory hook: effort ladder</b>
+      Retire (0) → Retain (0 for now) → Rehost (low) → Re-platform (low-med) → Repurchase (med) → Refactor (highest 💰).</div>
+  </article>
+
+  <article class="chapter" id="l10-game" data-ch="l10">
+    <h2><span class="n">5</span>🎮 Game: Pick the R</h2>
+    <p>Read the scenario, choose which AWS R fits. This is exactly how exam questions are written.</p>
+    <div class="game" data-game="l10"></div>
+  </article>
+
+  <article class="chapter" id="l10-chal" data-ch="l10">
+    <h2><span class="n">6</span>Cloud Migration Challenges (and solutions)</h2>
+    <p>3 problems, each with its fixes. Flip to see the solutions.</p>
+    <div class="grid3">
+      <div class="flip" style="min-height:200px"><div class="inner">
+        <div class="face front"><div class="emo" style="font-size:2rem">💸</div><div class="big">Cost of Migration</div><small>tap for solutions</small></div>
+        <div class="face back"><ul><li>Focus on planning</li><li>Follow an incremental adaptation process</li><li>Use a hybrid cloud approach</li></ul></div>
+      </div></div>
+      <div class="flip" style="min-height:200px"><div class="inner">
+        <div class="face front"><div class="emo" style="font-size:2rem">🙅</div><div class="big">Resistance to Adapt</div><small>tap for solutions</small></div>
+        <div class="face back"><ul><li>Get the leadership buy-in</li><li>Choose intuitive tech solutions</li></ul></div>
+      </div></div>
+      <div class="flip" style="min-height:200px"><div class="inner">
+        <div class="face front"><div class="emo" style="font-size:2rem">🎓</div><div class="big">Shortage of Skills</div><small>tap for solutions</small></div>
+        <div class="face back"><ul><li>Invest in expert training and resources</li><li>Build a culture of continuous learning</li><li>Get help from vendors to skill up in-house resources</li></ul></div>
+      </div></div>
+    </div>
+    <div class="box mem"><b>Memory hook: "C-R-S" = "Cloud Really Scary"</b>
+      <b>C</b>ost → <i>Plan, go step-by-step, go hybrid</i> (3) · <b>R</b>esistance → <i>Boss buy-in, easy tools</i> (2) · <b>S</b>kills → <i>Train, keep learning, vendor help</i> (3). Total 3-2-3.</div>
+  </article>
+
+  <div class="tabs" data-tabs>
+    <button class="on" data-tab="quiz">📝 Quiz</button>
+    <button data-tab="cards">🃏 Flashcards</button>
+  </div>
+  <div class="tabpanel on" data-panel="quiz"><div class="quiz" data-quiz="l10"></div></div>
+  <div class="tabpanel" data-panel="cards"><div class="deck" data-deck="l10"></div></div>
+</section>
+
+<!-- =============================== L11 =============================== -->
+<section class="page" id="l11" style="--accent:var(--l11)">
+  <div class="lec-head">
+    <div class="kicker">Lecture 11 · Cloud Computing</div>
+    <h1>Cloud Native Applications 🧩</h1>
+    <p class="lead">How apps are <b>built</b> for the cloud. Story line: <b>Monolith</b> (one big block) → <b>Microservices</b> (Lego bricks) → <b>Cloud native</b> rules (12-factor) → tools and practices (DevOps, CI/CD) → modernizing old apps.</p>
+    <div class="toc" data-toc></div>
+  </div>
+
+  <article class="chapter" id="l11-mono" data-ch="l11">
+    <h2><span class="n">1</span>Monolithic Architecture</h2>
+    <p>The <b>traditional</b> way of building applications. Built as a <b>single and indivisible unit</b> — like a cake baked in one piece. Usually contains:</p>
+    <div class="grid3">
+      <div class="tile"><span class="chip b-ui" style="color:#0d1220">UI</span> A client-side UI</div>
+      <div class="tile"><span class="chip b-srv" style="color:#0d1220">APP</span> A server-side application</div>
+      <div class="tile"><span class="chip b-db" style="color:#0d1220">DB</span> A database</div>
+      <div class="tile"><span class="chip b-mw" style="color:#0d1220">MW</span> A middleware</div>
+    </div>
+    <div class="grid2" style="margin-top:14px">
+      <div class="tile plus"><h4>✅ Strengths</h4><ul>
+        <li>Less cross-cutting concerns (functions like logging, caching, monitoring are handled in one place)</li>
+        <li>Easier debugging and testing</li>
+        <li>Simple to deploy</li>
+        <li>Simple to develop</li></ul></div>
+      <div class="tile minus"><h4>❌ Weaknesses</h4><ul>
+        <li>Too complex to understand (as it grows)</li>
+        <li>Challenging to make changes</li>
+        <li>Cannot scale components independently</li>
+        <li>Difficult to apply new technologies / features</li></ul></div>
+    </div>
+    <div class="box key"><b>What is a "cross-cutting concern"?</b>A job that every part of the app needs — logging, caching, monitoring. In a monolith it's one app, so you set it up once.</div>
+  </article>
+
+  <article class="chapter" id="l11-micro" data-ch="l11">
+    <h2><span class="n">2</span>Microservices Architecture</h2>
+    <ul class="clean">
+      <li>Breaks an application into a <b>collection of smaller independent units</b> (microservices).</li>
+      <li>These units carry out every application process as a <b>separate service</b>.</li>
+      <li>Built as <b>independently deployable modules</b>.</li>
+      <li>Communicate with each other through <b>pre-defined methods / APIs</b>.</li>
+      <li>Each service can be <b>updated and scaled independently</b>.</li>
+    </ul>
+    <div class="grid2">
+      <div class="tile plus"><h4>✅ Strengths</h4><ul>
+        <li>Independent components</li><li>Easier understanding</li><li>Better scalability</li><li>Flexibility in choosing the technology</li><li>Higher level of agility</li></ul></div>
+      <div class="tile minus"><h4>❌ Weaknesses</h4><ul>
+        <li>Extra complexity of a distributed system</li><li>Cross-cutting concerns</li><li>Harder to debug and test</li></ul></div>
+    </div>
+    <div class="box mem"><b>Memory hook: they are mirror images!</b>
+      Monolith's strengths (easy debug/test, few cross-cutting concerns) = Microservices' weaknesses. Monolith's weaknesses (hard to scale, hard to change, no new tech) = Microservices' strengths.</div>
+  </article>
+
+  <article class="chapter" id="l11-scale" data-ch="l11">
+    <h2><span class="n">3</span>🎮 How each one scales</h2>
+    <p>Imagine traffic spikes on the <b>Orders</b> feature only. Press the buttons to scale.</p>
+    <div class="arch">
+      <div class="col">
+        <h4>Monolithic approach</h4>
+        <p class="hint">Contains domain-specific functionality, normally divided by functional layers (web, business, data). <b>Scales by cloning the whole app</b> on multiple servers/VMs/containers.</p>
+        <div class="servers" id="monoServers"></div>
+        <div class="row"><button class="btn" id="monoAdd">+ Scale</button><button class="btn ghost" id="monoReset">Reset</button></div>
+        <p class="hint" id="monoNote"></p>
+      </div>
+      <div class="col">
+        <h4>Microservices approach</h4>
+        <p class="hint">Separates functionality into smaller services. <b>Scales out by deploying each service independently</b>, creating instances across servers/VMs/containers.</p>
+        <div class="servers" id="microServers"></div>
+        <div class="row"><button class="btn" id="microAdd">+ Scale Orders only</button><button class="btn ghost" id="microReset">Reset</button></div>
+        <p class="hint" id="microNote"></p>
+      </div>
+    </div>
+    <div class="box exam"><b>Exam tip</b>Monolith = <b>clone the whole app</b>. Microservices = <b>scale out only the service that needs it</b>. That's the reason microservices waste fewer resources.</div>
+  </article>
+
+  <article class="chapter" id="l11-cn" data-ch="l11">
+    <h2><span class="n">4</span>Cloud Native Computing</h2>
+    <div class="grid2">
+      <div class="tile"><h4>What</h4>A <b>modern approach</b> of building applications that exploits the <b>flexibility, scalability and resilience</b> of cloud computing.</div>
+      <div class="tile"><h4>Who started it</h4>Pioneered by companies called <b>"born in the cloud"</b> — Netflix, Spotify, Uber, Airbnb etc.</div>
+      <div class="tile"><h4>CNCF</h4>The <b>Cloud Native Computing Foundation</b> focuses on making cloud native computing <b>available everywhere</b>.</div>
+      <div class="tile"><h4>CNCF's narrow definition</h4>Focuses on <b>containerization</b>: <i>"Cloud-native technologies empower organizations to build and run scalable applications in modern, dynamic environments such as public, private, and hybrid clouds."</i></div>
+    </div>
+    <div class="box mem"><b>Memory hook: "FSR" = Flexibility, Scalability, Resilience</b> — "Fast Scalable Rockets". Born-in-cloud = <b>N-S-U-A</b>: Netflix, Spotify, Uber, Airbnb — "<i>Never Stop Using Apps</i>".</div>
+  </article>
+
+  <article class="chapter" id="l11-12f" data-ch="l11">
+    <h2><span class="n">5</span>The 12-Factor App</h2>
+    <ul class="clean">
+      <li>A <b>methodology / set of principles</b> for building <b>scalable, performant, independent, resilient</b> enterprise applications.</li>
+      <li><b>Aligns with</b> principles of microservice architecture.</li>
+      <li>Introduced by developers at <b>Heroku</b>.</li>
+    </ul>
+    <div class="box mem"><b>Memory hook — the 12 in order</b>
+      <div class="mnemo"><b>C</b>ool <b>D</b>ogs <b>C</b>an <b>B</b>ark — <b>B</b>ut <b>P</b>uppies <b>P</b>lay <b>C</b>onstantly — <b>D</b>on't <b>D</b>isturb <b>L</b>azy <b>A</b>dults</div>
+      Codebase · Dependencies · Config · Backing services — Build/release/run · Processes · Port binding · Concurrency — Disposability · Dev/prod parity · Logs · Admin processes</div>
+    <div class="row" style="margin-bottom:10px"><button class="btn ghost" id="f12flip">Flip all</button><button class="btn ghost" id="f12test">Hide names (test me)</button></div>
+    <div class="factors" id="factors"></div>
+    <p class="hint">Tap a card for the rule. Each back side has a one-line "plain English" version.</p>
+  </article>
+
+  <article class="chapter" id="l11-tools" data-ch="l11">
+    <h2><span class="n">6</span>Cloud Native Tools</h2>
+    <p>Five building blocks. Click each.</p>
+    <div class="stepper">
+      <div class="steps">
+        <button class="on">☁ Cloud Delivery Model</button>
+        <button>📦 Containers</button>
+        <button>🧩 Microservices</button>
+        <button>🕸 Service Mesh</button>
+        <button>🎼 Orchestration</button>
+      </div>
+      <div class="panel on"><h3>Cloud Delivery Model</h3><ul class="clean"><li>The way of <b>provisioning, consuming and managing</b> resources.</li><li><b>Public or private</b> cloud solution.</li></ul></div>
+      <div class="panel"><h3>Containers</h3><ul class="clean"><li>Make applications <b>more manageable</b>.</li><li>Can provide innovative solutions around <b>design, scaling, security, resiliency</b> etc.</li></ul><p class="hint">Full details in Lecture 12.</p></div>
+      <div class="panel"><h3>Microservices</h3><ul class="clean"><li>Collection of services, each performing a <b>specific business function</b>.</li></ul></div>
+      <div class="panel"><h3>Service Mesh</h3><ul class="clean"><li>Manages complex <b>service-to-service communication</b>.</li></ul><p class="hint">Think: the road network + traffic police between microservices.</p></div>
+      <div class="panel"><h3>Orchestration</h3><ul class="clean"><li><b>Scalable, secure, fast and reliable</b>.</li><li>Manages <b>provisioning, deploying, operating and scaling</b> of containerized microservices.</li></ul><p class="hint">Think: an orchestra conductor telling each container when and where to play.</p></div>
+    </div>
+    <div class="box mem"><b>Memory hook: "Cats Can Make Strange Orchestras"</b> — Cloud delivery, Containers, Microservices, Service mesh, Orchestration.</div>
+  </article>
+
+  <article class="chapter" id="l11-prac" data-ch="l11">
+    <h2><span class="n">7</span>Cloud Native Practices: DevOps, SRE, NoOps</h2>
+    <p>The 5 practices on the slide:</p>
+    <div class="chips"><span class="chip">DevOps — Development and Operations</span><span class="chip">SRE — Site Reliability Engineering</span><span class="chip">NoOps — No IT Operations</span><span class="chip">CI — Continuous Integration</span><span class="chip">CD — Continuous Delivery and Deployment</span></div>
+
+    <h3 style="margin-top:16px">DevOps</h3>
+    <p>The slide shows a <b>Venn diagram</b>: DevOps sits where <b>Development</b> (software engineering), <b>QA</b> (quality assurance) and <b>IT Ops</b> (operations) overlap.</p>
+    <div class="venn"><svg viewBox="0 0 300 260" role="img" aria-label="DevOps Venn diagram">
+      <circle cx="110" cy="100" r="80" fill="#4fb3ff" fill-opacity=".3" stroke="#4fb3ff"/>
+      <circle cx="190" cy="100" r="80" fill="#ffc857" fill-opacity=".3" stroke="#ffc857"/>
+      <circle cx="150" cy="165" r="80" fill="#b38cff" fill-opacity=".3" stroke="#b38cff"/>
+      <text x="70" y="80" fill="currentColor" font-size="13" text-anchor="middle">Development</text>
+      <text x="230" y="80" fill="currentColor" font-size="13" text-anchor="middle">QA</text>
+      <text x="150" y="225" fill="currentColor" font-size="13" text-anchor="middle">IT Ops</text>
+      <text x="150" y="130" fill="currentColor" font-size="15" font-weight="700" text-anchor="middle">DevOps</text>
+    </svg></div>
+    <p>And the <b>infinity loop</b> (∞) with "real-time communication" around it. Click through it:</p>
+    <div class="loop" id="devloop">
+      <button class="dev">Plan</button><button class="dev">Build</button><button class="dev">Continuous Integration</button>
+      <button class="ops">Deploy</button><button class="ops">Operate</button><button class="ops">Continuous Feedback</button>
+    </div>
+    <div class="box eg" id="devloopOut"><b>Plan</b>Decide what to build next.</div>
+
+    <h3>SRE — Site Reliability Engineering</h3>
+    <p><b>Google</b> defined SRE as a <b>collection of best practices</b> for any digital business that takes contemporary circumstances on the highly competitive market as seriously as they should.</p>
+
+    <h3>NoOps</h3>
+    <ul class="clean">
+      <li>DevOps practitioners are <b>no longer required to take care of operations</b> and may concentrate on software development.</li>
+      <li>Achieved because <b>everything that could be automated is already automated</b>.</li>
+    </ul>
+    <div class="box mem"><b>Memory hook</b>SRE → <b>G</b>oogle ("<i>Site Reliability = Search giant Reliability</i>"). NoOps → "No Ops people needed — robots did it."</div>
+  </article>
+
+  <article class="chapter" id="l11-cicd" data-ch="l11">
+    <h2><span class="n">8</span>CI / CD</h2>
+    <div class="grid2">
+      <div class="tile"><h4>CI — Continuous Integration</h4><ul>
+        <li>The practice of <b>automating the integration of code changes from multiple contributors</b> into a single software project.</li>
+        <li>Developers <b>frequently merge code</b> changes into a <b>central repository</b> where builds and tests then run.</li>
+        <li><b>Automated tools</b> assert the new code's correctness <b>before integration</b>.</li></ul></div>
+      <div class="tile"><h4>CD — Continuous Delivery / Deployment</h4><ul>
+        <li>A software release process that uses <b>automated testing</b> to validate if changes are <b>correct and stable</b> for immediate autonomous deployment to <b>production</b>.</li>
+        <li>Lets engineering organizations <b>focus on core business needs</b> instead of infrastructure overhead.</li></ul></div>
+    </div>
+    <div class="grid2" style="margin-top:12px">
+      <div class="tile"><h4>🙋 Continuous Delivery</h4><ul><li>Developers review and merge code changes, packaged into an <b>artifact</b>.</li><li>The package moves to a production environment where it <b>awaits approval</b> to be opened for deployment.</li></ul></div>
+      <div class="tile"><h4>🤖 Continuous Deployment</h4><ul><li>The package is opened and reviewed with a system of <b>automated checks</b>.</li><li>If checks <b>fail</b> → package <b>rejected</b>.</li><li>If checks <b>pass</b> → <b>automatically deployed</b> to production.</li></ul></div>
+    </div>
+    <div class="box exam"><b>Exam tip — the ONE difference</b>Continuous <b>Delivery</b> = a <b>human approves</b> the final release. Continuous <b>Deployment</b> = <b>no human</b>, automated checks decide.<br><i>Memory: "Delivery" — like a parcel, someone must sign for it ✍️. "Deployment" — robot does it 🤖.</i></div>
+
+    <h3>🎮 Pipeline simulator</h3>
+    <div class="row"><button class="chip on" data-mode="delivery">Continuous Delivery</button><button class="chip" data-mode="deploy">Continuous Deployment</button>
+      <label class="hint"><input type="checkbox" id="pipeFail"> make a test fail</label></div>
+    <div class="pipe" id="pipe">
+      <div class="stage"><span class="ic">👩‍💻</span>Commit &amp; merge</div>
+      <div class="stage"><span class="ic">🔨</span>Build</div>
+      <div class="stage"><span class="ic">🧪</span>Automated tests</div>
+      <div class="stage"><span class="ic">📦</span>Artifact</div>
+      <div class="stage"><span class="ic">🚦</span><span id="gateLbl">Manual approval</span></div>
+      <div class="stage"><span class="ic">🚀</span>Production</div>
+    </div>
+    <div class="row"><button class="btn" id="pipeRun">▶ Run pipeline</button><button class="btn ghost" id="pipeApprove" disabled>✍ Approve release</button></div>
+    <div class="log" id="pipeLog" style="margin-top:10px">Press run…</div>
+
+    <h3 style="margin-top:18px">CI/CD Tools &amp; Services</h3>
+    <div class="chips"><span class="chip">Jenkins</span><span class="chip">GitLab</span><span class="chip">GitHub</span><span class="chip">Bitbucket</span><span class="chip">CircleCI</span><span class="chip">TeamCity</span><span class="chip">Bamboo</span><span class="chip">Travis CI</span></div>
+    <h4>Cloud CI/CD services</h4>
+    <div class="table-wrap"><table>
+      <tr><th>Azure DevOps Services</th><th>AWS DevOps Services</th><th>Google DevOps Services</th></tr>
+      <tr><td>Azure Boards</td><td>AWS CodePipeline</td><td>Cloud Build</td></tr>
+      <tr><td>Azure Pipelines</td><td>AWS CodeBuild</td><td>Artifact Registry</td></tr>
+      <tr><td>Azure Repos</td><td>AWS CodeDeploy</td><td>Binary Authorization</td></tr>
+      <tr><td>Azure Test Plans</td><td>AWS CodeStar</td><td>Tekton</td></tr>
+      <tr><td>Azure Artifacts</td><td></td><td>Spinnaker</td></tr>
+      <tr><td></td><td></td><td>Operations Suite</td></tr>
+    </table></div>
+    <div class="box mem"><b>Memory hook</b>Azure = "Azure + noun" (Boards, Pipelines, Repos, Test Plans, Artifacts — 5). AWS = "Code + verb" (CodePipeline, CodeBuild, CodeDeploy, CodeStar — 4). Google = the odd names (Cloud Build, Artifact Registry, Binary Authorization, Tekton, Spinnaker, Operations Suite — 6).</div>
+  </article>
+
+  <article class="chapter" id="l11-mod" data-ch="l11">
+    <h2><span class="n">9</span>Application Modernization</h2>
+    <div class="box key"><b>Definition</b>The <b>refactoring, re-purposing or consolidation</b> of legacy software programming to align it more closely with <b>current business needs</b>. Goal: <b>create new business value from existing applications</b>.</div>
+    <h3>Modernization Journey — drag the slider</h3>
+    <input type="range" min="1" max="5" value="1" id="modRange">
+    <div class="mod-steps"><span>1 Rehost</span><span>2 Refactor</span><span>3 Rearchitect</span><span>4 Rearchitect</span><span>5 Rearchitect / Rebuild</span></div>
+    <div class="mod-out"><div class="mod-vis" id="modVis"></div><div id="modTxt"></div></div>
+    <div class="box mem"><b>Memory hook</b>Left = Traditional (one block). Right = Transformed (all microservices). In between, microservices "eat" the monolith piece by piece.</div>
+  </article>
+
+  <div class="tabs" data-tabs>
+    <button class="on" data-tab="quiz">📝 Quiz</button>
+    <button data-tab="cards">🃏 Flashcards</button>
+  </div>
+  <div class="tabpanel on" data-panel="quiz"><div class="quiz" data-quiz="l11"></div></div>
+  <div class="tabpanel" data-panel="cards"><div class="deck" data-deck="l11"></div></div>
+</section>
+
+<!-- =============================== L12 =============================== -->
+<section class="page" id="l12" style="--accent:var(--l12)">
+  <div class="lec-head">
+    <div class="kicker">Lecture 12 · Cloud Computing</div>
+    <h1>Containerization &amp; Docker 🐳</h1>
+    <p class="lead">Outline: <b>Containerization concept</b> → <b>Introduction to Docker</b> (+ commands) → <b>Container orchestration</b>. Big analogy: a <b>shipping container</b> — whatever's inside, every ship, truck and crane handles it the same way.</p>
+    <div class="toc" data-toc></div>
+  </div>
+
+  <article class="chapter" id="l12-why" data-ch="l12">
+    <h2><span class="n">1</span>Why Containers? — "The Matrix from Hell"</h2>
+    <p>Every app needs <b>Libraries + Dependencies</b>, running on an <b>Operating System</b>, on <b>Hardware Infrastructure</b>. Now multiply: many apps × many environments (<b>Development, Testing, QA, Staging, Production</b>). Each combination might break. Click the cells:</p>
+    <div class="matrix" id="matrix"></div>
+    <p class="hint" id="matrixNote">Red = "works on my machine" but breaks here. Click "Use containers" to fix.</p>
+    <div class="row"><button class="btn" id="matrixFix">📦 Use containers</button><button class="btn ghost" id="matrixReset">Reset</button></div>
+    <div class="box key"><b>The solution (slide)</b>Each app keeps its own Libraries + Dependencies inside a container. All containers sit on one <b>Container Platform</b> → Operating System → Hardware. Same container runs the same everywhere.</div>
+  </article>
+
+  <article class="chapter" id="l12-ctr" data-ch="l12">
+    <h2><span class="n">2</span>What is a Container?</h2>
+    <div class="box key"><b>Definition</b>A container is a <b>lightweight, self-contained software package</b> that bundles an application's <b>code with all its dependencies</b> (libraries, system settings) into a <b>single unit</b>.<br>
+    This ensures the app <b>runs consistently across different environments</b> (developer's laptop or cloud server), because it includes everything it needs, <b>without relying on the host's operating system</b>.</div>
+    <p>Each container has its own isolated <b>Processes</b>, <b>Network</b> and <b>Mounts</b>, but all share the <b>Operating System Kernel</b> via the Container Platform.</p>
+    <div class="stack" style="max-width:520px;margin:0 auto">
+      <div class="rowl"><div class="lay l-app">Processes<br>Network<br>Mounts</div><div class="lay l-app">Processes<br>Network<br>Mounts</div><div class="lay l-app">Processes<br>Network<br>Mounts</div></div>
+      <div class="lay l-eng">Container Platform</div>
+      <div class="lay l-os">Operating System Kernel (shared)</div>
+      <div class="lay l-hw">Hardware Infrastructure</div>
+    </div>
+    <div class="box mem"><b>Memory hook: "P-N-M" = "Private Neighbourhood Mailbox"</b> — every container gets its own Processes, Network, Mounts, but they all live on the same street (kernel).</div>
+  </article>
+
+  <article class="chapter" id="l12-vm" data-ch="l12">
+    <h2><span class="n">3</span>Virtualization vs Containerization</h2>
+    <div class="row" style="margin-bottom:12px"><button class="chip on" data-vm="vm">🖥 Virtual Machines</button><button class="chip" data-vm="ct">📦 Containers</button><button class="chip" data-vm="both">Side by side</button></div>
+    <div class="grid2" id="vmView">
+      <div data-v="vm"><h4>Virtual Machines</h4><div class="stack">
+        <div class="rowl"><div class="lay l-app">Application</div><div class="lay l-app">Application</div></div>
+        <div class="rowl"><div class="lay l-lib">Libs · Deps</div><div class="lay l-lib">Libs · Deps</div></div>
+        <div class="rowl"><div class="lay l-os">Guest OS</div><div class="lay l-os">Guest OS</div></div>
+        <div class="lay l-hyp">Hypervisor</div>
+        <div class="lay l-host">Host Operating System</div>
+        <div class="lay l-hw">Hardware Infrastructure</div></div></div>
+      <div data-v="ct" style="display:none"><h4>Containers</h4><div class="stack">
+        <div class="rowl"><div class="lay l-app">Application</div><div class="lay l-app">Application</div></div>
+        <div class="rowl"><div class="lay l-lib">Libs · Deps</div><div class="lay l-lib">Libs · Deps</div></div>
+        <div class="lay l-eng">Container Engine</div>
+        <div class="lay l-host">Operating System</div>
+        <div class="lay l-hw">Hardware Infrastructure</div></div></div>
+    </div>
+    <div class="box exam"><b>Exam tip — spot the difference</b>VM has a <b>Guest OS per app</b> + <b>Hypervisor</b>. Container has <b>no guest OS</b>, uses a <b>Container Engine</b> and <b>shares the host kernel</b> → lighter, faster start.</div>
+    <div class="vs-meter">
+      <span></span><b>VM</b><b>Container</b>
+      <span>Size</span><div class="m"><i style="width:90%;background:var(--bad)"></i></div><div class="m"><i style="width:20%;background:var(--good)"></i></div>
+      <span>Start time</span><div class="m"><i style="width:80%;background:var(--bad)"></i></div><div class="m"><i style="width:10%;background:var(--good)"></i></div>
+      <span>OS per app</span><div class="m"><i style="width:100%;background:var(--bad)"></i></div><div class="m"><i style="width:0%"></i></div>
+    </div>
+    <div class="box mem"><b>Memory hook</b>VM = a <b>house</b> (own foundation, plumbing = own OS). Container = an <b>apartment</b> (own rooms, but shares the building's foundation = kernel).</div>
+  </article>
+
+  <article class="chapter" id="l12-docker" data-ch="l12">
+    <h2><span class="n">4</span>What is Docker?</h2>
+    <ul class="clean">
+      <li>Docker is a <b>tool</b> that lets developers, sys-admins etc. easily deploy applications in a <b>sandbox (called containers)</b> to run on the host OS, i.e. <b>Linux</b>.</li>
+      <li>Written in the <b>Go</b> programming language; uses several <b>Linux kernel features</b>.</li>
+      <li>Uses <b>namespaces</b> to provide the isolated workspace called the container. When you run a container, Docker <b>creates a set of namespaces</b> for it.</li>
+      <li>Namespaces provide a <b>layer of isolation</b>. Each aspect of a container runs in a separate namespace and its access is limited to that namespace.</li>
+    </ul>
+    <div class="box mem"><b>Memory hook: "Docker GOes into NAMEd rooms"</b> — written in <b>Go</b>, isolates with <b>Namespaces</b>, runs on <b>Linux</b>.</div>
+    <details class="ask"><summary>What technology gives a container its isolation?</summary><b>Namespaces</b> (a Linux kernel feature). Docker creates a set of namespaces for every container.</details>
+  </article>
+
+  <article class="chapter" id="l12-comp" data-ch="l12">
+    <h2><span class="n">5</span>Docker Components</h2>
+    <p>Three groups on the slide:</p>
+    <div class="grid3">
+      <div class="tile"><h4>⚙ Software</h4>Docker Daemon (<code>dockerd</code>)<br>Docker Client (<code>docker</code>)</div>
+      <div class="tile"><h4>🧱 Objects</h4>Container<br>Image</div>
+      <div class="tile"><h4>🏪 Registry</h4>Docker Hub, ECR, ACR, GCR</div>
+    </div>
+    <div class="box mem"><b>Memory hook: "S-O-R" = "SORt it out"</b> — Software, Objects, Registry.</div>
+
+    <div class="stepper" style="margin-top:14px">
+      <div class="steps">
+        <button class="on">Daemon<small>dockerd</small></button>
+        <button>Client<small>docker</small></button>
+        <button>Docker Desktop</button>
+        <button>Image</button>
+        <button>Dockerfile</button>
+        <button>Container</button>
+        <button>Registry &amp; Hub</button>
+      </div>
+      <div class="panel on"><h3>Docker Daemon (dockerd) — the worker / kitchen chef 👨‍🍳</h3><ul class="clean">
+        <li><b>Listens for Docker API requests</b> and manages Docker objects: <b>images, containers, networks, volumes</b>.</li>
+        <li>A daemon can also <b>communicate with other daemons</b> to manage Docker services.</li></ul></div>
+      <div class="panel"><h3>Docker Client (docker) — the waiter 🧑‍🍽</h3><ul class="clean">
+        <li>The <b>primary way</b> many users interact with Docker.</li>
+        <li>When you type commands like <code>docker run</code>, the client <b>sends them to dockerd</b>, which carries them out.</li>
+        <li>The <code>docker</code> command uses the <b>Docker API</b>. One client can talk to <b>more than one daemon</b>.</li></ul>
+        <div class="box mem"><b>Memory hook</b>Restaurant: you (user) tell the <b>waiter (client)</b>, waiter tells the <b>chef (daemon)</b>, chef gets ingredients from the <b>supermarket (registry)</b>.</div></div>
+      <div class="panel"><h3>Docker Desktop</h3><p>An easy-to-install application for <b>Mac, Windows or Linux</b> to build and share containerized apps and microservices. Includes:</p>
+        <div class="chips"><span class="chip">Docker daemon (dockerd)</span><span class="chip">Docker Client (docker)</span><span class="chip">Docker Compose</span><span class="chip">Docker Content Trust</span><span class="chip">Kubernetes</span><span class="chip">Credential Helper</span></div></div>
+      <div class="panel"><h3>Docker Image — the recipe / blueprint 📜</h3><ul class="clean">
+        <li>A <b>read-only template</b> with instructions for creating a Docker container.</li>
+        <li>Often <b>based on another image</b> with customization. E.g. based on <b>ubuntu</b>, but installs <b>Apache web server</b>, your app and config.</li>
+        <li>Defines <b>how a container should be created</b>, which software runs and how it's configured.</li>
+        <li><b>Once an image is run, it becomes a Docker Container.</b></li></ul>
+        <div class="grid2"><div class="tile"><h4>Image</h4>Blueprint — <b>static, read-only</b></div><div class="tile"><h4>Container</h4>Running instance — <b>dynamic, executable</b></div></div>
+        <div class="box mem"><b>Memory hook</b>Image = <b>Class</b>, Container = <b>Object</b>. Or: Image = cake <b>recipe</b>, Container = the actual <b>cake</b>. One recipe → many cakes.</div></div>
+      <div class="panel"><h3>Dockerfile — the recipe written down ✍</h3><ul class="clean">
+        <li>A <b>simple text file</b> with a list of commands the Docker client calls while <b>creating an image</b>.</li>
+        <li>A simple way to <b>automate the image creation</b> process.</li>
+        <li>Commands are <b>almost identical to their Linux equivalents</b>.</li></ul>
+        <div class="box eg"><b>Chain to remember</b><code>Dockerfile</code> —build→ <code>Image</code> —run→ <code>Container</code></div></div>
+      <div class="panel"><h3>Docker Container — the running thing 🏃</h3>
+        <p>A <b>runnable instance of an image</b>. Packages code with all dependencies and runs it in an <b>isolated environment</b>. You can <b>create, start, stop, move, or delete</b> it using the Docker API or CLI, connect it to networks, attach storage, or <b>create a new image from its current state</b>.</p>
+        <div class="grid3"><div class="tile">Created when a Docker <b>Image is executed</b>.</div><div class="tile">Runs as an <b>isolated process</b>, but <b>shares the host's OS kernel</b>.</div><div class="tile"><b>Multiple containers</b> can run on the same system without interfering.</div></div>
+        <div class="box eg"><b>Example</b>An image of <b>Ubuntu OS with NGINX server</b> → <code>docker run</code> → a container where NGINX is running on Ubuntu.</div></div>
+      <div class="panel"><h3>Docker Registry &amp; Docker Hub — the supermarket 🏪</h3>
+        <p><b>Registry</b> = centralized <b>storage and distribution</b> system for images. Users <b>store, manage and share</b> container images.</p>
+        <ul class="clean"><li><b>Docker Hub</b>: the <b>default</b>, most widely used <b>public</b> registry. Docker looks there by default. You can also run your own <b>private registry</b>.</li>
+          <li><b>Cloud provider registries</b>: Amazon Elastic Container Registry (<b>ECR</b>), <b>Azure Container Registry</b>, <b>Google Container Registry</b>.</li></ul>
+        <h4>Docker Hub details</h4><ul class="clean">
+          <li>Cloud-based repository service — people <b>push</b> images to it and <b>pull</b> images from it anytime, anywhere via the internet.</li>
+          <li>Makes it easy to find and reuse images; push images as <b>private or public</b>.</li>
+          <li>Mainly used by <b>DevOps teams</b>. Open-source, freely available for all OSs. Like storage: store images, pull when needed.</li>
+          <li>To push/pull you need <b>basic knowledge of Docker</b>.</li></ul></div>
+    </div>
+  </article>
+
+  <article class="chapter" id="l12-arch" data-ch="l12">
+    <h2><span class="n">6</span>Docker Architecture &amp; How it Works</h2>
+    <ul class="clean">
+      <li>Docker uses a <b>Client-Server architecture</b>.</li>
+      <li>The client talks to the daemon, which does the <b>building, running and distributing</b> of containers.</li>
+      <li>Client and daemon can run on the <b>same system</b>, or the client can connect to a daemon <b>remotely</b>.</li>
+      <li>They communicate using a <b>REST API, over a UNIX socket or a network</b>.</li>
+    </ul>
+    <p>Click a command to watch the flow:</p>
+    <div class="row" style="margin-bottom:10px"><button class="btn ghost" data-flow="build">docker build</button><button class="btn ghost" data-flow="pull">docker pull</button><button class="btn ghost" data-flow="run">docker run</button></div>
+    <div class="flow">
+      <div class="node" data-n="client"><b>💻 Client</b><small>docker CLI</small><div class="mini"><span>build</span><span>pull</span><span>run</span></div></div>
+      <div class="arr" data-a="1">⇄<br><small style="font-size:.6rem">REST API</small></div>
+      <div class="node" data-n="host"><b>🖥 Docker Host</b><small>dockerd</small><div class="mini"><span>Images</span><span>Containers</span></div></div>
+      <div class="arr" data-a="2">⇄</div>
+      <div class="node" data-n="reg"><b>🏪 Registry</b><small>Docker Hub</small><div class="mini"><span>ubuntu</span><span>nginx</span><span>busybox</span></div></div>
+    </div>
+    <div class="box eg" id="flowOut" style="margin-top:12px"><b>Pick a command</b>to see the steps.</div>
+
+    <h3 style="margin-top:16px">Containers in the DevOps process</h3>
+    <p>The slide shows <b>Development</b> handing a <b>Docker Image</b> (application + guide) to <b>Operations</b>. Dev packages everything into the image once; Ops just runs it. No more "it works on my machine".</p>
+  </article>
+
+  <article class="chapter" id="l12-adv" data-ch="l12">
+    <h2><span class="n">7</span>Advantages of Containers</h2>
+    <div class="grid3">
+      <div class="tile"><h4>🌍 Portability</h4>Runs anywhere: local machine, cloud, on-prem servers.</div>
+      <div class="tile"><h4>🔁 Consistency</h4>Same behaviour in development, testing and production.</div>
+      <div class="tile"><h4>🪶 Lightweight</h4>No full OS per app; containers share the host kernel.</div>
+      <div class="tile"><h4>📈 Scalability</h4>Ideal for microservices and orchestrators like Kubernetes and Docker Swarm.</div>
+      <div class="tile"><h4>⚡ Efficiency</h4>Starts in seconds, uses fewer system resources.</div>
+    </div>
+    <div class="box mem"><b>Memory hook: "PCLSE" — "Please Clean Lazy Sailor's Equipment"</b> 🚢 Portability · Consistency · Lightweight · Scalability · Efficiency.</div>
+  </article>
+
+  <article class="chapter" id="l12-life" data-ch="l12">
+    <h2><span class="n">8</span>Docker Container Lifecycle &amp; Commands</h2>
+    <p>The lecture groups the commands into <b>4 phases</b>:</p>
+    <div class="lifecycle">
+      <div style="border-color:var(--good)">▶ Running<br><small>pull · create · start · run</small></div>
+      <div style="border-color:var(--l10)">🔍 Managing<br><small>logs · attach · exec</small></div>
+      <div style="border-color:var(--warn)">⏸ Stopping<br><small>pause · unpause · restart · stop · kill</small></div>
+      <div style="border-color:var(--bad)">🗑 Removing<br><small>rm · system prune · rmi</small></div>
+    </div>
+    <div class="box mem"><b>Memory hook: "Run, Manage, Stop, Remove" = "Really Mad Squirrels Run"</b></div>
+
+    <div class="table-wrap"><table>
+      <tr><th>Command</th><th>What it does</th><th>Example</th></tr>
+      <tr><td><code>docker pull &lt;IMAGE&gt;</code></td><td>Fetches images from a registry (Docker Hub) to the local machine</td><td><code>docker pull ubuntu:14.04</code></td></tr>
+      <tr><td><code>docker images</code></td><td>Lists local images</td><td></td></tr>
+      <tr><td><code>docker create &lt;IMAGE&gt;</code></td><td>Creates a new container from an image <b>without starting it</b>. Outputs a CONTAINER_ID</td><td><code>docker create --name my_hello_world hello-world</code></td></tr>
+      <tr><td><code>docker ps -a</code></td><td>Lists <b>all</b> containers (incl. stopped)</td><td></td></tr>
+      <tr><td><code>docker start &lt;ID|NAME&gt;</code></td><td>Starts / restarts stopped containers, resuming from the previous state</td><td><code>docker start my_hello_world</code></td></tr>
+      <tr><td><code>docker ps</code></td><td>Lists <b>running</b> containers</td><td></td></tr>
+      <tr><td><code>docker run &lt;IMAGE&gt; [CMD]</code></td><td>Launches containers from images with runtime options and commands.<br><b>= pull + create + start</b></td><td><code>docker run busybox ls</code></td></tr>
+      <tr><td><code>docker logs &lt;ID|NAME&gt;</code></td><td>View logs generated by a container</td><td><code>docker logs my_busybox</code></td></tr>
+      <tr><td><code>docker attach &lt;ID|NAME&gt;</code></td><td>Attach your terminal's stdin, stdout, stderr to a running container</td><td><code>docker attach my_busybox</code></td></tr>
+      <tr><td><code>docker exec -it &lt;ID|NAME&gt; &lt;CMD&gt;</code></td><td>Runs a <b>new command</b> in a running container</td><td><code>docker exec -it c3e4… ping www.example.com</code></td></tr>
+      <tr><td><code>docker run -it &lt;IMAGE&gt;</code></td><td>Run interactively</td><td><code>docker run -it busybox sh</code></td></tr>
+      <tr><td><code>docker pause</code> / <code>unpause</code></td><td>Suspends / un-suspends all processes</td><td><span class="sig">SIGSTOP / SIGCONT</span></td></tr>
+      <tr><td><code>docker restart</code></td><td>Restart one or more containers</td><td><code>docker restart my_busybox</code></td></tr>
+      <tr><td><code>docker stop</code></td><td>Halts <b>gracefully</b>, shutting down processes</td><td><span class="sig">SIGTERM</span></td></tr>
+      <tr><td><code>docker kill</code></td><td>Kills one or more running containers <b>immediately</b></td><td><span class="sig">SIGKILL</span></td></tr>
+      <tr><td><code>docker rm &lt;ID|NAME&gt;</code></td><td>Remove one or more containers</td><td><code>docker rm my_busybox</code></td></tr>
+      <tr><td><code>docker system prune</code></td><td>Remove <b>all stopped</b> containers</td><td></td></tr>
+      <tr><td><code>docker rmi &lt;IMAGE&gt;</code></td><td>Removes (and un-tags) images from the host</td><td><code>docker rmi busybox</code></td></tr>
+    </table></div>
+    <p class="hint">Note: the lecture's <code>docker attach</code> slide repeats <code>docker logs</code> in its example — that's a slide typo. The real form is <code>docker attach my_busybox</code>.</p>
+
+    <h3>Signals — the favourite exam question</h3>
+    <div class="table-wrap"><table>
+      <tr><th>Command</th><th>Signal</th><th>Same as</th><th>Remember as</th></tr>
+      <tr><td><code>docker stop</code></td><td class="sig">SIGTERM</td><td><code>docker kill --signal=SIGTERM</code></td><td>"<b>TERM</b>inate politely, please" 🙏</td></tr>
+      <tr><td><code>docker kill</code></td><td class="sig">SIGKILL</td><td><code>docker kill --signal=SIGKILL</code></td><td>"KILL now, no mercy" 💀</td></tr>
+      <tr><td><code>docker pause</code></td><td class="sig">SIGSTOP</td><td><code>docker kill --signal=SIGSTOP</code></td><td>"STOP = freeze (pause)" 🧊</td></tr>
+      <tr><td><code>docker unpause</code></td><td class="sig">SIGCONT</td><td><code>docker kill --signal=SIGCONT</code></td><td>"CONTinue" ▶</td></tr>
+    </table></div>
+    <div class="box exam"><b>Exam trap</b><code>docker stop</code> does <b>NOT</b> send SIGSTOP! stop → SIGTERM. pause → SIGSTOP.</div>
+  </article>
+
+  <article class="chapter" id="l12-term" data-ch="l12">
+    <h2><span class="n">9</span>🎮 Docker Terminal Simulator</h2>
+    <p>Practice commands safely — nothing real runs. Type or tap a quick command. Try the full lifecycle: <code>pull → create → start → pause → unpause → stop → rm → rmi</code>.</p>
+    <div class="term-wrap">
+      <div>
+        <div class="term">
+          <div class="tb"><i style="background:#ff5f57"></i><i style="background:#febc2e"></i><i style="background:#28c840"></i>&nbsp; student@cloud: ~</div>
+          <div class="out" id="termOut"></div>
+          <div class="in"><span>$</span><input id="termIn" autocomplete="off" spellcheck="false" placeholder="type: help"></div>
+        </div>
+        <div class="quick" id="quick"></div>
+      </div>
+      <div class="state-board">
+        <h4>📦 Local images</h4><div id="imgList"></div>
+        <h4 style="margin-top:10px">🧱 Containers</h4><div id="ctrList"></div>
+        <h4 style="margin-top:10px">🎯 Mission</h4><div id="mission" class="hint"></div>
+      </div>
+    </div>
+  </article>
+
+  <article class="chapter" id="l12-orch" data-ch="l12">
+    <h2><span class="n">10</span>Container Orchestration</h2>
+    <div class="box key"><b>Definition</b>Container orchestration is the process of <b>automating the deployment, management, scaling, and networking</b> of containers throughout their lifecycle, making it possible to deploy software consistently across many different environments <b>at scale</b>.</div>
+    <ul class="clean">
+      <li>Necessary to manage the <b>complexity</b> of modern large-scale containerized apps by automating <b>deployment, scaling and load balancing</b> → improves <b>agility, resilience, efficiency</b>.</li>
+      <li>Streamlines operations, <b>reduces manual effort and errors</b>, more efficient resource use → <b>cost savings</b> and <b>faster development cycles</b>.</li>
+    </ul>
+    <div class="box mem"><b>Memory hook: "DMSN" — "Don't Make Ships Nervous"</b> — Deployment, Management, Scaling, Networking.</div>
+
+    <h3>Why do containers need orchestration?</h3>
+    <ul class="clean">
+      <li>Containers are <b>smaller, more resource-efficient and more portable</b> than VMs. Containerized microservices / serverless functions are the <b>de facto compute units</b> of cloud-native apps.</li>
+      <li>In <b>small numbers</b> containers are easy to manage <b>manually</b>. But at scale (large organizations) that's impossible.</li>
+      <li>A <b>CI/CD or DevOps pipeline is impossible without container orchestration</b>, which automates deploying and running containerized apps.</li>
+    </ul>
+
+    <h3>How does it work?</h3>
+    <ul class="clean">
+      <li>Architecture = running <b>container clusters</b> across multiple machines and environments.</li>
+      <li>Each cluster = a group of <b>nodes</b> (server instances).</li>
+      <li><b>Worker nodes</b> run containers using container runtimes (e.g. Docker).</li>
+      <li>A group of <b>control plane nodes</b> act as the <b>orchestrator</b> of the cluster.</li>
+      <li>Users manage and monitor workloads with tools featuring <b>APIs and GUIs</b>.</li>
+    </ul>
+    <p>Essentially a <b>3-step process</b> (or cycle): <b>Provisioning → Deployment → Lifecycle management</b>. <span class="hint">Memory: "PDL" — "Please Deploy Later".</span></p>
+
+    <h4>The flow (click ▶ to animate)</h4>
+    <div class="orch" id="orch">
+      <div>👥 <b>DevOps Teams</b><br><small>set configurations</small></div>
+      <div>📄 <b>Configuration File</b><br><small>YAML or JSON</small></div>
+      <div>🎼 <b>Orchestration Platform</b><br><small>gets the stored info</small></div>
+      <div>🗓 <b>Schedules</b></div>
+      <div>🎯 <b>Identifies Perfect Host</b></div>
+      <div>🚀 <b>Deploys</b></div>
+      <div>♻ <b>Manages Lifecycle</b><br><small>→ back to schedules</small></div>
+    </div>
+    <div class="row" style="margin-top:8px"><button class="btn" id="orchRun">▶ Animate</button></div>
+
+    <h3 style="margin-top:18px">Advantages of Container Orchestration (5 groups)</h3>
+    <div class="grid2">
+      <div class="flip" style="min-height:190px"><div class="inner"><div class="face front"><div class="big">⚙ Automation &amp; simplified operations</div><small>tap</small></div>
+        <div class="face back"><ul><li><b>Automates complex tasks</b> (deploy, scale, manage)</li><li><b>Increases speed &amp; agility</b></li><li><b>Simplifies large-scale management</b> — declarative way to automate hundreds/thousands of containers</li></ul></div></div></div>
+      <div class="flip" style="min-height:190px"><div class="inner"><div class="face front"><div class="big">🛡 Improved reliability &amp; resilience</div><small>tap</small></div>
+        <div class="face back"><ul><li><b>Enhances availability</b> — health checks + self-healing reduce downtime</li><li><b>Ensures service continuity</b> — app stays up even if a container fails</li></ul></div></div></div>
+      <div class="flip" style="min-height:190px"><div class="inner"><div class="face front"><div class="big">💰 Resource efficiency &amp; cost savings</div><small>tap</small></div>
+        <div class="face back"><ul><li><b>Optimizes resource utilization</b> — schedules containers on the most efficient hardware</li><li><b>Manages scaling efficiently</b> — auto scale up/down, pay only for what you use</li></ul></div></div></div>
+      <div class="flip" style="min-height:190px"><div class="inner"><div class="face front"><div class="big">🔒 Better security &amp; portability</div><small>tap</small></div>
+        <div class="face back"><ul><li><b>Enhances security</b> — less human error, isolates apps from host and each other</li><li><b>Boosts portability</b> — runs on-prem or any public cloud, <b>prevents vendor lock-in</b></li></ul></div></div></div>
+      <div class="flip" style="min-height:190px"><div class="inner"><div class="face front"><div class="big">🚀 Support for modern dev practices</div><small>tap</small></div>
+        <div class="face back"><ul><li><b>Supports DevOps</b> — fits into CI/CD pipelines</li><li><b>Ideal for microservices</b> — makes managing many microservice containers practical</li></ul></div></div></div>
+    </div>
+    <div class="box mem"><b>Memory hook: "A-R-R-S-S" = "ARRgh, Ships Sail!"</b> 🏴‍☠️ Automation · Reliability · Resource efficiency · Security/portability · Support for modern dev.</div>
+
+    <h3>Container Orchestration Tools</h3>
+    <p>The slide shows a pyramid of shipping containers with these logos:</p>
+    <div class="tools">
+      <span style="--bgc:#ff7b7b">Kubernetes ☸</span>
+      <span style="--bgc:#ffc857">Apache Mesos</span><span style="--bgc:#c9cfdb">Red Hat OpenShift</span>
+      <span style="--bgc:#7cc4ff">Amazon ECS</span><span style="--bgc:#ff7b7b">Spotify (Helios)</span><span style="--bgc:#ffc857">Mirantis</span>
+      <span style="--bgc:#c9cfdb">Google Kubernetes Engine</span><span style="--bgc:#ffc857">Amazon EKS</span><span style="--bgc:#7cc4ff">(orange-node logo)</span><span style="--bgc:#ff7b7b">Docker Swarm 🐳</span>
+    </div>
+    <p class="hint" style="text-align:center">Kubernetes sits at the top — it's the most popular. Docker Swarm is Docker's own orchestrator.</p>
+  </article>
+
+  <div class="tabs" data-tabs>
+    <button class="on" data-tab="quiz">📝 Quiz</button>
+    <button data-tab="cards">🃏 Flashcards</button>
+  </div>
+  <div class="tabpanel on" data-panel="quiz"><div class="quiz" data-quiz="l12"></div></div>
+  <div class="tabpanel" data-panel="cards"><div class="deck" data-deck="l12"></div></div>
+</section>
+
+<!-- =============================== EXAM =============================== -->
+<section class="page" id="exam" style="--accent:var(--warn)">
+  <div class="lec-head">
+    <div class="kicker">All lectures mixed</div>
+    <h1>Exam Mode 🎯</h1>
+    <p class="lead">Random questions from every lecture. Every answer explains why. Aim for 80%+ before the exam.</p>
+    <div class="chips" id="examPick"></div>
+  </div>
+  <div class="quiz" data-quiz="all"></div>
+  <p class="hint" style="text-align:center;margin-top:14px">Tip: press <kbd>1</kbd>–<kbd>4</kbd> to answer and <kbd>Enter</kbd> for the next question.</p>
+</section>
+
+<!-- =============================== REVIEW (spaced repetition) =============================== -->
+<section class="page" id="review" style="--accent:var(--l11)">
+  <div class="lec-head">
+    <div class="kicker">Spaced repetition</div>
+    <h1>Daily Review 🧠</h1>
+    <p class="lead">Cards you rated come back just before you'd forget them: <b>again → today</b>, then <b>1 → 3 → 7 → 14 → 30 days</b> each time you know it. A few minutes a day beats one long cram.</p>
+    <div class="chips" id="reviewPick"></div>
+  </div>
+  <div class="boxes" id="srsBoxes"></div>
+  <div class="deck" data-deck="review"></div>
+  <p class="hint" style="text-align:center;margin-top:14px">Keys: <kbd>Space</kbd> flip · <kbd>K</kbd> I know it · <kbd>A</kbd> again · <kbd>←</kbd> <kbd>→</kbd> move</p>
+</section>
+
+<!-- =============================== CHEAT =============================== -->
+<section class="page" id="cheat">
+  <div class="lec-head">
+    <div class="kicker">Last-minute revision</div>
+    <h1>One-Page Cheat Sheet 📄</h1>
+    <p class="lead">Everything that gets asked, on one page. Print it (Ctrl+P) if you like.</p>
+  </div>
+  <div class="tabs" id="cheatTabs">
+    <button class="on" data-ct="sheet">📄 Cheat sheet</button>
+    <button data-ct="mem">💡 All memory hooks</button>
+    <button data-ct="exam">🎯 All exam traps</button>
+  </div>
+  <div id="cheatAlt" hidden></div>
+  <div class="cheat">
+    <div class="tile" id="cheat-l10" style="--c:var(--l10)"><h4>L10 · Definition & Process</h4><ul>
+      <li>Migration = movement of a meaningful portion of existing IT assets to cloud</li>
+      <li>Process: Opportunity Evaluation → Portfolio Discovery &amp; Planning → App Design ⇄ Migration &amp; Validation → Operate</li>
+      <li>Drivers: hardware renewal, DC lease expiry, productivity, global expansion, M&amp;A, standardized architectures</li>
+      <li>Discovery tools: AWS Discovery Service, Azure Migrate, 3rd party</li>
+      <li>Least complex apps first · parallel envs · partial switch · full cutover</li>
+      <li>Operate: DevOps, NoOps, FinOps, SecOps · evergreen model</li></ul></div>
+    <div class="tile" style="--c:var(--l10)"><h4>L10 · Strategies</h4><ul>
+      <li>Gartner 5: Rehost, Refactor, Revise, Rebuild, Replace</li>
+      <li>Azure 4: Rehost, Refactor, Re-architect, Rebuild</li>
+      <li>AWS 6: Rehost, Re-platform, Repurchase, Refactor/Re-architect, Retire, Retain</li>
+      <li>Rehost = lift-and-shift, no code change</li>
+      <li>Re-platform = lift-tinker-and-shift (VM→PaaS, Oracle→PostgreSQL, WebLogic→Tomcat)</li>
+      <li>Repurchase = to SaaS (Salesforce, Workday, SharePoint)</li>
+      <li>Refactor = cloud-native redesign, most expensive</li>
+      <li>Retire = turn off · Retain = later/do nothing</li>
+      <li>Challenges: Cost · Resistance · Skills shortage</li></ul></div>
+    <div class="tile" style="--c:var(--l11)"><h4>L11 · Architecture</h4><ul>
+      <li>Monolith: single indivisible unit (UI, server app, DB, middleware). Easy to debug/deploy; hard to scale/change</li>
+      <li>Microservices: small independent deployable services via APIs. Scalable, flexible tech; complex, hard to debug</li>
+      <li>Monolith scales by cloning whole app; microservices scale each service</li>
+      <li>Cloud native: exploits flexibility, scalability, resilience · born in cloud: Netflix, Spotify, Uber, Airbnb · CNCF = containerization focus</li></ul></div>
+    <div class="tile" style="--c:var(--l11)"><h4>L11 · 12-Factor (Heroku)</h4><ul>
+      <li>Codebase · Dependencies · Config · Backing services · Build-release-run · Processes · Port binding · Concurrency · Disposability · Dev/prod parity · Logs · Admin processes</li>
+      <li>"Cool Dogs Can Bark But Puppies Play Constantly, Don't Disturb Lazy Adults"</li></ul></div>
+    <div class="tile" style="--c:var(--l11)"><h4>L11 · Tools & Practices</h4><ul>
+      <li>Tools: Cloud delivery model, Containers, Microservices, Service mesh, Orchestration</li>
+      <li>Practices: DevOps, SRE (Google), NoOps, CI, CD</li>
+      <li>CI: merge often into central repo, automated build+test</li>
+      <li>Continuous Delivery = human approval · Continuous Deployment = fully automatic</li>
+      <li>Tools: Jenkins, GitLab, GitHub, Bitbucket, CircleCI, TeamCity, Bamboo, Travis CI</li>
+      <li>Modernization: Rehost → Refactor → Rearchitect ×2 → Rearchitect/Rebuild</li></ul></div>
+    <div class="tile" style="--c:var(--l12)"><h4>L12 · Containers & Docker</h4><ul>
+      <li>Container: lightweight self-contained package of code + dependencies; consistent everywhere</li>
+      <li>VM: Guest OS + Hypervisor · Container: shares kernel + Container Engine</li>
+      <li>Docker: Go language, Linux kernel features, namespaces for isolation</li>
+      <li>Components: Software (dockerd, docker) · Objects (Image, Container) · Registry</li>
+      <li>Image = read-only template (blueprint) · Container = running instance</li>
+      <li>Dockerfile → build → Image → run → Container</li>
+      <li>Client-server, REST API over UNIX socket or network</li>
+      <li>Advantages: Portability, Consistency, Lightweight, Scalability, Efficiency</li></ul></div>
+    <div class="tile" style="--c:var(--l12)"><h4>L12 · Commands & Signals</h4><ul>
+      <li>run = pull + create + start</li>
+      <li>ps = running · ps -a = all · images = local images</li>
+      <li>logs, attach, exec -it</li>
+      <li>stop → SIGTERM · kill → SIGKILL · pause → SIGSTOP · unpause → SIGCONT</li>
+      <li>rm (container) · system prune (all stopped) · rmi (image)</li></ul></div>
+    <div class="tile" style="--c:var(--l12)"><h4>L12 · Orchestration</h4><ul>
+      <li>Automates deployment, management, scaling, networking</li>
+      <li>Clusters of nodes · worker nodes run containers · control plane = orchestrator</li>
+      <li>3 steps: Provisioning → Deployment → Lifecycle management</li>
+      <li>Config file in YAML or JSON</li>
+      <li>Advantages: automation, reliability, resource efficiency, security/portability, modern dev support</li>
+      <li>Tools: Kubernetes, Mesos, OpenShift, ECS, EKS, GKE, Mirantis, Docker Swarm</li></ul></div>
+  </div>
+</section>
+
+</main>
+<footer>
+  <div class="foot-in">
+    <div class="foot-brand"><span class="logo-ic">☁</span> Cloud<span>Interactive</span></div>
+    <p>An interactive study companion for Cloud Computing · Lectures 01–12 · Progress is saved in this browser</p>
+    <p class="copy">© <span id="year">2026</span> Lithira Silva (@li.kkaa). All rights reserved.</p>
+    <p class="fine">Original lecture material belongs to its respective authors. This site is for personal study use.</p>
+  </div>
+</footer>
+
+<script src="data.js"></script>
+<script src="lectures/l01.js"></script>
+<script src="lectures/l02.js"></script>
+<script src="lectures/l03.js"></script>
+<script src="lectures/l04.js"></script>
+<script src="lectures/l05.js"></script>
+<script src="lectures/l06.js"></script>
+<script src="lectures/l07.js"></script>
+<script src="lectures/l08.js"></script>
+<script src="lectures/l09.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
