@@ -5,6 +5,7 @@ const store = {
   get(k, d) { try { const v = localStorage.getItem(k); return v ? JSON.parse(v) : d; } catch { return d; } },
   set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch {} },
 };
+const esc = s => String(s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]);
 const shuffle = a => { a = [...a]; for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
 
 /* ---------- theme ---------- */
@@ -447,8 +448,9 @@ $$("[data-vm]").forEach(b => b.onclick = () => {
   ];
   let mi = 0;
   function refresh() {
-    $("#imgList").innerHTML = images.size ? [...images].map(i => `<div class="ctr"><span>${i}</span><span class="hint">image</span></div>`).join("") : `<div class="hint">none — try docker pull</div>`;
-    $("#ctrList").innerHTML = ctrs.length ? ctrs.map(c => `<div class="ctr"><span>${c.name}<br><small class="hint">${c.image}</small></span><span class="st ${c.state}">${c.state}</span></div>`).join("") : `<div class="hint">none</div>`;
+    // names and images are typed by the user, so escape them before building HTML
+    $("#imgList").innerHTML = images.size ? [...images].map(i => `<div class="ctr"><span>${esc(i)}</span><span class="hint">image</span></div>`).join("") : `<div class="hint">none — try docker pull</div>`;
+    $("#ctrList").innerHTML = ctrs.length ? ctrs.map(c => `<div class="ctr"><span>${esc(c.name)}<br><small class="hint">${esc(c.image)}</small></span><span class="st ${c.state}">${c.state}</span></div>`).join("") : `<div class="hint">none</div>`;
     while (mi < missions.length && missions[mi][1]() && (mi === 0 || true)) { mi++; if (mi < missions.length) print("🎯 Mission complete! Next: " + missions[mi][0], "info"); }
     $("#mission").innerHTML = mi < missions.length ? `${mi + 1}/${missions.length}: ${missions[mi][0]}` : "🏆 All missions done! You know the full container lifecycle.";
   }
@@ -664,7 +666,9 @@ $$("#examPick button").forEach(b => b.onclick = () => {
 
 /* ---------- flashcards with spaced repetition (Leitner boxes) ---------- */
 const INTERVAL = [0, 1, 3, 7, 14, 30];
-let srs = store.get("srs", {});
+// keep only well-formed saved entries, so tampered storage can't inject markup
+let srs = Object.fromEntries(Object.entries(store.get("srs", {})).filter(([, v]) =>
+  v && Number.isInteger(v.box) && v.box >= 0 && v.box <= 5 && /^\d{4}-\d{2}-\d{2}$/.test(v.due)));
 const ALLCARDS = Object.entries(CARDS).flatMap(([l, cs]) => cs.map((c, i) => ({ id: l + ":" + i, l, f: c[0], b: c[1] })));
 const isDue = c => srs[c.id] && srs[c.id].due <= today();
 const dueCount = () => ALLCARDS.filter(isDue).length;
@@ -749,7 +753,7 @@ paintBoxes(); paintDue();
 function renderDash() {
   const last = document.getElementById(store.get("last", ""));
   const lastL = last && LECTURES.find(l => l.id === last.dataset.ch);
-  const best = store.get("best", {}).all;
+  const b = Number(store.get("best", {}).all), best = Number.isFinite(b) ? Math.round(b) : null;
   const got = Object.values(done).filter(Boolean).length, all = $$(".chapter").length;
   const s = streak(), due = dueCount();
   $("#dash").innerHTML = `
