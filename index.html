@@ -82,9 +82,56 @@
 
   <article class="chapter" id="l10-process" data-ch="l10">
     <h2><span class="n">2</span>The Migration Process (5 stages)</h2>
-    <p>The slide diagram flows left to right: <b>Opportunity Evaluation → Portfolio Discovery &amp; Planning → Application Design ⇄ Migration &amp; Validation → Operate</b>. Click each stage.</p>
+    <p>The process flows left to right through 5 stages. Stages ③ and ④ form a <b>loop</b> (the orange arrows): you repeat them once for every app. Click a stage in the diagram or the buttons below.</p>
     <div class="box mem"><b>Memory hook: "O.P.D.M.O" — "Only People Doing Moves Operate"</b>
       Opportunity · Portfolio · Design · Migrate &amp; validate · Operate. Design and Migrate loop together (the orange arrows) — you repeat them for each app.</div>
+
+    <figure class="dg dg-wide" data-dg-stepper>
+      <svg viewBox="0 0 866 225" role="group" aria-label="Migration process: Opportunity Evaluation, then Portfolio Discovery and Planning, then a loop between Application Design and Migration and Validation repeated for each app, then Operate">
+        <defs>
+          <marker id="l10ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="ah" d="M0 0L10 5L0 10z"/></marker>
+          <marker id="l10ahl" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path class="ah loop" d="M0 0L10 5L0 10z"/></marker>
+        </defs>
+        <g class="dg-node on" data-step="0" tabindex="0" role="button" aria-label="Stage 1: Opportunity Evaluation">
+          <rect class="bx" x="6" y="60" width="150" height="100" rx="12"/>
+          <text class="t" x="81" y="96" text-anchor="middle">① Opportunity</text>
+          <text class="t" x="81" y="113" text-anchor="middle">Evaluation</text>
+          <text class="s" x="81" y="140" text-anchor="middle">WHY move?</text>
+        </g>
+        <g class="dg-node" data-step="1" tabindex="0" role="button" aria-label="Stage 2: Portfolio Discovery and Planning">
+          <rect class="bx" x="182" y="60" width="150" height="100" rx="12"/>
+          <text class="t" x="257" y="88" text-anchor="middle">② Portfolio</text>
+          <text class="t" x="257" y="105" text-anchor="middle">Discovery &amp;</text>
+          <text class="t" x="257" y="122" text-anchor="middle">Planning</text>
+          <text class="s" x="257" y="145" text-anchor="middle">WHAT do we have?</text>
+        </g>
+        <g class="dg-node" data-step="2" tabindex="0" role="button" aria-label="Stage 3: Application Design">
+          <rect class="bx" x="358" y="60" width="150" height="100" rx="12"/>
+          <text class="t" x="433" y="96" text-anchor="middle">③ Application</text>
+          <text class="t" x="433" y="113" text-anchor="middle">Design</text>
+          <text class="s" x="433" y="140" text-anchor="middle">HOW for each app</text>
+        </g>
+        <g class="dg-node" data-step="3" tabindex="0" role="button" aria-label="Stage 4: Migration and Validation">
+          <rect class="bx" x="534" y="60" width="150" height="100" rx="12"/>
+          <text class="t" x="609" y="96" text-anchor="middle">④ Migration &amp;</text>
+          <text class="t" x="609" y="113" text-anchor="middle">Validation</text>
+          <text class="s" x="609" y="140" text-anchor="middle">DO it + test</text>
+        </g>
+        <g class="dg-node" data-step="4" tabindex="0" role="button" aria-label="Stage 5: Operate">
+          <rect class="bx" x="710" y="60" width="150" height="100" rx="12"/>
+          <text class="t" x="785" y="104" text-anchor="middle">⑤ Operate</text>
+          <text class="s" x="785" y="140" text-anchor="middle">RUN it well</text>
+        </g>
+        <line class="ln" x1="156" y1="110" x2="180" y2="110" marker-end="url(#l10ah)"/>
+        <line class="ln" x1="332" y1="110" x2="356" y2="110" marker-end="url(#l10ah)"/>
+        <line class="ln" x1="684" y1="110" x2="708" y2="110" marker-end="url(#l10ah)"/>
+        <path class="ln loop" d="M470 60C484 20 558 20 572 58" marker-end="url(#l10ahl)"/>
+        <text class="lab loop" x="521" y="22" text-anchor="middle">migrate this app</text>
+        <path class="ln loop" d="M572 160C558 200 484 200 470 162" marker-end="url(#l10ahl)"/>
+        <text class="lab loop" x="521" y="214" text-anchor="middle">validated → design next app</text>
+      </svg>
+      <figcaption>Stages ①② happen once · the ③⇄④ loop repeats per app (easiest apps first) · ⑤ runs continuously</figcaption>
+    </figure>
 
     <div class="stepper">
       <div class="steps">
@@ -128,7 +175,40 @@
           <li><b>Start with the least complex applications</b>, then move towards more complex ones. (Pack the books before the piano!)</li>
           <li><b>Testing and decommissioning</b> old applications / hardware.</li>
         </ol>
-        <p>The slide shows how the switch-over happens gradually:</p>
+        <p>The switch-over happens gradually — watch where the users' traffic goes:</p>
+        <figure class="dg dg-wide">
+          <svg viewBox="0 0 640 170" role="img" aria-label="Gradual switch-over: first both environments run in parallel with all traffic on-premise, then traffic is split partially, then full cutover sends all traffic to the cloud">
+            <defs><marker id="l10cut" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path class="ah" d="M0 0L10 5L0 10z"/></marker></defs>
+            <text class="t" x="95" y="20" text-anchor="middle">1 · Parallel</text>
+            <text class="t" x="320" y="20" text-anchor="middle">2 · Partial switch</text>
+            <text class="t" x="545" y="20" text-anchor="middle">3 · Full cutover</text>
+            <!-- phase 1 -->
+            <rect class="bx" x="10" y="36" width="170" height="40" rx="8"/>
+            <rect class="old" x="10" y="36" width="170" height="40" rx="8"/>
+            <text x="95" y="61" text-anchor="middle">🏢 On-prem 100%</text>
+            <rect class="bx hl" x="10" y="86" width="170" height="40" rx="8"/>
+            <text x="95" y="111" text-anchor="middle">☁ Cloud 0% · testing</text>
+            <!-- phase 2 -->
+            <rect class="bx" x="235" y="36" width="170" height="40" rx="8"/>
+            <rect class="old" x="235" y="36" width="85" height="40" rx="8"/>
+            <text x="320" y="61" text-anchor="middle">🏢 On-prem 50%</text>
+            <rect class="bx" x="235" y="86" width="170" height="40" rx="8"/>
+            <rect class="new" x="235" y="86" width="85" height="40" rx="8" opacity=".55"/>
+            <text x="320" y="111" text-anchor="middle">☁ Cloud 50%</text>
+            <!-- phase 3 -->
+            <rect class="bx zone" x="460" y="36" width="170" height="40" rx="8"/>
+            <text class="s" x="545" y="61" text-anchor="middle">🏢 On-prem retired</text>
+            <rect class="bx good" x="460" y="86" width="170" height="40" rx="8"/>
+            <rect class="new" x="460" y="86" width="170" height="40" rx="8" opacity=".35"/>
+            <text class="t" x="545" y="111" text-anchor="middle">☁ Cloud 100%</text>
+            <line class="ln" x1="184" y1="81" x2="229" y2="81" marker-end="url(#l10cut)"/>
+            <line class="ln" x1="409" y1="81" x2="454" y2="81" marker-end="url(#l10cut)"/>
+            <text class="s" x="95" y="152" text-anchor="middle">old + new both live</text>
+            <text class="s" x="320" y="152" text-anchor="middle">move some users / content</text>
+            <text class="s" x="545" y="152" text-anchor="middle">when everything works</text>
+          </svg>
+          <figcaption>Filled part of each bar = share of users' traffic. Old hardware is decommissioned only after cutover.</figcaption>
+        </figure>
         <div class="grid3">
           <div class="tile">🔁 <b>Running parallel environments</b> temporarily if needed (old + new both live).</div>
           <div class="tile">🔀 <b>Switching traffic, users and content partially</b>.</div>
@@ -137,7 +217,7 @@
       </div>
       <div class="panel">
         <h3>④ Migration &amp; Validation</h3>
-        <p>In the diagram, Design and Migration &amp; Validation are linked by two arrows forming a loop. You design an app, migrate it, validate (test) it, then go back and design the next app. Repeat until done.</p>
+        <p>In the diagram above, Design and Migration &amp; Validation are linked by two orange arrows forming a loop. You design an app, migrate it, validate (test) it, then go back and design the next app. Repeat until done.</p>
         <div class="box key"><b>Key idea</b>Validation = proving the app works correctly in the cloud before you switch everyone over.</div>
       </div>
       <div class="panel">
@@ -628,7 +708,29 @@
     <div class="box eg" id="flowOut" style="margin-top:12px"><b>Pick a command</b>to see the steps.</div>
 
     <h3 style="margin-top:16px">Containers in the DevOps process</h3>
-    <p>The slide shows <b>Development</b> handing a <b>Docker Image</b> (application + guide) to <b>Operations</b>. Dev packages everything into the image once; Ops just runs it. No more "it works on my machine".</p>
+    <p><b>Development</b> hands a <b>Docker Image</b> (application + guide) to <b>Operations</b>. Dev packages everything into the image once; Ops just runs it. No more "it works on my machine".</p>
+    <figure class="dg">
+      <svg viewBox="0 0 640 150" role="img" aria-label="Development builds a Docker image containing the application and its run guide, then hands it to Operations, who run it as a container">
+        <defs><marker id="l12ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path class="ah acc" d="M0 0L10 5L0 10z"/></marker></defs>
+        <rect class="bx" x="6" y="40" width="150" height="70" rx="12"/>
+        <text class="t" x="81" y="70" text-anchor="middle">👩‍💻 Development</text>
+        <text class="s" x="81" y="92" text-anchor="middle">writes the app</text>
+        <rect class="bx hl" x="245" y="25" width="150" height="100" rx="12"/>
+        <text class="t" x="320" y="52" text-anchor="middle">📦 Docker Image</text>
+        <rect class="bx" x="260" y="64" width="120" height="22" rx="6"/>
+        <text class="s" x="320" y="79" text-anchor="middle">application + deps</text>
+        <rect class="bx" x="260" y="92" width="120" height="22" rx="6"/>
+        <text class="s" x="320" y="107" text-anchor="middle">guide: how to run</text>
+        <rect class="bx" x="484" y="40" width="150" height="70" rx="12"/>
+        <text class="t" x="559" y="70" text-anchor="middle">🛠 Operations</text>
+        <text class="s" x="559" y="92" text-anchor="middle">runs the container</text>
+        <line class="ln acc" x1="156" y1="75" x2="241" y2="75" marker-end="url(#l12ah)"/>
+        <text class="lab" x="199" y="66" text-anchor="middle">docker build</text>
+        <line class="ln acc" x1="395" y1="75" x2="480" y2="75" marker-end="url(#l12ah)"/>
+        <text class="lab" x="438" y="66" text-anchor="middle">hand over</text>
+      </svg>
+      <figcaption>The image is the only thing that crosses from Dev to Ops — same image, same behaviour everywhere.</figcaption>
+    </figure>
   </article>
 
   <article class="chapter" id="l12-adv" data-ch="l12">

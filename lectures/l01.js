@@ -131,7 +131,67 @@ addLecture(`
 
   <article class="chapter" id="l01-actors" data-ch="l01">
     <h2><span class="n">8</span>NIST Reference Architecture — 5 Actors</h2>
-    <p>The NIST diagram shows the <b>Cloud Provider</b> in the middle (Service orchestration with SaaS/PaaS/IaaS layers, Resource abstraction &amp; control layer, Physical resource layer of hardware and facility; Cloud service management with business support, provisioning/configuration, portability/interoperability; plus Security and Privacy). Around it: Consumer, Auditor (security, privacy-impact and performance audits), Broker (service intermediation, aggregation, arbitrage), and the Carrier along the bottom.</p>
+    <p>The NIST diagram puts the <b>Cloud Provider</b> in the middle, with the Consumer and Auditor on the left, the Broker on the right, and the Carrier along the bottom connecting them all. Click an actor:</p>
+    <figure class="dg dg-wide" data-dg-chips="actor">
+      <svg viewBox="0 0 760 362" role="group" aria-label="NIST cloud reference architecture: Cloud Consumer and Cloud Auditor on the left, Cloud Provider in the centre containing Service Orchestration, Cloud Service Management, Security and Privacy, Cloud Broker on the right, and Cloud Carrier along the bottom">
+        <g class="dg-node" data-chip="0" tabindex="0" role="button" aria-label="Cloud Consumer">
+          <rect class="bx" x="10" y="20" width="130" height="130" rx="12"/>
+          <text x="75" y="75" text-anchor="middle" font-size="22">👤</text>
+          <text class="t" x="75" y="102" text-anchor="middle">Cloud</text>
+          <text class="t" x="75" y="119" text-anchor="middle">Consumer</text>
+        </g>
+        <g class="dg-node" data-chip="2" tabindex="0" role="button" aria-label="Cloud Auditor">
+          <rect class="bx" x="10" y="170" width="130" height="130" rx="12"/>
+          <text class="t" x="75" y="192" text-anchor="middle">🔍 Cloud Auditor</text>
+          <rect class="bx" x="20" y="204" width="110" height="24" rx="6"/><text class="s" x="75" y="220" text-anchor="middle">Security audit</text>
+          <rect class="bx" x="20" y="234" width="110" height="24" rx="6"/><text class="s" x="75" y="250" text-anchor="middle">Privacy impact audit</text>
+          <rect class="bx" x="20" y="264" width="110" height="24" rx="6"/><text class="s" x="75" y="280" text-anchor="middle">Performance audit</text>
+        </g>
+        <g class="dg-node" data-chip="1" tabindex="0" role="button" aria-label="Cloud Provider">
+          <rect class="bx hl" x="160" y="20" width="440" height="280" rx="12"/>
+          <text class="t" x="380" y="40" text-anchor="middle">🏢 Cloud Provider</text>
+          <rect class="bx" x="175" y="50" width="200" height="236" rx="10"/>
+          <text class="t" x="275" y="68" text-anchor="middle" font-size="12">Service Orchestration</text>
+          <rect class="bx" x="185" y="78" width="180" height="84" rx="8"/>
+          <text class="s" x="275" y="93" text-anchor="middle">Service Layer</text>
+          <rect class="bx" x="200" y="99" width="150" height="17" rx="4"/><text class="s" x="275" y="112" text-anchor="middle">SaaS</text>
+          <rect class="bx" x="200" y="119" width="150" height="17" rx="4"/><text class="s" x="275" y="132" text-anchor="middle">PaaS</text>
+          <rect class="bx" x="200" y="139" width="150" height="17" rx="4"/><text class="s" x="275" y="152" text-anchor="middle">IaaS</text>
+          <rect class="bx" x="185" y="170" width="180" height="42" rx="8"/>
+          <text class="s" x="275" y="187" text-anchor="middle">Resource Abstraction</text>
+          <text class="s" x="275" y="202" text-anchor="middle">&amp; Control Layer</text>
+          <rect class="bx" x="185" y="220" width="180" height="58" rx="8"/>
+          <text class="s" x="275" y="236" text-anchor="middle">Physical Resource Layer</text>
+          <rect class="bx" x="195" y="246" width="76" height="22" rx="4"/><text class="s" x="233" y="261" text-anchor="middle">Hardware</text>
+          <rect class="bx" x="279" y="246" width="76" height="22" rx="4"/><text class="s" x="317" y="261" text-anchor="middle">Facility</text>
+          <rect class="bx" x="387" y="50" width="135" height="236" rx="10"/>
+          <text class="t" x="454" y="68" text-anchor="middle" font-size="12">Cloud Service</text>
+          <text class="t" x="454" y="83" text-anchor="middle" font-size="12">Management</text>
+          <rect class="bx" x="396" y="96" width="117" height="54" rx="6"/><text class="s" x="454" y="119" text-anchor="middle">Business</text><text class="s" x="454" y="133" text-anchor="middle">Support</text>
+          <rect class="bx" x="396" y="158" width="117" height="54" rx="6"/><text class="s" x="454" y="181" text-anchor="middle">Provisioning /</text><text class="s" x="454" y="195" text-anchor="middle">Configuration</text>
+          <rect class="bx" x="396" y="220" width="117" height="54" rx="6"/><text class="s" x="454" y="243" text-anchor="middle">Portability /</text><text class="s" x="454" y="257" text-anchor="middle">Interoperability</text>
+          <rect class="bx warn" x="532" y="50" width="28" height="236" rx="6"/>
+          <text class="s" transform="translate(550 168) rotate(-90)" text-anchor="middle">Security</text>
+          <rect class="bx warn" x="566" y="50" width="28" height="236" rx="6"/>
+          <text class="s" transform="translate(584 168) rotate(-90)" text-anchor="middle">Privacy</text>
+        </g>
+        <g class="dg-node" data-chip="3" tabindex="0" role="button" aria-label="Cloud Broker">
+          <rect class="bx" x="620" y="20" width="130" height="280" rx="12"/>
+          <text class="t" x="685" y="44" text-anchor="middle">🤝 Cloud Broker</text>
+          <rect class="bx" x="630" y="64" width="110" height="54" rx="6"/><text class="s" x="685" y="87" text-anchor="middle">Service</text><text class="s" x="685" y="101" text-anchor="middle">Intermediation</text>
+          <rect class="bx" x="630" y="134" width="110" height="54" rx="6"/><text class="s" x="685" y="157" text-anchor="middle">Service</text><text class="s" x="685" y="171" text-anchor="middle">Aggregation</text>
+          <rect class="bx" x="630" y="204" width="110" height="54" rx="6"/><text class="s" x="685" y="227" text-anchor="middle">Service</text><text class="s" x="685" y="241" text-anchor="middle">Arbitrage</text>
+        </g>
+        <g class="dg-node" data-chip="4" tabindex="0" role="button" aria-label="Cloud Carrier">
+          <rect class="bx" x="10" y="318" width="740" height="36" rx="10"/>
+          <text class="t" x="380" y="341" text-anchor="middle">🚚 Cloud Carrier — connectivity &amp; transport between all actors</text>
+        </g>
+        <line class="ln" x1="75" y1="300" x2="75" y2="318" stroke-dasharray="3 3"/>
+        <line class="ln" x1="380" y1="300" x2="380" y2="318" stroke-dasharray="3 3"/>
+        <line class="ln" x1="685" y1="300" x2="685" y2="318" stroke-dasharray="3 3"/>
+      </svg>
+      <figcaption>Security and Privacy (orange) cut across every layer of the Provider.</figcaption>
+    </figure>
     <div class="chips" data-explain="actor">
       <button class="chip" data-x="A person or organization that maintains a business relationship with, and uses service from, Cloud Providers.">👤 Cloud Consumer</button>
       <button class="chip" data-x="A person, organization, or entity responsible for making a service available to interested parties.">🏢 Cloud Provider</button>

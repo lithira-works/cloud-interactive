@@ -276,6 +276,36 @@ details.ask[open] summary { color: var(--accent); margin-bottom: 6px; }
 .venn { display: flex; justify-content: center; margin: 10px 0; }
 .venn svg { max-width: 320px; width: 100%; }
 
+/* ---------- slide diagrams (inline SVG) ---------- */
+.dg { margin: 14px 0 16px; padding: 14px 12px 10px; background: var(--card2); border: 1px solid var(--line); border-radius: 14px; }
+.dg svg { display: block; width: 100%; height: auto; margin: 0 auto; color: var(--text); font-family: "Inter", "Segoe UI", system-ui, sans-serif; }
+.dg figcaption { margin-top: 8px; font-size: .85rem; color: var(--muted); text-align: center; }
+.dg .bx { fill: var(--card); stroke: var(--line); stroke-width: 1.5; }
+.dg .bx.hl { fill: color-mix(in srgb, var(--accent) 16%, var(--card)); stroke: var(--accent); }
+.dg .bx.warn { fill: color-mix(in srgb, var(--warn) 14%, var(--card)); stroke: var(--warn); }
+.dg .bx.good { fill: color-mix(in srgb, var(--good) 14%, var(--card)); stroke: var(--good); }
+.dg .zone { fill: none; stroke: var(--line); stroke-width: 1.5; stroke-dasharray: 5 4; }
+.dg .ln { stroke: currentColor; stroke-width: 1.6; fill: none; opacity: .75; }
+.dg .ln.acc { stroke: var(--accent); opacity: 1; stroke-width: 2.2; }
+.dg .ln.loop { stroke: var(--warn); opacity: 1; stroke-width: 2.2; }
+.dg .ah { fill: currentColor; opacity: .75; }
+.dg .ah.acc { fill: var(--accent); opacity: 1; }
+.dg .ah.loop { fill: var(--warn); opacity: 1; }
+.dg svg { font-size: 13px; }
+.dg text { fill: currentColor; }
+.dg text.t { font-weight: 700; }
+.dg text.s { fill: var(--muted); font-size: 11px; }
+.dg text.lab { fill: var(--muted); font-size: 11px; font-style: italic; }
+.dg text.lab.loop { fill: var(--warn); font-style: normal; font-weight: 600; }
+.dg .old { fill: var(--muted); opacity: .45; }
+.dg .new { fill: var(--accent); }
+.dg-node { cursor: pointer; }
+.dg-node:hover .bx, .dg-node:focus-visible .bx { stroke: var(--accent); }
+.dg-node:focus { outline: none; }
+.dg-node.on .bx { fill: color-mix(in srgb, var(--accent) 22%, var(--card)); stroke: var(--accent); stroke-width: 2.5; }
+.dg-wide { overflow-x: auto; }
+.dg-wide svg { min-width: 560px; }
+
 /* ---------- pipeline ---------- */
 .pipe { display: flex; gap: 8px; flex-wrap: wrap; align-items: stretch; margin: 14px 0; }
 .stage { flex: 1 1 110px; background: var(--card2); border: 2px solid var(--line); border-radius: 12px; padding: 10px; text-align: center; font-size: .88rem; transition: all .3s; }

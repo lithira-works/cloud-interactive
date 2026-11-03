@@ -64,6 +64,53 @@ addLecture(`
   <article class="chapter" id="l09-how" data-ch="l09">
     <h2><span class="n">4</span>How IaC Works</h2>
     <p>The slide's diagram — click each part:</p>
+    <figure class="dg dg-wide" data-dg-chips="iacflow">
+      <svg viewBox="0 0 760 270" role="group" aria-label="How IaC works: developers write infrastructure code, which is stored in version control and tested, then pushed to an automation API or server that deploys and manages infrastructure in the cloud and on premises">
+        <defs><marker id="l09ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path class="ah" d="M0 0L10 5L0 10z"/></marker></defs>
+        <rect class="bx warn" x="10" y="8" width="740" height="30" rx="8"/>
+        <text class="s" x="380" y="28" text-anchor="middle">Infrastructure automation · Configuration management · Version control · Automated testing · Deployment automation</text>
+        <g class="dg-node" data-chip="0" tabindex="0" role="button" aria-label="Developers">
+          <rect class="bx" x="10" y="100" width="120" height="64" rx="12"/>
+          <text class="t" x="70" y="128" text-anchor="middle">👩‍💻</text>
+          <text class="t" x="70" y="148" text-anchor="middle">Developers</text>
+        </g>
+        <g class="dg-node" data-chip="1" tabindex="0" role="button" aria-label="Infrastructure code">
+          <rect class="bx hl" x="200" y="100" width="150" height="64" rx="12"/>
+          <text class="t" x="275" y="128" text-anchor="middle">📄 Infrastructure</text>
+          <text class="t" x="275" y="146" text-anchor="middle">code</text>
+        </g>
+        <g class="dg-node" data-chip="2" tabindex="0" role="button" aria-label="Version control">
+          <rect class="bx" x="170" y="212" width="100" height="44" rx="10"/>
+          <text x="220" y="239" text-anchor="middle" font-size="12">🔀 Version ctrl</text>
+        </g>
+        <g class="dg-node" data-chip="3" tabindex="0" role="button" aria-label="Testing">
+          <rect class="bx" x="280" y="212" width="100" height="44" rx="10"/>
+          <text x="330" y="239" text-anchor="middle" font-size="12">🧪 Testing</text>
+        </g>
+        <g class="dg-node" data-chip="4" tabindex="0" role="button" aria-label="Automation API or server">
+          <rect class="bx" x="430" y="100" width="150" height="64" rx="12"/>
+          <text class="t" x="505" y="128" text-anchor="middle">⚙ Automation</text>
+          <text class="t" x="505" y="146" text-anchor="middle">API / server</text>
+        </g>
+        <g class="dg-node" data-chip="5" tabindex="0" role="button" aria-label="Infrastructure in the cloud or on premises">
+          <rect class="bx" x="650" y="64" width="100" height="50" rx="10"/>
+          <text x="700" y="94" text-anchor="middle">☁ Cloud</text>
+          <rect class="bx" x="650" y="150" width="100" height="50" rx="10"/>
+          <text x="700" y="180" text-anchor="middle">🏢 On-prem</text>
+        </g>
+        <line class="ln" x1="130" y1="132" x2="196" y2="132" marker-end="url(#l09ah)"/>
+        <text class="lab" x="163" y="124" text-anchor="middle">write</text>
+        <line class="ln" x1="350" y1="132" x2="426" y2="132" marker-end="url(#l09ah)"/>
+        <text class="lab" x="388" y="124" text-anchor="middle">push / pull</text>
+        <line class="ln" x1="580" y1="124" x2="646" y2="92" marker-end="url(#l09ah)"/>
+        <line class="ln" x1="580" y1="140" x2="646" y2="172" marker-end="url(#l09ah)"/>
+        <text class="lab" x="612" y="136" text-anchor="middle">deploy</text>
+        <line class="ln" x1="245" y1="164" x2="222" y2="208" marker-end="url(#l09ah)"/>
+        <text class="lab" x="205" y="190" text-anchor="end">stored in</text>
+        <line class="ln" x1="305" y1="164" x2="328" y2="208" marker-end="url(#l09ah)"/>
+        <text class="lab" x="345" y="190">checked by</text>
+      </svg>
+    </figure>
     <div class="chips" data-explain="iacflow">
       <button class="chip" data-x="Developers WRITE the infrastructure code (the template).">👩‍💻 Developers</button>
       <button class="chip" data-x="The code describing your infrastructure. It sits at the centre of everything.">📄 Infrastructure code</button>

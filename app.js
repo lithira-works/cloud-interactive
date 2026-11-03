@@ -184,6 +184,18 @@ $$(".stepper").forEach(st => {
   btns.forEach((b, i) => b.onclick = () => {
     btns.forEach(x => x.classList.remove("on")); panels.forEach(x => x.classList.remove("on"));
     b.classList.add("on"); panels[i] && panels[i].classList.add("on");
+    const fig = st.previousElementSibling;
+    if (fig && fig.matches("[data-dg-stepper]"))
+      $$(".dg-node", fig).forEach(n => n.classList.toggle("on", +n.dataset.step === i));
+  });
+});
+// clickable slide diagrams: a node with data-step opens that step of the next stepper
+$$("[data-dg-stepper]").forEach(fig => {
+  const btns = $$(".steps button", fig.nextElementSibling);
+  $$(".dg-node", fig).forEach(n => {
+    const go = () => btns[+n.dataset.step] && btns[+n.dataset.step].click();
+    n.addEventListener("click", go);
+    n.addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); go(); } });
   });
 });
 document.addEventListener("click", e => {
@@ -196,6 +208,19 @@ $$("[data-explain]").forEach(group => {
     $$("button", group).forEach(x => x.classList.remove("on")); b.classList.add("on");
     out.innerHTML = `<b>${b.textContent}</b>${b.dataset.x}`;
   });
+});
+// clickable slide diagrams: a node with data-chip opens that chip of the named explain group
+$$("[data-dg-chips]").forEach(fig => {
+  const btns = $$(`[data-explain="${fig.dataset.dgChips}"] button`), nodes = $$(".dg-node", fig);
+  nodes.forEach(n => {
+    const go = () => {
+      nodes.forEach(x => x.classList.toggle("on", x === n));
+      btns[+n.dataset.chip] && btns[+n.dataset.chip].click();
+    };
+    n.addEventListener("click", go);
+    n.addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); go(); } });
+  });
+  btns.forEach((b, i) => b.addEventListener("click", () => nodes.forEach(x => x.classList.toggle("on", +x.dataset.chip === i))));
 });
 $$("[data-tabs]").forEach(t => {
   const sec = t.closest(".page");
