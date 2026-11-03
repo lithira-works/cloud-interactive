@@ -64,7 +64,7 @@ addLecture(`
   <article class="chapter" id="l09-how" data-ch="l09">
     <h2><span class="n">4</span>How IaC Works</h2>
     <p>The slide's diagram — click each part:</p>
-    <figure class="dg dg-wide" data-dg-chips="iacflow">
+    <figure class="dg dg-wide" data-dg-chips="iacflow" style="--mw:660px">
       <svg viewBox="0 0 760 270" role="group" aria-label="How IaC works: developers write infrastructure code, which is stored in version control and tested, then pushed to an automation API or server that deploys and manages infrastructure in the cloud and on premises">
         <defs><marker id="l09ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path class="ah" d="M0 0L10 5L0 10z"/></marker></defs>
         <rect class="bx warn" x="10" y="8" width="740" height="30" rx="8"/>

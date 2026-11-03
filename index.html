@@ -15,10 +15,10 @@
   <div class="bar1">
     <a class="logo" href="#home"><span class="logo-ic">☁</span> Cloud<span>Interactive</span></a>
     <nav class="nav">
-      <a href="#home" data-page="home">🏠 Home</a>
-      <a href="#review" data-page="review">🧠 Review <span class="badge" id="dueBadge" hidden>0</span></a>
-      <a href="#exam" data-page="exam">🎯 Exam Mode</a>
-      <a href="#cheat" data-page="cheat">📄 Cheat Sheet</a>
+      <a href="#home" data-page="home"><span class="ni">🏠</span> <span class="nl">Home</span></a>
+      <a href="#review" data-page="review"><span class="ni">🧠</span> <span class="nl">Review</span> <span class="badge" id="dueBadge" hidden>0</span></a>
+      <a href="#exam" data-page="exam"><span class="ni">🎯</span> <span class="nl">Exam<span class="nx"> Mode</span></span></a>
+      <a href="#cheat" data-page="cheat"><span class="ni">📄</span> <span class="nl">Cheat<span class="nx"> Sheet</span></span></a>
     </nav>
     <button class="theme-btn" id="themeBtn" title="Toggle light/dark">🌓</button>
   </div>
@@ -86,7 +86,7 @@
     <div class="box mem"><b>Memory hook: "O.P.D.M.O" — "Only People Doing Moves Operate"</b>
       Opportunity · Portfolio · Design · Migrate &amp; validate · Operate. Design and Migrate loop together (the orange arrows) — you repeat them for each app.</div>
 
-    <figure class="dg dg-wide" data-dg-stepper>
+    <figure class="dg dg-wide" data-dg-stepper style="--mw:740px">
       <svg viewBox="0 0 866 225" role="group" aria-label="Migration process: Opportunity Evaluation, then Portfolio Discovery and Planning, then a loop between Application Design and Migration and Validation repeated for each app, then Operate">
         <defs>
           <marker id="l10ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="ah" d="M0 0L10 5L0 10z"/></marker>
@@ -176,7 +176,7 @@
           <li><b>Testing and decommissioning</b> old applications / hardware.</li>
         </ol>
         <p>The switch-over happens gradually — watch where the users' traffic goes:</p>
-        <figure class="dg dg-wide">
+        <figure class="dg dg-wide" style="--mw:540px">
           <svg viewBox="0 0 640 170" role="img" aria-label="Gradual switch-over: first both environments run in parallel with all traffic on-premise, then traffic is split partially, then full cutover sends all traffic to the cloud">
             <defs><marker id="l10cut" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path class="ah" d="M0 0L10 5L0 10z"/></marker></defs>
             <text class="t" x="95" y="20" text-anchor="middle">1 · Parallel</text>
@@ -709,7 +709,7 @@
 
     <h3 style="margin-top:16px">Containers in the DevOps process</h3>
     <p><b>Development</b> hands a <b>Docker Image</b> (application + guide) to <b>Operations</b>. Dev packages everything into the image once; Ops just runs it. No more "it works on my machine".</p>
-    <figure class="dg">
+    <figure class="dg dg-wide" style="--mw:540px">
       <svg viewBox="0 0 640 150" role="img" aria-label="Development builds a Docker image containing the application and its run guide, then hands it to Operations, who run it as a container">
         <defs><marker id="l12ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path class="ah acc" d="M0 0L10 5L0 10z"/></marker></defs>
         <rect class="bx" x="6" y="40" width="150" height="70" rx="12"/>

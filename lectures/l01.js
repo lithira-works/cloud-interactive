@@ -132,7 +132,7 @@ addLecture(`
   <article class="chapter" id="l01-actors" data-ch="l01">
     <h2><span class="n">8</span>NIST Reference Architecture — 5 Actors</h2>
     <p>The NIST diagram puts the <b>Cloud Provider</b> in the middle, with the Consumer and Auditor on the left, the Broker on the right, and the Carrier along the bottom connecting them all. Click an actor:</p>
-    <figure class="dg dg-wide" data-dg-chips="actor">
+    <figure class="dg dg-wide" data-dg-chips="actor" style="--mw:680px">
       <svg viewBox="0 0 760 362" role="group" aria-label="NIST cloud reference architecture: Cloud Consumer and Cloud Auditor on the left, Cloud Provider in the centre containing Service Orchestration, Cloud Service Management, Security and Privacy, Cloud Broker on the right, and Cloud Carrier along the bottom">
         <g class="dg-node" data-chip="0" tabindex="0" role="button" aria-label="Cloud Consumer">
           <rect class="bx" x="10" y="20" width="130" height="130" rx="12"/>

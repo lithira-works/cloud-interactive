@@ -113,7 +113,7 @@ addLecture(`
     <p>A <b>backup</b> is a copy of data stored elsewhere to restore the original after data loss. <b>Back up</b> (verb) = the process of taking it.</p>
     <p>Four methods. Pick one to see what gets copied each day (Sun = full backup day):</p>
     <div class="row"><button class="chip on" data-bk="full">Full</button><button class="chip" data-bk="inc">Incremental</button><button class="chip" data-bk="diff">Differential</button><button class="chip" data-bk="cdp">Near-CDP</button></div>
-    <div id="bkGrid" class="grid3" style="grid-template-columns:repeat(7,1fr);gap:5px;margin-top:10px"></div>
+    <div id="bkGrid" class="grid3" style="grid-template-columns:repeat(auto-fit,minmax(64px,1fr));gap:5px;margin-top:10px"></div>
     <div class="box key" id="bkTxt"></div>
   </article>
 

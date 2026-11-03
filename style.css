@@ -304,7 +304,7 @@ details.ask[open] summary { color: var(--accent); margin-bottom: 6px; }
 .dg-node:focus { outline: none; }
 .dg-node.on .bx { fill: color-mix(in srgb, var(--accent) 22%, var(--card)); stroke: var(--accent); stroke-width: 2.5; }
 .dg-wide { overflow-x: auto; }
-.dg-wide svg { min-width: 560px; }
+.dg-wide svg { min-width: min(var(--mw, 560px), 100%); }
 
 /* ---------- pipeline ---------- */
 .pipe { display: flex; gap: 8px; flex-wrap: wrap; align-items: stretch; margin: 14px 0; }
@@ -318,7 +318,10 @@ details.ask[open] summary { color: var(--accent); margin-bottom: 6px; }
 
 /* ---------- modernization slider ---------- */
 input[type=range] { width: 100%; accent-color: var(--accent); }
-.mod-steps { display: flex; justify-content: space-between; font-size: .78rem; color: var(--muted); }
+.mod-steps { display: flex; justify-content: space-between; gap: 6px; font-size: .78rem; color: var(--muted); }
+.mod-steps span { min-width: 0; text-align: center; }
+.mod-steps span:first-child { text-align: left; }
+.mod-steps span:last-child { text-align: right; }
 .mod-out { display: grid; grid-template-columns: 120px 1fr; gap: 14px; align-items: center; background: var(--card2); border-radius: 12px; padding: 14px; margin-top: 10px; }
 .mod-vis { display: flex; flex-wrap: wrap; gap: 4px; justify-content: center; }
 .mod-vis i { display: block; border-radius: 4px; }
@@ -614,3 +617,41 @@ a.stat:hover { border-color: var(--l10); transform: translateY(-3px); }
 .hook-group { margin-bottom: 26px; }
 .hook-group h3 { display: flex; align-items: center; gap: 10px; }
 .hook-group .pn { display: inline-grid; place-items: center; width: 32px; height: 32px; border-radius: 9px; background: var(--accent); color: var(--bg); font-family: "Space Grotesk"; font-size: .9rem; }
+
+/* =================== phones =================== */
+@media (max-width: 760px) {
+  /* diagrams keep a readable text size and scroll sideways inside their card */
+  .dg { padding: 12px 10px 8px; }
+  .dg-wide svg { min-width: var(--mw, 560px); }
+  .dg-wide::before { content: "↔ Swipe to see the whole diagram"; position: sticky; left: 0; display: block; margin-bottom: 6px; font-size: .75rem; color: var(--muted); }
+}
+@media (max-width: 640px) {
+  main { padding: 18px 14px 80px; }
+  .bar1 { padding: 8px 14px 4px; }
+  .logo { font-size: 1.05rem; }
+  .logo .logo-ic { width: 28px; height: 28px; }
+  /* main nav: 4 equal tabs, icon above label */
+  .nav { display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px; }
+  .nav a { display: flex; flex-direction: column; align-items: center; gap: 1px; padding: 5px 2px; font-size: .72rem; line-height: 1.2; text-align: center; position: relative; }
+  .nav a .ni { font-size: 1rem; }
+  .nav a .badge { position: absolute; top: 2px; right: 8px; }
+  .pill { padding: 5px 10px 7px 5px; gap: 8px; }
+  .pill .pn { width: 28px; height: 28px; font-size: .85rem; }
+  .chapter { scroll-margin-top: 130px; }
+  .chapter > h2 { font-size: 1.3rem; }
+  .lec-head h1 { font-size: 1.6rem; }
+  /* lecture hero: ring + 4 stats on one row, full-width buttons */
+  .hero-stats { display: grid; grid-template-columns: auto repeat(4, 1fr); gap: 12px 8px; }
+  .hero-stats .ring { width: 52px; height: 52px; }
+  .hero-stats .ring b { width: 40px; height: 40px; font-size: .75rem; }
+  .hs b { font-size: 1.15rem; }
+  .hs small { font-size: .68rem; }
+  .hero-btns { grid-column: 1 / -1; }
+  .hero-btns .btn { flex: 1; justify-content: center; text-align: center; padding-left: 10px; padding-right: 10px; white-space: nowrap; }
+  .nav a .nl { white-space: nowrap; }
+  .to-top { right: 14px; bottom: 16px; }
+}
+@media (max-width: 360px) {
+  .nav a .nx { display: none; }
+  .hero-stats { grid-template-columns: auto repeat(2, 1fr); }
+}
