@@ -3,7 +3,7 @@ addLecture(`
 <section class="page" id="l06" style="--accent:var(--l06)">
   <div class="lec-head">
     <div class="kicker">Lecture 06 · Cloud Computing</div>
-    <h1>High Availability &amp; Disaster Recovery 🛟</h1>
+    <h1>High Availability &amp; Disaster Recovery </h1>
     <p class="lead">How to keep systems running (<b>HA</b>) and how to come back after something terrible happens (<b>DR</b>). Analogy: HA = a car with a <b>spare tyre</b>; DR = <b>insurance</b> after the car is wrecked.</p>
     <div class="toc" data-toc></div>
   </div>
@@ -12,10 +12,10 @@ addLecture(`
     <h2><span class="n">1</span>Downtime &amp; Availability</h2>
     <p><b>Downtime</b> = a period when a system is unavailable (offline).</p>
     <div class="grid2">
-      <div class="tile"><h4>📅 Planned / scheduled</h4>Result of scheduled maintenance, patch installation, reboot.</div>
-      <div class="tile"><h4>💥 Unplanned / unscheduled</h4>Result of a HW / SW / network failure, security breach, physical event.</div>
+      <div class="tile"><h4>Planned / scheduled</h4>Result of scheduled maintenance, patch installation, reboot.</div>
+      <div class="tile"><h4>Unplanned / unscheduled</h4>Result of a HW / SW / network failure, security breach, physical event.</div>
     </div>
-    <h3>🧮 Availability calculator</h3>
+    <h3>Availability calculator</h3>
     <div class="calc">
       <div class="row"><label for="avIn"><b>Availability %</b></label><input type="number" id="avIn" value="99.9" step="0.001" min="0" max="100" style="width:140px">
         <button class="chip" data-av="99">99</button><button class="chip on" data-av="99.9">99.9</button><button class="chip" data-av="99.95">99.95</button><button class="chip" data-av="99.99">99.99</button><button class="chip" data-av="99.999">99.999</button></div>
@@ -62,11 +62,11 @@ addLecture(`
     </div>
     <h3>Failover / Failback</h3>
     <div class="grid2">
-      <div class="tile"><h4>🔀 Failover</h4>Switching to a redundant / standby / passive instance upon failure. Uses a <b>heartbeat signal</b> to detect failures.</div>
+      <div class="tile"><h4>Failover</h4>Switching to a redundant / standby / passive instance upon failure. Uses a <b>heartbeat signal</b> to detect failures.</div>
       <div class="tile"><h4>↩ Failback</h4>Restoring the failed system back to its <b>original working state</b>.</div>
     </div>
-    <div class="row" style="margin-top:10px"><button class="btn" id="foFail">💥 Primary fails</button><button class="btn ghost" id="foBack">🔧 Fix &amp; fail back</button></div>
-    <div class="grid2" style="margin-top:8px"><div class="srv" id="foP">🖥 Primary — <b>active</b> <span class="hint" id="foHb">💓 heartbeat OK</span></div><div class="srv" id="foS">🖥 Standby — passive</div></div>
+    <div class="row" style="margin-top:10px"><button class="btn" id="foFail">Primary fails</button><button class="btn ghost" id="foBack">Fix &amp; fail back</button></div>
+    <div class="grid2" style="margin-top:8px"><div class="srv" id="foP">Primary — <b>active</b> <span class="hint" id="foHb">heartbeat OK</span></div><div class="srv" id="foS">Standby — passive</div></div>
     <h3>Replication</h3>
     <p>Sharing information to ensure <b>consistency between redundant resources</b> → improves reliability, fault-tolerance, accessibility.</p>
     <div class="grid2">
@@ -93,7 +93,7 @@ addLecture(`
       </div>
       <div id="lbSrv"></div>
     </div>
-    <div class="box mem"><b>Memory hook: supermarket checkouts 🛒</b>Round robin = next till in turn · Least connections = shortest queue · Least time = fastest cashier · IP hash = you always go to "your" cashier.</div>
+    <div class="box mem"><b>Memory hook: supermarket checkouts </b>Round robin = next till in turn · Least connections = shortest queue · Least time = fastest cashier · IP hash = you always go to "your" cashier.</div>
   </article>
 
   <article class="chapter" id="l06-bc" data-ch="l06">
@@ -104,7 +104,7 @@ addLecture(`
     </div>
     <div class="box key"><b>Disaster Recovery (DR)</b><b>Part of the BCP</b>: a set of policies, tools and procedures to enable the recovery or continuation of vital technology infrastructure after a <b>natural or human-induced disaster</b>.</div>
     <h4>5 elements of a DR plan</h4>
-    <div class="chips"><span class="chip">👥 DR team</span><span class="chip">⚠ Risk evaluation</span><span class="chip">💎 Business-critical asset identification</span><span class="chip">💾 Backup strategy</span><span class="chip">🧪 Testing &amp; optimization</span></div>
+    <div class="chips"><span class="chip">DR team</span><span class="chip">Risk evaluation</span><span class="chip">Business-critical asset identification</span><span class="chip">Backup strategy</span><span class="chip">Testing &amp; optimization</span></div>
     <div class="box mem"><b>Memory hook: "TRABT" — "The Rabbit Always Bites Twice"</b>Team · Risk · Assets · Backup · Testing.</div>
   </article>
 
@@ -128,9 +128,9 @@ addLecture(`
   <article class="chapter" id="l06-obj" data-ch="l06">
     <h2><span class="n">8</span>Recovery Objectives: RTO, RPO, RCO</h2>
     <div class="grid3">
-      <div class="tile"><h4>⏱ RTO</h4>Recovery <b>Time</b> Objective — targeted period in which a business process <b>must be restored</b> after a disaster.</div>
-      <div class="tile"><h4>💾 RPO</h4>Recovery <b>Point</b> Objective — targeted period in which <b>data loss is acceptable</b>.</div>
-      <div class="tile"><h4>🧩 RCO</h4>Recovery <b>Consistency</b> Objective — amount of <b>data inconsistency</b> tolerated in a recovered data set.</div>
+      <div class="tile"><h4>RTO</h4>Recovery <b>Time</b> Objective — targeted period in which a business process <b>must be restored</b> after a disaster.</div>
+      <div class="tile"><h4>RPO</h4>Recovery <b>Point</b> Objective — targeted period in which <b>data loss is acceptable</b>.</div>
+      <div class="tile"><h4>RCO</h4>Recovery <b>Consistency</b> Objective — amount of <b>data inconsistency</b> tolerated in a recovered data set.</div>
     </div>
     <div class="calc" style="margin-top:12px">
       <div class="row"><label>Last backup <input type="range" id="rpoR" min="0" max="12" value="4" style="width:140px"></label><b id="rpoV"></b>
@@ -217,12 +217,12 @@ INITS.push(function l06() {
   // failover demo
   const P = document.getElementById("foP"), S = document.getElementById("foS"), hb = document.getElementById("foHb");
   document.getElementById("foFail").onclick = () => {
-    P.innerHTML = "🖥 Primary — <b style='color:var(--bad)'>failed</b> <span class='hint'>💔 heartbeat lost</span>";
-    S.innerHTML = "🖥 Standby — <b style='color:var(--good)'>now active (failover)</b>"; S.classList.add("flash"); P.classList.remove("flash");
+    P.innerHTML = "Primary — <b style='color:var(--bad)'>failed</b> <span class='hint'>heartbeat lost</span>";
+    S.innerHTML = "Standby — <b style='color:var(--good)'>now active (failover)</b>"; S.classList.add("flash"); P.classList.remove("flash");
   };
   document.getElementById("foBack").onclick = () => {
-    P.innerHTML = "🖥 Primary — <b>active</b> <span class='hint'>💓 heartbeat OK (failed back)</span>";
-    S.innerHTML = "🖥 Standby — passive"; S.classList.remove("flash"); P.classList.add("flash");
+    P.innerHTML = "Primary — <b>active</b> <span class='hint'>heartbeat OK (failed back)</span>";
+    S.innerHTML = "Standby — passive"; S.classList.remove("flash"); P.classList.add("flash");
   };
 
   // load balancer simulation
@@ -299,9 +299,9 @@ INITS.push(function l06() {
     document.getElementById("tl").innerHTML = `<div class="ln"></div>
       <div class="seg" style="left:${a}%;width:${mid - a}%;background:var(--warn)"></div>
       <div class="seg" style="left:${mid}%;width:${b - mid}%;background:var(--bad)"></div>
-      <div class="mk" style="left:${a}%;color:var(--good)">💾 last backup</div>
-      <div class="mk" style="left:${mid}%;color:var(--bad)">💥 disaster</div>
-      <div class="mk" style="left:${Math.min(b, W)}%;color:var(--good)">✅ restored</div>
+      <div class="mk" style="left:${a}%;color:var(--good)">last backup</div>
+      <div class="mk" style="left:${mid}%;color:var(--bad)">disaster</div>
+      <div class="mk" style="left:${Math.min(b, W)}%;color:var(--good)">restored</div>
       <div class="lab" style="left:${(a + mid) / 2}%;color:var(--warn)">RPO ${rpo.value}h data lost</div>
       <div class="lab" style="left:${(mid + b) / 2}%;color:var(--bad)">RTO ${rto.value}h down</div>`;
   }

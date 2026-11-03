@@ -3,7 +3,7 @@ addLecture(`
 <section class="page" id="l08" style="--accent:var(--l08)">
   <div class="lec-head">
     <div class="kicker">Lecture 08 · Cloud Computing</div>
-    <h1>Cloud Database &amp; Analytics Services 🗄️</h1>
+    <h1>Cloud Database &amp; Analytics Services </h1>
     <p class="lead">Story line: <b>how to store data</b> (SQL vs NoSQL) → <b>what you do with it</b> (OLTP vs OLAP) → NoSQL types → CAP → <b>caching</b> → <b>analytics</b> (data warehouse, data lake, real-time processing).</p>
     <div class="toc" data-toc></div>
   </div>
@@ -11,11 +11,11 @@ addLecture(`
   <article class="chapter" id="l08-models" data-ch="l08">
     <h2><span class="n">1</span>Database Models: Relational vs Non-relational</h2>
     <div class="grid2">
-      <div class="tile"><h4>🧾 Relational / SQL</h4><ul>
+      <div class="tile"><h4>Relational / SQL</h4><ul>
         <li>Highly structured <b>table</b> organization</li><li>Rigidly-defined formats</li><li>Dependencies among tables</li>
         <li>Enforce <b>ACID</b> (Atomicity, Consistency, Isolation, Durability)</li><li>Reduces anomalies, enforces integrity</li><li>Use <b>SQL</b> to access data</li>
         <li>MS SQL, MySQL, Oracle, PostgreSQL, Amazon RDS</li></ul></div>
-      <div class="tile"><h4>📦 Non-relational / NoSQL</h4><ul>
+      <div class="tile"><h4>Non-relational / NoSQL</h4><ul>
         <li><b>Document</b> oriented</li><li>Large and complex queries</li><li>Supports <b>rapidly changing designs</b></li>
         <li>MongoDB, Cassandra, Cosmos DB, Redis, CouchDB, Aurora</li></ul></div>
     </div>
@@ -32,7 +32,7 @@ addLecture(`
       <tr><td>Response</td><td>Milliseconds</td><td>Seconds to hours</td></tr>
       <tr><td>Design</td><td>Highly normalized</td><td>Typically denormalized</td></tr>
     </table></div>
-    <div class="box mem"><b>Memory hook</b>OL<b>T</b>P = <b>T</b>ill at the shop 🛒 (one sale, instantly). OL<b>A</b>P = <b>A</b>nalyst's yearly report 📈 (millions of rows, takes time).</div>
+    <div class="box mem"><b>Memory hook</b>OL<b>T</b>P = <b>T</b>ill at the shop (one sale, instantly). OL<b>A</b>P = <b>A</b>nalyst's yearly report (millions of rows, takes time).</div>
     <h3>Models × workloads</h3>
     <div class="grid4">
       <div class="q2"><h4>Relational / OLTP</h4>Relational databases<br><small>Oracle, PostgreSQL, MS SQL, MySQL</small></div>
@@ -40,13 +40,13 @@ addLecture(`
       <div class="q2"><h4>Non-relational / OLTP</h4>Key-value, columnar, documents<br><small>MongoDB, Cassandra, Riak</small></div>
       <div class="q2"><h4>Non-relational / OLAP</h4>Big-data analytics<br><small>Hadoop, HDInsight</small></div>
     </div>
-    <h3>🎮 Game: OLTP or OLAP?</h3>
+    <h3>Game: OLTP or OLAP?</h3>
     <div class="game" data-game="l08w"></div>
   </article>
 
   <article class="chapter" id="l08-nosql" data-ch="l08">
     <h2><span class="n">3</span>Four Types of NoSQL Databases</h2>
-    <div class="row"><button class="chip on" data-ns="kv">🔑 Key-Value</button><button class="chip" data-ns="doc">📄 Document</button><button class="chip" data-ns="col">🏛 Columnar</button><button class="chip" data-ns="graph">🕸 Graph</button></div>
+    <div class="row"><button class="chip on" data-ns="kv">Key-Value</button><button class="chip" data-ns="doc">Document</button><button class="chip" data-ns="col">Columnar</button><button class="chip" data-ns="graph">Graph</button></div>
     <div class="grid2" style="margin-top:12px;align-items:start">
       <div id="nsTxt"></div>
       <pre class="log" id="nsEx" style="margin:0;min-height:150px"></pre>
@@ -60,7 +60,7 @@ addLecture(`
       <tr><td>Graph DB</td><td>High</td><td>High</td><td>Variable</td><td>Variable</td></tr>
     </table></div>
     <div class="box mem"><b>Memory hook: "KDCG" — "Kids Draw Colourful Giraffes"</b>Key-value = <b>locker number → bag</b> · Document = <b>JSON file</b> · Columnar = read a <b>whole column</b> fast · Graph = <b>Facebook friends map</b>.</div>
-    <h3>🎮 Game: which NoSQL type?</h3>
+    <h3>Game: which NoSQL type?</h3>
     <div class="game" data-game="l08n"></div>
   </article>
 
@@ -89,13 +89,13 @@ addLecture(`
   <article class="chapter" id="l08-cache" data-ch="l08">
     <h2><span class="n">5</span>Database Caching</h2>
     <div class="box key"><b>Definition</b>Caching is a buffering technique that <b>stores frequently requested data in temporary memory</b>. Facilitates data access and <b>reduces database workloads</b>.</div>
-    <h3>🎮 Cache simulator</h3>
+    <h3>Cache simulator</h3>
     <div class="calc">
       <div class="row"><span>Request product:</span><button class="chip" data-prod="1">Phone</button><button class="chip" data-prod="2">Laptop</button><button class="chip" data-prod="3">Tablet</button><button class="btn ghost" id="cacheClear">Clear cache</button></div>
       <div class="flow" style="margin-top:12px">
-        <div class="node" data-cn="app"><b>📱 App</b></div><div class="arr">→</div>
-        <div class="node" data-cn="cache"><b>⚡ Cache</b><small>in-memory</small><div class="mini" id="cacheItems"></div></div><div class="arr">→</div>
-        <div class="node" data-cn="db"><b>🗄 Database</b><small>disk</small></div>
+        <div class="node" data-cn="app"><b>App</b></div><div class="arr">→</div>
+        <div class="node" data-cn="cache"><b>Cache</b><small>in-memory</small><div class="mini" id="cacheItems"></div></div><div class="arr">→</div>
+        <div class="node" data-cn="db"><b>Database</b><small>disk</small></div>
       </div>
       <div class="log" id="cacheLog" style="margin-top:10px">Request a product twice to see a cache hit.</div>
     </div>
@@ -135,7 +135,7 @@ addLecture(`
       <tr><td>Data currently in use</td><td>Purpose of data not determined yet</td></tr>
       <tr><td>Used by business professionals</td><td>Used by data scientists</td></tr>
     </table></div>
-    <div class="box mem"><b>Memory hook</b>Warehouse = <b>bottled water</b> 🍶 (cleaned, labelled, ready to drink). Lake = a <b>lake</b> 🏞 (raw water, use it however you like later).</div>
+    <div class="box mem"><b>Memory hook</b>Warehouse = <b>bottled water</b> (cleaned, labelled, ready to drink). Lake = a <b>lake</b> (raw water, use it however you like later).</div>
   </article>
 
   <article class="chapter" id="l08-rt" data-ch="l08">
@@ -225,10 +225,10 @@ CARDS.l08 = [
 INITS.push(function l08() {
   // NoSQL type viewer
   const ns = {
-    kv: ["<div class='box key'><b>🔑 Key-Value</b><ul class='clean'><li>Indexed <b>keys and values</b></li><li>Use case: <b>session data, shopping cart</b></li><li>Flexibility high · complexity none · performance high · scalability high</li></ul></div>", 'session:8f2a  →  { "user": "amaya", "cart": [12, 40] }\nsession:91bc  →  { "user": "kasun", "cart": [] }\n\nGET session:8f2a   (one key, one value, super fast)'],
-    doc: ["<div class='box key'><b>📄 Document Store</b><ul class='clean'><li>Data in documents (<b>XML, JSON</b>…)</li><li><b>Schema-less</b>; documents contain key-value pairs</li><li>Use case: <b>e-commerce, analytics</b></li></ul></div>", '{\n  "_id": "p100",\n  "name": "Phone",\n  "price": 120000,\n  "colours": ["black", "blue"],\n  "specs": { "ram": "8GB" }\n}\n// the next product can have different fields'],
-    col: ["<div class='box key'><b>🏛 Columnar</b><ul class='clean'><li><b>Optimised to retrieve columns</b> of data</li><li>Use case: <b>CMS, blogging platforms</b></li><li>Flexibility moderate · complexity low · performance high</li></ul></div>", 'column "title":  [ "Cloud 101", "Docker tips", "CAP explained" ]\ncolumn "views":  [ 1200, 860, 4300 ]\n\nSUM(views) → reads only one column'],
-    graph: ["<div class='box key'><b>🕸 Graph</b><ul class='clean'><li>Presents interconnected data as <b>logical graphs</b></li><li>Focus on <b>relationships</b></li><li>Flexibility high · complexity high · performance/scalability variable</li></ul></div>", '(Amaya) -[FRIEND]-> (Kasun)\n(Kasun) -[FRIEND]-> (Nimal)\n(Nimal) -[LIKES]->  (Cloud Computing)\n\nfriends-of-friends of Amaya → Nimal'],
+    kv: ["<div class='box key'><b>Key-Value</b><ul class='clean'><li>Indexed <b>keys and values</b></li><li>Use case: <b>session data, shopping cart</b></li><li>Flexibility high · complexity none · performance high · scalability high</li></ul></div>", 'session:8f2a  →  { "user": "amaya", "cart": [12, 40] }\nsession:91bc  →  { "user": "kasun", "cart": [] }\n\nGET session:8f2a   (one key, one value, super fast)'],
+    doc: ["<div class='box key'><b>Document Store</b><ul class='clean'><li>Data in documents (<b>XML, JSON</b>…)</li><li><b>Schema-less</b>; documents contain key-value pairs</li><li>Use case: <b>e-commerce, analytics</b></li></ul></div>", '{\n  "_id": "p100",\n  "name": "Phone",\n  "price": 120000,\n  "colours": ["black", "blue"],\n  "specs": { "ram": "8GB" }\n}\n// the next product can have different fields'],
+    col: ["<div class='box key'><b>Columnar</b><ul class='clean'><li><b>Optimised to retrieve columns</b> of data</li><li>Use case: <b>CMS, blogging platforms</b></li><li>Flexibility moderate · complexity low · performance high</li></ul></div>", 'column "title":  [ "Cloud 101", "Docker tips", "CAP explained" ]\ncolumn "views":  [ 1200, 860, 4300 ]\n\nSUM(views) → reads only one column'],
+    graph: ["<div class='box key'><b>Graph</b><ul class='clean'><li>Presents interconnected data as <b>logical graphs</b></li><li>Focus on <b>relationships</b></li><li>Flexibility high · complexity high · performance/scalability variable</li></ul></div>", '(Amaya) -[FRIEND]-> (Kasun)\n(Kasun) -[FRIEND]-> (Nimal)\n(Nimal) -[LIKES]->  (Cloud Computing)\n\nfriends-of-friends of Amaya → Nimal'],
   };
   function show(k) { document.getElementById("nsTxt").innerHTML = ns[k][0]; document.getElementById("nsEx").textContent = ns[k][1]; }
   document.querySelectorAll("[data-ns]").forEach(b => b.onclick = () => {
@@ -243,8 +243,8 @@ INITS.push(function l08() {
   const items = () => document.getElementById("cacheItems").innerHTML = [...cache].map(k => `<span>${names[k]}</span>`).join("") || "<span>empty</span>";
   document.querySelectorAll("[data-prod]").forEach(b => b.onclick = () => {
     const k = b.dataset.prod;
-    if (cache.has(k)) { hot(["app", "cache"]); log.textContent = `⚡ CACHE HIT for ${names[k]} — answered from memory in ~0.4 ms. Database not touched.`; }
-    else { hot(["app", "cache", "db"]); cache.add(k); log.textContent = `🐢 CACHE MISS for ${names[k]} — read from database in ~25 ms, then stored in cache for next time.`; }
+    if (cache.has(k)) { hot(["app", "cache"]); log.textContent = `CACHE HIT for ${names[k]} — answered from memory in ~0.4 ms. Database not touched.`; }
+    else { hot(["app", "cache", "db"]); cache.add(k); log.textContent = `CACHE MISS for ${names[k]} — read from database in ~25 ms, then stored in cache for next time.`; }
     items();
   });
   document.getElementById("cacheClear").onclick = () => { cache.clear(); items(); hot([]); log.textContent = "Cache cleared (like Memcached after a reboot)."; };
@@ -253,8 +253,8 @@ INITS.push(function l08() {
   // ETL vs ELT
   let mode = "etl";
   const flows = {
-    etl: [["📥", "Source"], ["⚙", "Staging: Transform"], ["🏬", "Destination (warehouse)"]],
-    elt: [["📥", "Source"], ["🏬", "Destination: Load raw"], ["⚙", "Transform inside destination"]],
+    etl: [["", "Source"], ["", "Staging: Transform"], ["", "Destination (warehouse)"]],
+    elt: [["", "Source"], ["", "Destination: Load raw"], ["", "Transform inside destination"]],
   };
   const txt = { etl: "ETL — Extract, Transform, Load: data is cleaned in a staging area BEFORE it reaches the destination (Source → Staging → Destination).", elt: "ELT — Extract, Load, Transform: raw data goes straight to the destination and is transformed there (Source → Destination)." };
   function etl() {
@@ -278,7 +278,7 @@ INITS.push(function l08() {
     const el = document.getElementById("rtLog"); el.textContent = ""; let n = 0;
     rt = setInterval(() => {
       const amt = Math.round(Math.random() < 0.15 ? 400000 + Math.random() * 300000 : 500 + Math.random() * 20000);
-      el.textContent += `${new Date().toLocaleTimeString()}  payment Rs.${amt.toLocaleString()}  →  ${amt > 300000 ? "⚠ flagged as possible fraud" : "✓ ok"}\n`;
+      el.textContent += `${new Date().toLocaleTimeString()}  payment Rs.${amt.toLocaleString()}  →  ${amt > 300000 ? "flagged as possible fraud" : "✓ ok"}\n`;
       el.scrollTop = el.scrollHeight;
       if (++n >= 14) { clearInterval(rt); el.textContent += "…each event processed the moment it arrived (stream processing)."; }
     }, 400);

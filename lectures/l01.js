@@ -3,7 +3,7 @@ addLecture(`
 <section class="page" id="l01" style="--accent:var(--l01)">
   <div class="lec-head">
     <div class="kicker">Lecture 01 · Cloud Computing</div>
-    <h1>Introduction to Cloud Computing ☁️</h1>
+    <h1>Introduction to Cloud Computing </h1>
     <p class="lead">Outline: <b>Evolution of IT infrastructure → Characteristics → Service models → Deployment models → Cloud service providers → Benefits</b>. Big analogy for the whole lecture: <b>cloud is like electricity from the grid</b>.</p>
     <div class="toc" data-toc></div>
   </div>
@@ -31,13 +31,13 @@ addLecture(`
   <article class="chapter" id="l01-elec" data-ch="l01">
     <h2><span class="n">2</span>The History of Electricity (the analogy)</h2>
     <div class="grid2">
-      <div class="tile minus"><h4>🏭 Mid 1800s — factories made their own power</h4><p>They used their own dynamos and generators. Problems:</p><ul>
+      <div class="tile minus"><h4>Mid 1800s — factories made their own power</h4><p>They used their own dynamos and generators. Problems:</p><ul>
         <li>Spend a lot of money to buy, install and maintain</li>
         <li>Need specially skilled engineers</li>
         <li>Need spare parts for the equipment</li>
         <li>Higher operating costs — an overhead to the business</li></ul>
         <p style="margin-top:8px">Lots of money, time and effort on something that is <b>neither the core business nor the core skill</b>.</p></div>
-      <div class="tile plus"><h4>⚡ Late 1800s — electricity providers</h4><p>Providers ran many generators and sent power to customers over wires. Customers paid a monthly cost. Advantages:</p><ul>
+      <div class="tile plus"><h4>Late 1800s — electricity providers</h4><p>Providers ran many generators and sent power to customers over wires. Customers paid a monthly cost. Advantages:</p><ul>
         <li>No need to buy and maintain expensive machines</li>
         <li>No need for specially skilled engineers</li>
         <li>Just connect to the grid and consume power</li>
@@ -57,11 +57,11 @@ addLecture(`
     <h2><span class="n">3</span>Traditional IT: building an e-commerce website</h2>
     <p>The old way takes <b>6 – 12 months</b> before you can go live:</p>
     <div class="pipe">
-      <div class="stage"><span class="ic">🤔</span><b>Decision to go ahead</b><br><small>Select vendors · POC &amp; evaluate · Architectures · Negotiations</small><br><b>1–2 months</b></div>
-      <div class="stage"><span class="ic">🧾</span><b>PO issued</b><br><small>HW shipment · HW/SW licences · Contracts / SLAs</small><br><b>2–3 months</b></div>
-      <div class="stage"><span class="ic">🔌</span><b>HW implementation</b><br><small>DC preparation · Cabling &amp; rack mounting · HW installation</small><br><b>1–2 months</b></div>
-      <div class="stage"><span class="ic">💻</span><b>SW implementation</b><br><small>Implement · Test · Deploy · UAT</small><br><b>2–4 months</b></div>
-      <div class="stage"><span class="ic">🚀</span><b>Go live</b></div>
+      <div class="stage"><span class="ic"></span><b>Decision to go ahead</b><br><small>Select vendors · POC &amp; evaluate · Architectures · Negotiations</small><br><b>1–2 months</b></div>
+      <div class="stage"><span class="ic"></span><b>PO issued</b><br><small>HW shipment · HW/SW licences · Contracts / SLAs</small><br><b>2–3 months</b></div>
+      <div class="stage"><span class="ic"></span><b>HW implementation</b><br><small>DC preparation · Cabling &amp; rack mounting · HW installation</small><br><b>1–2 months</b></div>
+      <div class="stage"><span class="ic"></span><b>SW implementation</b><br><small>Implement · Test · Deploy · UAT</small><br><b>2–4 months</b></div>
+      <div class="stage"><span class="ic"></span><b>Go live</b></div>
     </div>
 
     <h3>Inefficiencies in traditional IT vs the cloud way</h3>
@@ -82,9 +82,9 @@ addLecture(`
   <article class="chapter" id="l01-why" data-ch="l01">
     <h2><span class="n">4</span>Why do we need cloud?</h2>
     <div class="grid3">
-      <div class="tile"><h4>🏃 Business agility</h4><ul><li>Faster time-to-market</li><li>Foster innovation</li><li>Flexibility and scalability</li><li>Focus on core business</li></ul></div>
-      <div class="tile"><h4>😊 Customer experience</h4><ul><li>Always available services</li><li>Multiple venues / regions</li></ul></div>
-      <div class="tile"><h4>💰 Cost</h4><ul><li>Pay-as-you-go</li><li>Transform <b>CAPEX</b> (capital expenditure) into <b>OPEX</b> (operational expenditure)</li><li>Cost savings</li></ul></div>
+      <div class="tile"><h4>Business agility</h4><ul><li>Faster time-to-market</li><li>Foster innovation</li><li>Flexibility and scalability</li><li>Focus on core business</li></ul></div>
+      <div class="tile"><h4>Customer experience</h4><ul><li>Always available services</li><li>Multiple venues / regions</li></ul></div>
+      <div class="tile"><h4>Cost</h4><ul><li>Pay-as-you-go</li><li>Transform <b>CAPEX</b> (capital expenditure) into <b>OPEX</b> (operational expenditure)</li><li>Cost savings</li></ul></div>
     </div>
     <div class="box mem"><b>Memory hook: "ACE" — Agility, Customer experience, Expense</b></div>
     <div class="box exam"><b>Exam tip</b>CAPEX = big upfront purchase (buying servers). OPEX = ongoing running cost (monthly cloud bill). Cloud turns CAPEX into OPEX.</div>
@@ -102,15 +102,15 @@ addLecture(`
     <h2><span class="n">6</span>5 Essential Characteristics of Cloud</h2>
     <div class="box mem"><b>Memory hook: "Only Rich Rabbits Buy Muffins"</b>On-demand self-service · Resource pooling · Rapid elasticity · Broad network access · Measured service.</div>
     <div class="grid3">
-      <div class="flip" style="min-height:190px"><div class="inner"><div class="face front"><div class="big">🛒 On-demand self-service</div><small>tap</small></div>
+      <div class="flip" style="min-height:190px"><div class="inner"><div class="face front"><div class="big">On-demand self-service</div><small>tap</small></div>
         <div class="face back"><ul><li>Consumers provision computing resources themselves (virtual servers, network, storage)</li><li>Whenever you need it</li><li><b>No interaction with the provider</b> needed</li></ul></div></div></div>
-      <div class="flip" style="min-height:190px"><div class="inner"><div class="face front"><div class="big">🏊 Resource pooling</div><small>tap</small></div>
+      <div class="flip" style="min-height:190px"><div class="inner"><div class="face front"><div class="big">Resource pooling</div><small>tap</small></div>
         <div class="face back"><ul><li>Provider's resources are <b>pooled</b></li><li>Dynamically assigned and reassigned to demand</li><li>Customer doesn't know the exact location</li><li>May choose location at a higher level (region, country)</li></ul></div></div></div>
-      <div class="flip" style="min-height:190px"><div class="inner"><div class="face front"><div class="big">🪀 Rapid elasticity</div><small>tap</small></div>
+      <div class="flip" style="min-height:190px"><div class="inner"><div class="face front"><div class="big">Rapid elasticity</div><small>tap</small></div>
         <div class="face back"><ul><li>Elastically provision and release resources</li><li>Can happen <b>automatically</b> in line with demand</li></ul></div></div></div>
-      <div class="flip" style="min-height:190px"><div class="inner"><div class="face front"><div class="big">📶 Broad network access</div><small>tap</small></div>
+      <div class="flip" style="min-height:190px"><div class="inner"><div class="face front"><div class="big">Broad network access</div><small>tap</small></div>
         <div class="face back"><ul><li>Capabilities available over the network</li><li>Accessed through standard mechanisms by <b>heterogeneous clients</b> (phones, laptops…)</li></ul></div></div></div>
-      <div class="flip" style="min-height:190px"><div class="inner"><div class="face front"><div class="big">📏 Measured service</div><small>tap</small></div>
+      <div class="flip" style="min-height:190px"><div class="inner"><div class="face front"><div class="big">Measured service</div><small>tap</small></div>
         <div class="face back"><ul><li>Resources controlled and optimised with <b>metering</b></li><li><b>Pay-per-use</b></li><li>Usage monitored, controlled and reported</li></ul></div></div></div>
     </div>
   </article>
@@ -126,7 +126,7 @@ addLecture(`
       <div class="tile"><h4>PaaS — Platform</h4><ul><li>Consumers deploy apps they created or acquired; can change hosting configuration</li><li>Apps must use the languages, libraries, services and tools the provider supports</li><li>Provider manages infrastructure <b>and the platform</b></li></ul><p class="hint">Examples: Business intelligence, Database, Dev &amp; test, Integration, App deployment</p></div>
       <div class="tile"><h4>SaaS — Software</h4><ul><li>Use the provider's application running on cloud</li><li>Consumer does <b>not</b> manage infrastructure or application</li><li>Maybe limited user-specific configuration</li></ul><p class="hint">Examples: Email &amp; office, CRM, Collaboration, Content/document mgmt, ERP</p></div>
     </div>
-    <div class="box mem"><b>Memory hook: Pizza 🍕</b>IaaS = rent a kitchen (you cook). PaaS = takeaway pizza (you just serve it). SaaS = eat at the restaurant (just eat).</div>
+    <div class="box mem"><b>Memory hook: Pizza </b>IaaS = rent a kitchen (you cook). PaaS = takeaway pizza (you just serve it). SaaS = eat at the restaurant (just eat).</div>
   </article>
 
   <article class="chapter" id="l01-actors" data-ch="l01">
@@ -136,20 +136,20 @@ addLecture(`
       <svg viewBox="0 0 760 362" role="group" aria-label="NIST cloud reference architecture: Cloud Consumer and Cloud Auditor on the left, Cloud Provider in the centre containing Service Orchestration, Cloud Service Management, Security and Privacy, Cloud Broker on the right, and Cloud Carrier along the bottom">
         <g class="dg-node" data-chip="0" tabindex="0" role="button" aria-label="Cloud Consumer">
           <rect class="bx" x="10" y="20" width="130" height="130" rx="12"/>
-          <text x="75" y="75" text-anchor="middle" font-size="22">👤</text>
+          <text x="75" y="75" text-anchor="middle" font-size="22"></text>
           <text class="t" x="75" y="102" text-anchor="middle">Cloud</text>
           <text class="t" x="75" y="119" text-anchor="middle">Consumer</text>
         </g>
         <g class="dg-node" data-chip="2" tabindex="0" role="button" aria-label="Cloud Auditor">
           <rect class="bx" x="10" y="170" width="130" height="130" rx="12"/>
-          <text class="t" x="75" y="192" text-anchor="middle">🔍 Cloud Auditor</text>
+          <text class="t" x="75" y="192" text-anchor="middle">Cloud Auditor</text>
           <rect class="bx" x="20" y="204" width="110" height="24" rx="6"/><text class="s" x="75" y="220" text-anchor="middle">Security audit</text>
           <rect class="bx" x="20" y="234" width="110" height="24" rx="6"/><text class="s" x="75" y="250" text-anchor="middle">Privacy impact audit</text>
           <rect class="bx" x="20" y="264" width="110" height="24" rx="6"/><text class="s" x="75" y="280" text-anchor="middle">Performance audit</text>
         </g>
         <g class="dg-node" data-chip="1" tabindex="0" role="button" aria-label="Cloud Provider">
           <rect class="bx hl" x="160" y="20" width="440" height="280" rx="12"/>
-          <text class="t" x="380" y="40" text-anchor="middle">🏢 Cloud Provider</text>
+          <text class="t" x="380" y="40" text-anchor="middle">Cloud Provider</text>
           <rect class="bx" x="175" y="50" width="200" height="236" rx="10"/>
           <text class="t" x="275" y="68" text-anchor="middle" font-size="12">Service Orchestration</text>
           <rect class="bx" x="185" y="78" width="180" height="84" rx="8"/>
@@ -177,14 +177,14 @@ addLecture(`
         </g>
         <g class="dg-node" data-chip="3" tabindex="0" role="button" aria-label="Cloud Broker">
           <rect class="bx" x="620" y="20" width="130" height="280" rx="12"/>
-          <text class="t" x="685" y="44" text-anchor="middle">🤝 Cloud Broker</text>
+          <text class="t" x="685" y="44" text-anchor="middle">Cloud Broker</text>
           <rect class="bx" x="630" y="64" width="110" height="54" rx="6"/><text class="s" x="685" y="87" text-anchor="middle">Service</text><text class="s" x="685" y="101" text-anchor="middle">Intermediation</text>
           <rect class="bx" x="630" y="134" width="110" height="54" rx="6"/><text class="s" x="685" y="157" text-anchor="middle">Service</text><text class="s" x="685" y="171" text-anchor="middle">Aggregation</text>
           <rect class="bx" x="630" y="204" width="110" height="54" rx="6"/><text class="s" x="685" y="227" text-anchor="middle">Service</text><text class="s" x="685" y="241" text-anchor="middle">Arbitrage</text>
         </g>
         <g class="dg-node" data-chip="4" tabindex="0" role="button" aria-label="Cloud Carrier">
           <rect class="bx" x="10" y="318" width="740" height="36" rx="10"/>
-          <text class="t" x="380" y="341" text-anchor="middle">🚚 Cloud Carrier — connectivity &amp; transport between all actors</text>
+          <text class="t" x="380" y="341" text-anchor="middle">Cloud Carrier — connectivity &amp; transport between all actors</text>
         </g>
         <line class="ln" x1="75" y1="300" x2="75" y2="318" stroke-dasharray="3 3"/>
         <line class="ln" x1="380" y1="300" x2="380" y2="318" stroke-dasharray="3 3"/>
@@ -193,29 +193,29 @@ addLecture(`
       <figcaption>Security and Privacy (orange) cut across every layer of the Provider.</figcaption>
     </figure>
     <div class="chips" data-explain="actor">
-      <button class="chip" data-x="A person or organization that maintains a business relationship with, and uses service from, Cloud Providers.">👤 Cloud Consumer</button>
-      <button class="chip" data-x="A person, organization, or entity responsible for making a service available to interested parties.">🏢 Cloud Provider</button>
-      <button class="chip" data-x="A party that can conduct independent assessment of cloud services, information system operations, performance and security of the cloud implementation.">🔍 Cloud Auditor</button>
-      <button class="chip" data-x="An entity that manages the use, performance and delivery of cloud services, and negotiates relationships between Cloud Providers and Cloud Consumers.">🤝 Cloud Broker</button>
-      <button class="chip" data-x="An intermediary that provides connectivity and transport of cloud services from Cloud Providers to Cloud Consumers.">🚚 Cloud Carrier</button>
+      <button class="chip" data-x="A person or organization that maintains a business relationship with, and uses service from, Cloud Providers.">Cloud Consumer</button>
+      <button class="chip" data-x="A person, organization, or entity responsible for making a service available to interested parties.">Cloud Provider</button>
+      <button class="chip" data-x="A party that can conduct independent assessment of cloud services, information system operations, performance and security of the cloud implementation.">Cloud Auditor</button>
+      <button class="chip" data-x="An entity that manages the use, performance and delivery of cloud services, and negotiates relationships between Cloud Providers and Cloud Consumers.">Cloud Broker</button>
+      <button class="chip" data-x="An intermediary that provides connectivity and transport of cloud services from Cloud Providers to Cloud Consumers.">Cloud Carrier</button>
     </div>
     <div class="box eg" data-explain-out="actor"><b>Tap an actor</b>to see the NIST definition.</div>
-    <div class="box mem"><b>Memory hook: a wedding 💍</b>Consumer = guest, Provider = caterer, Auditor = food inspector, Broker = wedding planner, Carrier = delivery van.</div>
+    <div class="box mem"><b>Memory hook: a wedding </b>Consumer = guest, Provider = caterer, Auditor = food inspector, Broker = wedding planner, Carrier = delivery van.</div>
   </article>
 
   <article class="chapter" id="l01-deploy" data-ch="l01">
     <h2><span class="n">9</span>Cloud Deployment Models</h2>
     <div class="grid2">
-      <div class="flip" style="min-height:250px"><div class="inner"><div class="face front"><div class="big">🌍 Public Cloud</div><small>like a public bus</small></div>
+      <div class="flip" style="min-height:250px"><div class="inner"><div class="face front"><div class="big">Public Cloud</div><small>like a public bus</small></div>
         <div class="face back"><ul><li>Open use by the general public</li><li>Operated by a service provider; on the provider's premises</li><li>Cost-effective · virtually unlimited scalability · zero maintenance · continuous uptime</li><li>Low level of data security · access over internet · multi-tenant · regulatory compliance</li></ul></div></div></div>
-      <div class="flip" style="min-height:250px"><div class="inner"><div class="face front"><div class="big">🏠 Private Cloud</div><small>like your own car</small></div>
+      <div class="flip" style="min-height:250px"><div class="inner"><div class="face front"><div class="big">Private Cloud</div><small>like your own car</small></div>
         <div class="face back"><ul><li>Exclusive use by a <b>single organization</b> (many business units may use it)</li><li>Owned/managed by the org, a third party or both; on or off premises</li><li>High data security · less risky · single tenant &amp; compliance · reliable</li><li>Expensive · management overhead</li></ul></div></div></div>
-      <div class="flip" style="min-height:250px"><div class="inner"><div class="face front"><div class="big">🔀 Hybrid Cloud</div><small>car to the station, then bus</small></div>
+      <div class="flip" style="min-height:250px"><div class="inner"><div class="face front"><div class="big">Hybrid Cloud</div><small>car to the station, then bus</small></div>
         <div class="face back"><ul><li><b>Combination of private and public</b> clouds</li><li>Portability of data and apps via standard or proprietary tech</li><li>Secure and safe · cost-effective · flexibility &amp; scalability · portability between private &amp; public · data transfer</li></ul></div></div></div>
-      <div class="flip" style="min-height:250px"><div class="inner"><div class="face front"><div class="big">🏘 Community Cloud</div><small>like a school bus</small></div>
+      <div class="flip" style="min-height:250px"><div class="inner"><div class="face front"><div class="big">Community Cloud</div><small>like a school bus</small></div>
         <div class="face back"><ul><li>Exclusive use by a <b>specific community</b> with shared concerns (security, regulation, compliance)</li><li>Owned by a community org, third party or both</li><li>Example: <b>Government clouds</b></li></ul></div></div></div>
     </div>
-    <h3>🎮 Game: which deployment model?</h3>
+    <h3>Game: which deployment model?</h3>
     <div class="game" data-game="l01"></div>
   </article>
 

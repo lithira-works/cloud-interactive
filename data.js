@@ -1,17 +1,17 @@
 // Content data: lecture list, games, 12 factors, quizzes, flashcards
 const LECTURES = [
-  { id: "l01", n: "01", short: "Intro to Cloud", title: "Introduction to Cloud Computing", tag: "NIST · Characteristics · IaaS/PaaS/SaaS · Deployment models", icon: "☁️" },
-  { id: "l02", n: "02", short: "Core Services", title: "Cloud Core Services & Global Infrastructure", tag: "Regions · AZs · Shared responsibility · Billing · Quotas", icon: "🌍" },
-  { id: "l03", n: "03", short: "Compute", title: "Compute & Storage — Part I", tag: "Hypervisors · Instance types · Tenancy · Pricing · Lifecycle", icon: "🖥️" },
-  { id: "l04", n: "04", short: "Storage", title: "Compute & Storage — Part II", tag: "CAP theorem · Block · File · Object storage · Tiers", icon: "💾" },
-  { id: "l05", n: "05", short: "Networking", title: "Cloud Networking", tag: "SDN · NFV · VNets · Subnets · Gateways · Peering", icon: "🌐" },
-  { id: "l06", n: "06", short: "HA & DR", title: "Cloud High Availability & Disaster Recovery", tag: "Nines · Redundancy · Load balancing · Backups · RTO/RPO", icon: "🛟" },
-  { id: "l07", n: "07", short: "Security", title: "Cloud Security & Monitoring", tag: "Least privilege · IAM · MFA · SSO · Metrics · Alerts", icon: "🔐" },
-  { id: "l08", n: "08", short: "Databases", title: "Cloud Database & Analytics Services", tag: "SQL vs NoSQL · OLTP/OLAP · Caching · Warehouse vs Lake", icon: "🗄️" },
-  { id: "l09", n: "09", short: "IaC", title: "Infrastructure as Code (IaC)", tag: "Manual risks · Tool types · Imperative vs declarative · Terraform · CloudFormation", icon: "📜" },
-  { id: "l10", n: "10", short: "Migration", title: "Cloud Migrations", tag: "Migration process · 6 R's · Challenges", icon: "🚚" },
-  { id: "l11", n: "11", short: "Cloud Native", title: "Cloud Native Applications", tag: "Microservices · 12-Factor · DevOps · CI/CD", icon: "🧩" },
-  { id: "l12", n: "12", short: "Docker", title: "Containerization & Docker", tag: "Containers · Docker commands · Orchestration", icon: "🐳" },
+  { id: "l01", n: "01", short: "Intro to Cloud", title: "Introduction to Cloud Computing", tag: "NIST · Characteristics · IaaS/PaaS/SaaS · Deployment models", icon: "" },
+  { id: "l02", n: "02", short: "Core Services", title: "Cloud Core Services & Global Infrastructure", tag: "Regions · AZs · Shared responsibility · Billing · Quotas", icon: "" },
+  { id: "l03", n: "03", short: "Compute", title: "Compute & Storage — Part I", tag: "Hypervisors · Instance types · Tenancy · Pricing · Lifecycle", icon: "" },
+  { id: "l04", n: "04", short: "Storage", title: "Compute & Storage — Part II", tag: "CAP theorem · Block · File · Object storage · Tiers", icon: "" },
+  { id: "l05", n: "05", short: "Networking", title: "Cloud Networking", tag: "SDN · NFV · VNets · Subnets · Gateways · Peering", icon: "" },
+  { id: "l06", n: "06", short: "HA & DR", title: "Cloud High Availability & Disaster Recovery", tag: "Nines · Redundancy · Load balancing · Backups · RTO/RPO", icon: "" },
+  { id: "l07", n: "07", short: "Security", title: "Cloud Security & Monitoring", tag: "Least privilege · IAM · MFA · SSO · Metrics · Alerts", icon: "" },
+  { id: "l08", n: "08", short: "Databases", title: "Cloud Database & Analytics Services", tag: "SQL vs NoSQL · OLTP/OLAP · Caching · Warehouse vs Lake", icon: "" },
+  { id: "l09", n: "09", short: "IaC", title: "Infrastructure as Code (IaC)", tag: "Manual risks · Tool types · Imperative vs declarative · Terraform · CloudFormation", icon: "" },
+  { id: "l10", n: "10", short: "Migration", title: "Cloud Migrations", tag: "Migration process · 6 R's · Challenges", icon: "" },
+  { id: "l11", n: "11", short: "Cloud Native", title: "Cloud Native Applications", tag: "Microservices · 12-Factor · DevOps · CI/CD", icon: "" },
+  { id: "l12", n: "12", short: "Docker", title: "Containerization & Docker", tag: "Containers · Docker commands · Orchestration", icon: "" },
 ];
 const QUIZ = {}, CARDS = {}, GAMES = {}, INITS = [];
 
@@ -22,8 +22,8 @@ function addLecture(html, cheat) {
 }
 const studyTabs = id => `
   <div class="tabs" data-tabs>
-    <button class="on" data-tab="quiz">📝 Quiz</button>
-    <button data-tab="cards">🃏 Flashcards</button>
+    <button class="on" data-tab="quiz">Quiz</button>
+    <button data-tab="cards">Flashcards</button>
   </div>
   <div class="tabpanel on" data-panel="quiz"><div class="quiz" data-quiz="${id}"></div></div>
   <div class="tabpanel" data-panel="cards"><div class="deck" data-deck="${id}"></div></div>`;

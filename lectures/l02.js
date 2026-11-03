@@ -3,7 +3,7 @@ addLecture(`
 <section class="page" id="l02" style="--accent:var(--l02)">
   <div class="lec-head">
     <div class="kicker">Lecture 02 · Cloud Computing</div>
-    <h1>Cloud Core Services &amp; Global Infrastructure 🌍</h1>
+    <h1>Cloud Core Services &amp; Global Infrastructure </h1>
     <p class="lead">Outline: <b>Global infrastructure → Benefits → Core cloud services → Shared responsibility model → Billing &amp; cost → Limits / quotas</b>.</p>
     <div class="toc" data-toc></div>
   </div>
@@ -16,34 +16,34 @@ addLecture(`
       <li>Cloud providers maintain <b>global data centers</b> with thousands of IT components: servers, physical storage devices, networking equipment.</li>
     </ul>
     <h3>Benefits of cloud infrastructure</h3>
-    <div class="chips"><span class="chip">🔒 Security</span><span class="chip">✅ Availability</span><span class="chip">⚡ Performance</span><span class="chip">📈 Scalability</span><span class="chip">🤸 Flexibility</span></div>
+    <div class="chips"><span class="chip">Security</span><span class="chip">Availability</span><span class="chip">Performance</span><span class="chip">Scalability</span><span class="chip">Flexibility</span></div>
     <div class="box mem"><b>Memory hook: "SAPSF" — "Some Apples Ponder Silly Facts"</b>Security · Availability · Performance · Scalability · Flexibility.</div>
   </article>
 
   <article class="chapter" id="l02-geo" data-ch="l02">
     <h2><span class="n">2</span>Region → Availability Zone → Data Center</h2>
     <p>Think of it like <b>Country → City → Building</b>. Each layer sits inside the one above.</p>
-    <div class="nest"><span class="lbl">🗺 Region (e.g. Asia Pacific – Mumbai)</span>
+    <div class="nest"><span class="lbl">Region (e.g. Asia Pacific – Mumbai)</span>
       <div class="grid3">
-        <div class="az"><b>Availability Zone A</b><br><span class="dc">🏢</span><span class="dc">🏢</span></div>
-        <div class="az"><b>Availability Zone B</b><br><span class="dc">🏢</span><span class="dc">🏢</span></div>
-        <div class="az"><b>Availability Zone C</b><br><span class="dc">🏢</span></div>
+        <div class="az"><b>Availability Zone A</b><br><span class="dc"></span><span class="dc"></span></div>
+        <div class="az"><b>Availability Zone B</b><br><span class="dc"></span><span class="dc"></span></div>
+        <div class="az"><b>Availability Zone C</b><br><span class="dc"></span></div>
       </div>
-      <p class="hint" style="margin-top:8px">AZs are linked by high-speed private networking. 🏢 = data center.</p>
+      <p class="hint" style="margin-top:8px">AZs are linked by high-speed private networking. = data center.</p>
     </div>
     <div class="grid3" style="margin-top:14px">
-      <div class="tile"><h4>🗺 Region</h4><p>A geographic area. Has <b>multiple</b> Availability Zones.</p></div>
-      <div class="tile"><h4>🏙 Availability Zone</h4><ul><li>A <b>fully isolated partition</b> of the global infrastructure</li><li>Made of <b>discrete data centers</b></li><li>Interconnected with other AZs by <b>high-speed private networking</b></li><li><b>You choose</b> your AZs</li></ul></div>
-      <div class="tile"><h4>🏢 Data Center</h4><ul><li>Where data resides and processing happens</li><li>Redundant <b>power, networking and connectivity</b></li><li>Housed in a <b>separate facility</b></li></ul></div>
+      <div class="tile"><h4>Region</h4><p>A geographic area. Has <b>multiple</b> Availability Zones.</p></div>
+      <div class="tile"><h4>Availability Zone</h4><ul><li>A <b>fully isolated partition</b> of the global infrastructure</li><li>Made of <b>discrete data centers</b></li><li>Interconnected with other AZs by <b>high-speed private networking</b></li><li><b>You choose</b> your AZs</li></ul></div>
+      <div class="tile"><h4>Data Center</h4><ul><li>Where data resides and processing happens</li><li>Redundant <b>power, networking and connectivity</b></li><li>Housed in a <b>separate facility</b></li></ul></div>
     </div>
     <p class="hint">Maps: aws.amazon.com/about-aws/global-infrastructure · azure.microsoft.com/explore/global-infrastructure</p>
 
     <h3>Selecting a Region — 4 factors</h3>
     <div class="chips" data-explain="reg">
-      <button class="chip" data-x="Laws may say data must stay inside a country (data governance, legal requirements). This can rule regions out completely.">⚖ Data governance &amp; legal</button>
-      <button class="chip" data-x="Closer region = lower latency = faster app for your users.">📍 Proximity to customers (latency)</button>
-      <button class="chip" data-x="Not every service exists in every region. Check the one you need is available.">🧰 Services available</button>
-      <button class="chip" data-x="Prices for the same service differ from region to region.">💲 Costs (vary by region)</button>
+      <button class="chip" data-x="Laws may say data must stay inside a country (data governance, legal requirements). This can rule regions out completely.">Data governance &amp; legal</button>
+      <button class="chip" data-x="Closer region = lower latency = faster app for your users.">Proximity to customers (latency)</button>
+      <button class="chip" data-x="Not every service exists in every region. Check the one you need is available.">Services available</button>
+      <button class="chip" data-x="Prices for the same service differ from region to region.">Costs (vary by region)</button>
     </div>
     <div class="box eg" data-explain-out="reg"><b>Tap a factor</b>to see why it matters.</div>
     <div class="box mem"><b>Memory hook: "LPSC" — "Lawyers Prefer Short Contracts"</b>Legal · Proximity · Services · Cost.</div>
@@ -52,9 +52,9 @@ addLecture(`
   <article class="chapter" id="l02-core" data-ch="l02">
     <h2><span class="n">3</span>Core Cloud Services</h2>
     <div class="grid3">
-      <div class="tile" style="text-align:center"><div style="font-size:2rem">🧮</div><h4>Compute</h4><p class="hint">Virtual machines, containers, functions</p></div>
-      <div class="tile" style="text-align:center"><div style="font-size:2rem">🕸</div><h4>Network</h4><p class="hint">Virtual networks, gateways, load balancers</p></div>
-      <div class="tile" style="text-align:center"><div style="font-size:2rem">🗃</div><h4>Storage</h4><p class="hint">Block, file, object storage</p></div>
+      <div class="tile" style="text-align:center"><div style="font-size:2rem"></div><h4>Compute</h4><p class="hint">Virtual machines, containers, functions</p></div>
+      <div class="tile" style="text-align:center"><div style="font-size:2rem"></div><h4>Network</h4><p class="hint">Virtual networks, gateways, load balancers</p></div>
+      <div class="tile" style="text-align:center"><div style="font-size:2rem"></div><h4>Storage</h4><p class="hint">Block, file, object storage</p></div>
     </div>
     <p style="margin-top:12px">Everything else is built on these three. The slide's <b>Azure platform services</b> map shows the wider catalogue:</p>
     <div class="grid3">
@@ -73,7 +73,7 @@ addLecture(`
     <h2><span class="n">4</span>Shared Responsibility Model</h2>
     <div class="box key"><b>Definition</b>A framework establishing <b>who is responsible for securing</b> different aspects of the cloud environment — the <b>CSP</b> or the <b>customer</b>.<br>
       <b>CSP</b> = security <b>"OF"</b> the cloud &nbsp;·&nbsp; <b>Customer</b> = security <b>"IN"</b> the cloud</div>
-    <div class="box mem"><b>Memory hook: renting a flat 🏢</b>The landlord (CSP) secures the <b>building</b> — walls, locks on the main door. You (customer) secure what's <b>IN</b> your flat — your stuff, who you give keys to.</div>
+    <div class="box mem"><b>Memory hook: renting a flat </b>The landlord (CSP) secures the <b>building</b> — walls, locks on the main door. You (customer) secure what's <b>IN</b> your flat — your stuff, who you give keys to.</div>
 
     <h3>AWS version (layers)</h3>
     <div class="layers">
@@ -100,11 +100,11 @@ addLecture(`
   <article class="chapter" id="l02-bill" data-ch="l02">
     <h2><span class="n">5</span>How do you pay? Billing &amp; Cost</h2>
     <div class="grid3">
-      <div class="flip" style="min-height:170px"><div class="inner"><div class="face front"><div class="big">🧾 Pay for what you use</div><small>tap</small></div><div class="face back">Pay only for the services you consume, with <b>no large upfront expenses</b>.</div></div></div>
-      <div class="flip" style="min-height:170px"><div class="inner"><div class="face front"><div class="big">📦 Pay less when you use more</div><small>tap</small></div><div class="face back">Realise <b>volume-based discounts</b>.</div></div></div>
-      <div class="flip" style="min-height:170px"><div class="inner"><div class="face front"><div class="big">📅 Pay less when you reserve</div><small>tap</small></div><div class="face back">Invest in <b>Reserved Instances (RIs)</b> — commit ahead, get a lower price.</div></div></div>
+      <div class="flip" style="min-height:170px"><div class="inner"><div class="face front"><div class="big">Pay for what you use</div><small>tap</small></div><div class="face back">Pay only for the services you consume, with <b>no large upfront expenses</b>.</div></div></div>
+      <div class="flip" style="min-height:170px"><div class="inner"><div class="face front"><div class="big">Pay less when you use more</div><small>tap</small></div><div class="face back">Realise <b>volume-based discounts</b>.</div></div></div>
+      <div class="flip" style="min-height:170px"><div class="inner"><div class="face front"><div class="big">Pay less when you reserve</div><small>tap</small></div><div class="face back">Invest in <b>Reserved Instances (RIs)</b> — commit ahead, get a lower price.</div></div></div>
     </div>
-    <div class="box mem"><b>Memory hook: a gym 🏋</b>Pay per visit (use) · cheaper per visit if you go a lot (volume) · cheapest with a yearly membership (reserve).</div>
+    <div class="box mem"><b>Memory hook: a gym </b>Pay per visit (use) · cheaper per visit if you go a lot (volume) · cheapest with a yearly membership (reserve).</div>
   </article>
 
   <article class="chapter" id="l02-limits" data-ch="l02">

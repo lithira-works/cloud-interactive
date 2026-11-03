@@ -3,7 +3,7 @@ addLecture(`
 <section class="page" id="l04" style="--accent:var(--l04)">
   <div class="lec-head">
     <div class="kicker">Lecture 04 · Cloud Computing</div>
-    <h1>Compute &amp; Storage — Part II 💾</h1>
+    <h1>Compute &amp; Storage — Part II </h1>
     <p class="lead">Outline: <b>Software-defined storage → CAP theorem → Block storage → File storage → Object storage → Other important aspects</b>.</p>
     <div class="toc" data-toc></div>
   </div>
@@ -22,21 +22,21 @@ addLecture(`
       <div class="tile"><h4>A — Availability</h4>Every request receives a (non-error) response — <b>without the guarantee</b> it contains the most recent write.</div>
       <div class="tile"><h4>P — Partition tolerance</h4>The system <b>continues to operate</b> despite any number of messages being dropped/delayed by the network between nodes.</div>
     </div>
-    <h3>🎮 Pick any two</h3>
+    <h3>Pick any two</h3>
     <div class="cap" id="capPick"><button data-k="C">Consistency</button><button data-k="A">Availability</button><button data-k="P">Partition<br>tolerance</button></div>
     <div class="box eg" id="capOut"><b>Choose two circles</b>to see what you give up.</div>
     <h3>When a network partition happens…</h3>
     <div class="grid2">
-      <div class="tile"><h4>🛑 Cancel the operation</h4>Decreases <b>availability</b> but ensures <b>consistency</b> (CP).</div>
+      <div class="tile"><h4>Cancel the operation</h4>Decreases <b>availability</b> but ensures <b>consistency</b> (CP).</div>
       <div class="tile"><h4>▶ Proceed with the operation</h4>Provides <b>availability</b> but risks <b>inconsistency</b> (AP).</div>
     </div>
     <div class="box exam"><b>Exam tip</b>In the presence of a network partition, we must choose between <b>consistency and availability</b>. (Partitions happen in real networks, so P is usually a must.)</div>
-    <div class="box mem"><b>Memory hook: a group chat with bad Wi-Fi 📱</b>Either wait until everyone's synced (Consistent, but you can't send now) or send anyway (Available, but some see old messages).</div>
+    <div class="box mem"><b>Memory hook: a group chat with bad Wi-Fi </b>Either wait until everyone's synced (Consistent, but you can't send now) or send anyway (Available, but some see old messages).</div>
   </article>
 
   <article class="chapter" id="l04-types" data-ch="l04">
     <h2><span class="n">3</span>Three Types of Storage</h2>
-    <div class="row"><button class="chip on" data-st="block">🧱 Block</button><button class="chip" data-st="file">📁 File</button><button class="chip" data-st="object">🪣 Object</button></div>
+    <div class="row"><button class="chip on" data-st="block">Block</button><button class="chip" data-st="file">File</button><button class="chip" data-st="object">Object</button></div>
     <div id="stOut" style="margin-top:12px"></div>
     <div class="table-wrap" style="margin-top:14px"><table>
       <tr><th></th><th>Block</th><th>File</th><th>Object</th></tr>
@@ -46,18 +46,18 @@ addLecture(`
       <tr><td>AWS</td><td>Elastic Block Storage (EBS)</td><td>Elastic File System (EFS)</td><td>Simple Storage Service (S3)</td></tr>
       <tr><td>Azure</td><td>Azure Disks (Page Blob)</td><td>Azure Files</td><td>Azure Blobs</td></tr>
     </table></div>
-    <div class="box mem"><b>Memory hook</b>Block = <b>LEGO bricks</b> 🧱 (raw pieces, fast) · File = <b>filing cabinet</b> 🗄 (folders, shared) · Object = <b>valet parking</b> 🚗 (hand over the car, get a ticket ID, metadata on the ticket).</div>
-    <h3>🎮 Game: which storage type?</h3>
+    <div class="box mem"><b>Memory hook</b>Block = <b>LEGO bricks</b> (raw pieces, fast) · File = <b>filing cabinet</b> (folders, shared) · Object = <b>valet parking</b> (hand over the car, get a ticket ID, metadata on the ticket).</div>
+    <h3>Game: which storage type?</h3>
     <div class="game" data-game="l04"></div>
   </article>
 
   <article class="chapter" id="l04-obj" data-ch="l04">
     <h2><span class="n">4</span>Object Storage Features</h2>
     <div class="grid2">
-      <div class="tile"><h4>🕓 Versioning</h4>Keep multiple versions of an object; recover from overwrites/deletes.</div>
-      <div class="tile"><h4>🌐 Web Hosting</h4>Serve a static website directly from object storage.</div>
-      <div class="tile"><h4>🔐 Encryption</h4><b>Client side</b> (you encrypt before upload) or <b>Server side</b> with:<ul><li>Service-managed keys</li><li>Customer-managed keys</li><li>Customer-provided keys</li></ul></div>
-      <div class="tile"><h4>🧊 Immutability</h4>Data can't be changed or deleted:<ul><li><b>Time-based retention</b> (locked for X days)</li><li><b>Legal hold</b> (locked until the hold is removed)</li></ul></div>
+      <div class="tile"><h4>Versioning</h4>Keep multiple versions of an object; recover from overwrites/deletes.</div>
+      <div class="tile"><h4>Web Hosting</h4>Serve a static website directly from object storage.</div>
+      <div class="tile"><h4>Encryption</h4><b>Client side</b> (you encrypt before upload) or <b>Server side</b> with:<ul><li>Service-managed keys</li><li>Customer-managed keys</li><li>Customer-provided keys</li></ul></div>
+      <div class="tile"><h4>Immutability</h4>Data can't be changed or deleted:<ul><li><b>Time-based retention</b> (locked for X days)</li><li><b>Legal hold</b> (locked until the hold is removed)</li></ul></div>
     </div>
     <div class="box mem"><b>Memory hook: "VEWI" — "Very Expensive Wedding Invitations"</b>Versioning · Encryption · Web hosting · Immutability.</div>
   </article>
@@ -76,15 +76,15 @@ addLecture(`
       <div class="tile"><h4>AWS</h4>Standard · Intelligent-Tiering · Infrequent Access · Glacier</div>
       <div class="tile"><h4>Azure</h4>Hot · Cold · Archive</div>
     </div>
-    <div class="box mem"><b>Memory hook</b>Azure is a <b>thermometer</b> 🌡: Hot → Cold → Archive. AWS ends in <b>Glacier</b> 🧊 = frozen, rarely touched.</div>
+    <div class="box mem"><b>Memory hook</b>Azure is a <b>thermometer</b> : Hot → Cold → Archive. AWS ends in <b>Glacier</b> = frozen, rarely touched.</div>
   </article>
 
   <article class="chapter" id="l04-other" data-ch="l04">
     <h2><span class="n">6</span>Other Important Aspects of Cloud Storage</h2>
     <div class="grid3">
-      <div class="tile"><h4>🗄 Archiving &amp; Backup</h4>Cheap long-term copies of data (cold/archive tiers) for recovery and compliance.</div>
-      <div class="tile"><h4>🔀 Hybrid Storage</h4>Combine on-premises storage with cloud storage (e.g. keep hot data local, tier the rest to cloud).</div>
-      <div class="tile"><h4>🚛 Bulk Data Transfer</h4>Moving very large data sets (TB/PB) into the cloud, sometimes with physical transfer devices instead of the internet.</div>
+      <div class="tile"><h4>Archiving &amp; Backup</h4>Cheap long-term copies of data (cold/archive tiers) for recovery and compliance.</div>
+      <div class="tile"><h4>Hybrid Storage</h4>Combine on-premises storage with cloud storage (e.g. keep hot data local, tier the rest to cloud).</div>
+      <div class="tile"><h4>Bulk Data Transfer</h4>Moving very large data sets (TB/PB) into the cloud, sometimes with physical transfer devices instead of the internet.</div>
     </div>
   </article>
 
@@ -167,9 +167,9 @@ INITS.push(function l04() {
 
   // storage type viewer
   const st = {
-    block: "<div class='box key'><b>🧱 Block storage</b><ul class='clean'><li>Manages data as <b>blocks within sectors and tracks</b></li><li>Each block has a <b>block ID</b></li><li>A set of blocks can be organised as a <b>file system</b></li><li>Suitable for <b>transactional / structured data</b> (file systems, databases, logs)</li><li>Optimised for block-level performance, measured in <b>IOPS</b></li><li>AWS <b>Elastic Block Storage</b> · Azure <b>Azure Disks</b> (Page Blob Storage)</li></ul></div>",
-    file: "<div class='box key'><b>📁 File storage</b><ul class='clean'><li>Manages data as a <b>file hierarchy</b></li><li>Used over a <b>shared network</b></li><li>The storage manages the underlying data on disk</li><li>The storage server uses <b>block storage with a local file system</b></li><li>Protocols: <b>NFS</b> (Network File System) and <b>SMB</b> (Server Message Block)</li><li>AWS <b>Elastic File System (EFS)</b> · Azure <b>Azure Files</b></li></ul></div>",
-    object: "<div class='box key'><b>🪣 Object storage</b><ul class='clean'><li>Manages data as <b>objects</b></li><li>Each object = <b>Data + Metadata + Globally unique identifier</b></li><li>Clients access through <b>HTTPS, APIs or SDKs</b></li><li>AWS <b>Simple Storage Service (S3)</b> · Azure <b>Azure Blobs</b></li></ul></div>",
+    block: "<div class='box key'><b>Block storage</b><ul class='clean'><li>Manages data as <b>blocks within sectors and tracks</b></li><li>Each block has a <b>block ID</b></li><li>A set of blocks can be organised as a <b>file system</b></li><li>Suitable for <b>transactional / structured data</b> (file systems, databases, logs)</li><li>Optimised for block-level performance, measured in <b>IOPS</b></li><li>AWS <b>Elastic Block Storage</b> · Azure <b>Azure Disks</b> (Page Blob Storage)</li></ul></div>",
+    file: "<div class='box key'><b>File storage</b><ul class='clean'><li>Manages data as a <b>file hierarchy</b></li><li>Used over a <b>shared network</b></li><li>The storage manages the underlying data on disk</li><li>The storage server uses <b>block storage with a local file system</b></li><li>Protocols: <b>NFS</b> (Network File System) and <b>SMB</b> (Server Message Block)</li><li>AWS <b>Elastic File System (EFS)</b> · Azure <b>Azure Files</b></li></ul></div>",
+    object: "<div class='box key'><b>Object storage</b><ul class='clean'><li>Manages data as <b>objects</b></li><li>Each object = <b>Data + Metadata + Globally unique identifier</b></li><li>Clients access through <b>HTTPS, APIs or SDKs</b></li><li>AWS <b>Simple Storage Service (S3)</b> · Azure <b>Azure Blobs</b></li></ul></div>",
   };
   function show(k) { document.getElementById("stOut").innerHTML = st[k]; }
   document.querySelectorAll("[data-st]").forEach(b => b.onclick = () => {

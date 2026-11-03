@@ -3,7 +3,7 @@ addLecture(`
 <section class="page" id="l05" style="--accent:var(--l05)">
   <div class="lec-head">
     <div class="kicker">Lecture 05 · Cloud Computing</div>
-    <h1>Cloud Networking 🌐</h1>
+    <h1>Cloud Networking </h1>
     <p class="lead">Outline: <b>Recap → SDN → NFV → Virtual networks &amp; subnets → Access control → Gateways → Peering → Hybrid connectivity → Private access → Flow logs</b>. Analogy: a virtual network is your own <b>gated housing estate</b> inside the cloud city.</p>
     <div class="toc" data-toc></div>
   </div>
@@ -40,7 +40,7 @@ addLecture(`
       <div class="tile plus"><h4>Similarities</h4><ul><li>Both use network abstraction</li><li>Both depend heavily on virtualization</li></ul></div>
       <div class="tile minus"><h4>Differences</h4><ul><li>SDN separates <b>control from forwarding</b>; NFV abstracts <b>all network functions</b> from hardware</li><li>SDN defines the <b>big picture</b>; NFV delivers <b>specific functionalities</b></li></ul></div>
     </div>
-    <div class="box mem"><b>Memory hook</b>SDN = the <b>traffic control centre</b> 🚦 (decides routes, big picture). NFV = replacing physical toll booths with <b>software toll booths</b> 🧾 (specific functions).</div>
+    <div class="box mem"><b>Memory hook</b>SDN = the <b>traffic control centre</b> (decides routes, big picture). NFV = replacing physical toll booths with <b>software toll booths</b> (specific functions).</div>
   </article>
 
   <article class="chapter" id="l05-vnet" data-ch="l05">
@@ -67,7 +67,7 @@ addLecture(`
     <div class="box exam"><b>5 reserved IPs in every subnet</b>1st = network address · 2nd = router · 3rd = DNS · 4th = DNS/future use · Last = broadcast. Usable = 2<sup>(32−n)</sup> − 5.</div>
     <div class="box mem"><b>Memory hook: "N-R-D-D-B" — "Never Rent Dirty Dorm Beds"</b>Network · Router · DNS · DNS/future · Broadcast.</div>
 
-    <h3>🧮 Subnet calculator</h3>
+    <h3>Subnet calculator</h3>
     <div class="calc">
       <div class="row"><input type="text" id="cidrIn" value="10.0.0.0/24" style="flex:1;min-width:180px" aria-label="CIDR block">
         <button class="btn" id="cidrGo">Calculate</button>
@@ -113,7 +113,7 @@ addLecture(`
     <h2><span class="n">6</span>Network Gateway Services</h2>
     <p>Virtual network functions that connect cloud resources to outside networks / the internet. Click each:</p>
     <div class="stepper">
-      <div class="steps"><button class="on">🌍 Internet Gateway</button><button>🔁 NAT Gateway</button><button>🔐 VPN Gateway</button><button>🛞 Transit Gateway</button></div>
+      <div class="steps"><button class="on">Internet Gateway</button><button>NAT Gateway</button><button>VPN Gateway</button><button>Transit Gateway</button></div>
       <div class="panel on"><h3>Internet Gateway</h3><ul class="clean"><li>Connectivity between the <b>internet and the virtual network</b></li><li><b>Scales horizontally</b>, <b>no bandwidth constraints</b></li><li>AWS Internet Gateway</li><li><b>Azure has no internet gateway concept</b> — internet access is provided by default through the default gateway</li></ul></div>
       <div class="panel"><h3>NAT Gateway</h3><ul class="clean"><li>Network Address Translation for instances in <b>private subnets</b> (they can go out)</li><li><b>Prevents connections initiated from the internet</b> (nobody can come in)</li><li>Must be deployed in a <b>public subnet</b></li><li>AWS NAT Instance · AWS NAT Gateway · Azure Virtual Network NAT</li></ul>
         <div class="box eg"><b>AWS picture</b>Private subnet instance → NAT gateway (public subnet) → Internet gateway → internet.</div></div>
@@ -123,7 +123,7 @@ addLecture(`
       <div class="panel"><h3>Network Transit Gateway</h3><ul class="clean"><li>Connects <b>multiple virtual networks and on-prem networks through a central hub</b></li><li>Used to be built manually with the <b>hub-and-spoke</b> model</li><li>AWS Transit Gateway · Azure Virtual WAN</li></ul></div>
     </div>
     <div class="box mem"><b>Memory hook</b>Internet GW = the estate's <b>main gate</b>. NAT = a <b>one-way door</b> (out only). VPN = a <b>secret tunnel</b>. Transit = a <b>roundabout</b> joining many roads.</div>
-    <h3>🎮 Game: which gateway / service?</h3>
+    <h3>Game: which gateway / service?</h3>
     <div class="game" data-game="l05"></div>
   </article>
 
@@ -135,7 +135,7 @@ addLecture(`
       <li><b>Does not support transitive peering.</b></li>
       <li>AWS <b>VPC Peering</b> · Azure <b>VNet Peering</b></li>
     </ul>
-    <h3>🎮 Transitive peering test</h3>
+    <h3>Transitive peering test</h3>
     <div class="row"><button class="chip on" data-peer="ab">Peer A–B</button><button class="chip on" data-peer="bc">Peer B–C</button><button class="chip" data-peer="ac">Peer A–C</button><button class="btn" id="peerTest">Can A reach C?</button></div>
     <svg viewBox="0 0 360 140" class="chart" style="max-width:380px" id="peerSvg"></svg>
     <div class="box eg" id="peerOut"><b>Try it</b>With only A–B and B–C, press the test.</div>
@@ -150,8 +150,8 @@ addLecture(`
   <article class="chapter" id="l05-hybrid" data-ch="l05">
     <h2><span class="n">8</span>Hybrid Connectivity</h2>
     <div class="grid2">
-      <div class="tile"><h4>👤 Connect remote users</h4><ul><li>Direct internet connectivity</li><li>Through VPN — <b>Azure Point-to-Site VPN</b>, <b>AWS Client VPN</b></li></ul></div>
-      <div class="tile"><h4>🏢 Connect remote networks</h4><ul><li><b>Site-to-Site VPN</b></li><li><b>Direct connectivity</b> (private dedicated line, not the internet) — <b>Azure ExpressRoute</b>, <b>AWS Direct Connect</b></li></ul></div>
+      <div class="tile"><h4>Connect remote users</h4><ul><li>Direct internet connectivity</li><li>Through VPN — <b>Azure Point-to-Site VPN</b>, <b>AWS Client VPN</b></li></ul></div>
+      <div class="tile"><h4>Connect remote networks</h4><ul><li><b>Site-to-Site VPN</b></li><li><b>Direct connectivity</b> (private dedicated line, not the internet) — <b>Azure ExpressRoute</b>, <b>AWS Direct Connect</b></li></ul></div>
     </div>
     <div class="box mem"><b>Memory hook</b>Express<b>Route</b> = Azure's private <b>route</b>. Direct <b>Connect</b> = AWS's direct <b>connection</b>. Both skip the public internet.</div>
   </article>
@@ -160,8 +160,8 @@ addLecture(`
     <h2><span class="n">9</span>Private Access to Cloud Services</h2>
     <p>Reach the CSP's <b>PaaS services</b> from your virtual network <b>without going through the public internet</b>.</p>
     <div class="grid2">
-      <div class="tile"><h4>🔗 Private Links</h4><ul><li>Connected to a virtual network <b>with an IP</b></li><li>Access between VNet resources and PaaS services through Private Links</li><li>Azure Private Link · AWS PrivateLink</li></ul></div>
-      <div class="tile"><h4>🛣 Private / Service Endpoints</h4><ul><li>Secure, direct connectivity to Azure PaaS over an optimised route on the <b>Azure backbone</b></li><li>Traffic <b>still hits the public endpoint</b> of the PaaS service</li><li>Azure Service Endpoints</li></ul></div>
+      <div class="tile"><h4>Private Links</h4><ul><li>Connected to a virtual network <b>with an IP</b></li><li>Access between VNet resources and PaaS services through Private Links</li><li>Azure Private Link · AWS PrivateLink</li></ul></div>
+      <div class="tile"><h4>Private / Service Endpoints</h4><ul><li>Secure, direct connectivity to Azure PaaS over an optimised route on the <b>Azure backbone</b></li><li>Traffic <b>still hits the public endpoint</b> of the PaaS service</li><li>Azure Service Endpoints</li></ul></div>
     </div>
     <div class="box exam"><b>Exam tip</b>Private Link gives the service a <b>private IP inside your VNet</b>. Service endpoint uses the backbone but still targets the service's <b>public endpoint</b>.</div>
   </article>
@@ -175,7 +175,7 @@ addLecture(`
       <li><b>Azure</b> flow logs come from <b>NSGs</b>; <b>AWS</b> flow logs can be for <b>VPCs, subnets and/or ENIs</b>.</li>
     </ul>
     <h4>Use cases</h4>
-    <div class="chips"><span class="chip">🔧 Troubleshooting connectivity</span><span class="chip">🕵 Intrusion / anomaly detection</span><span class="chip">📚 Archival for compliance / legal</span></div>
+    <div class="chips"><span class="chip">Troubleshooting connectivity</span><span class="chip">Intrusion / anomaly detection</span><span class="chip">Archival for compliance / legal</span></div>
   </article>
 
   ${studyTabs("l05")}
@@ -283,8 +283,8 @@ INITS.push(function l05() {
   document.getElementById("fwSend").onclick = () => {
     const outRule = document.getElementById("fwOut").checked, log = document.getElementById("fwLog");
     let t = "→ Client sends HTTPS request to port 443\n✓ Inbound rule 'allow TCP 443' matches — request reaches the server\n";
-    if (mode === "sf") t += "← Server replies\n✓ Stateful: firewall remembers this connection, response allowed automatically\n🎉 Page loads.";
-    else t += outRule ? "← Server replies on an ephemeral port\n✓ Stateless: outbound response rule matches\n🎉 Page loads." : "← Server replies on an ephemeral port\n✗ Stateless: no outbound rule for the response — DROPPED\n😵 Page never loads. Tick the box to add the response rule.";
+    if (mode === "sf") t += "← Server replies\n✓ Stateful: firewall remembers this connection, response allowed automatically\nPage loads.";
+    else t += outRule ? "← Server replies on an ephemeral port\n✓ Stateless: outbound response rule matches\nPage loads." : "← Server replies on an ephemeral port\n✗ Stateless: no outbound rule for the response — DROPPED\nPage never loads. Tick the box to add the response rule.";
     log.textContent = t;
   };
 

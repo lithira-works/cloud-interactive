@@ -9,11 +9,16 @@ const esc = s => String(s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;"
 const shuffle = a => { a = [...a]; for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
 
 /* ---------- theme ---------- */
-const theme = store.get("theme", null);
-if (theme) document.documentElement.dataset.theme = theme;
+// light by default; follow the device setting until the student picks one
+function applyTheme(t) {
+  document.documentElement.dataset.theme = t;
+  $("#themeBtn").innerHTML = `<svg class="i" aria-hidden="true"><use href="#i-${t === "dark" ? "sun" : "moon"}"></use></svg>`;
+  $("#themeBtn").setAttribute("aria-label", t === "dark" ? "Switch to light mode" : "Switch to dark mode");
+}
+applyTheme(store.get("theme", matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"));
 $("#themeBtn").onclick = () => {
-  const cur = document.documentElement.dataset.theme === "light" ? "dark" : "light";
-  document.documentElement.dataset.theme = cur;
+  const cur = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
+  applyTheme(cur);
   store.set("theme", cur);
 };
 
@@ -107,7 +112,7 @@ function updateProgress() {
       ring.querySelector("b").textContent = pct + "%";
       const next = chs.find(c => !done[c.id]);
       const go = $(`#${l} [data-go]`);
-      go.textContent = !n ? "▶ Start learning" : next ? "▶ Continue: chapter " + (chs.indexOf(next) + 1) : "🎉 All learned — take the quiz";
+      go.textContent = !n ? "▶ Start learning" : next ? "▶ Continue: chapter " + (chs.indexOf(next) + 1) : "All learned — take the quiz";
       go.dataset.go = next ? next.id : l + "-study";
     }
   });
@@ -128,17 +133,17 @@ LECTURES.forEach((l, li) => {
       <div class="hs"><b>${(QUIZ[l.id] || []).length}</b><small>quiz questions</small></div>
       <div class="hs"><b>${(CARDS[l.id] || []).length}</b><small>flashcards</small></div>
       <div class="hs"><b>~${nCh * 6}</b><small>minutes</small></div>
-      <div class="hero-btns"><button class="btn" data-go="">▶ Start learning</button><button class="btn ghost" data-quizjump>📝 Jump to quiz</button></div>
+      <div class="hero-btns"><button class="btn" data-go="">▶ Start learning</button><button class="btn ghost" data-quizjump>Jump to quiz</button></div>
     </div>`);
   const tabs = $("[data-tabs]", sec);
   tabs.id = l.id + "-study";
-  tabs.insertAdjacentHTML("beforebegin", `<h2 class="study-title">🧪 Test yourself</h2>`);
+  tabs.insertAdjacentHTML("beforebegin", `<h2 class="study-title">Test yourself</h2>`);
   $("[data-go]", head).onclick = e => document.getElementById(e.currentTarget.dataset.go).scrollIntoView({ behavior: "smooth" });
   $("[data-quizjump]", head).onclick = () => tabs.scrollIntoView({ behavior: "smooth" });
   const prev = LECTURES[li - 1], next = LECTURES[li + 1];
   sec.insertAdjacentHTML("beforeend", `<nav class="lec-nav">
     ${prev ? `<a href="#${prev.id}" style="--c:var(--${prev.id})"><small>← Previous</small><b>${prev.n} · ${prev.title}</b></a>` : "<span></span>"}
-    ${next ? `<a href="#${next.id}" class="nx" style="--c:var(--${next.id})"><small>Next →</small><b>${next.n} · ${next.title}</b></a>` : `<a href="#exam" class="nx"><small>Finished all lectures →</small><b>🎯 Exam Mode</b></a>`}
+    ${next ? `<a href="#${next.id}" class="nx" style="--c:var(--${next.id})"><small>Next →</small><b>${next.n} · ${next.title}</b></a>` : `<a href="#exam" class="nx"><small>Finished all lectures →</small><b>Exam Mode</b></a>`}
   </nav>`);
 });
 
@@ -158,7 +163,7 @@ $$(".chapter").forEach(ch => {
     if (!done[ch.id]) return;
     touch();
     const l = ch.dataset.ch;
-    if (lecPct(l) === 100) { confetti(); toast(`🎉 Lecture ${l.slice(1)} fully learned! Now lock it in with the quiz.`); }
+    if (lecPct(l) === 100) { confetti(); toast(`Lecture ${l.slice(1)} fully learned! Now lock it in with the quiz.`); }
     else toast(`✓ Nice — ${lecPct(l)}% of this lecture learned`);
     const nextCh = ch.nextElementSibling && ch.nextElementSibling.classList.contains("chapter") ? ch.nextElementSibling : document.getElementById(l + "-study");
     setTimeout(() => nextCh && nextCh.scrollIntoView({ behavior: "smooth" }), 450);
@@ -245,7 +250,7 @@ $$("[data-game]").forEach(g => {
   function show() {
     answered = false;
     if (i >= list.length) {
-      el("q").innerHTML = `🎉 Finished! You scored ${score}/${list.length}. ${score >= list.length * .8 ? "Excellent — exam ready!" : "Hit Restart and try again."}`;
+      el("q").innerHTML = `Finished! You scored ${score}/${list.length}. ${score >= list.length * .8 ? "Excellent — exam ready!" : "Hit Restart and try again."}`;
       el("opts").innerHTML = ""; el("fb").textContent = ""; el("next").disabled = true; return;
     }
     el("i").textContent = i + 1; el("s").textContent = score;
@@ -259,7 +264,7 @@ $$("[data-game]").forEach(g => {
         if (ok) score++;
         b.classList.add(ok ? "right" : "wrong");
         $$("button", el("opts")).find(x => x.textContent === list[i].a).classList.add("right");
-        el("fb").innerHTML = (ok ? "✅ Correct! " : `❌ It's <b>${list[i].a}</b>. `) + list[i].why;
+        el("fb").innerHTML = (ok ? "Correct! " : `It's <b>${list[i].a}</b>. `) + list[i].why;
         el("s").textContent = score; el("next").disabled = false;
       };
       el("opts").appendChild(b);
@@ -295,7 +300,7 @@ $$("[data-game]").forEach(g => {
   box.innerHTML = FACTORS.map((f, i) => `
     <div class="flip"><div class="inner">
       <div class="face front"><div class="n">${i + 1}</div><div class="big" data-name>${f[0]}</div><small>tap</small></div>
-      <div class="face back"><b>${f[0]}</b><span style="margin:4px 0">${f[1]}</span><i class="hint">💡 ${f[2]}</i></div>
+      <div class="face back"><b>${f[0]}</b><span style="margin:4px 0">${f[1]}</span><i class="hint">${f[2]}</i></div>
     </div></div>`).join("");
   let all = false, hidden = false;
   $("#f12flip").onclick = () => { all = !all; $$(".flip", box).forEach(f => f.classList.toggle("on", all)); };
@@ -359,17 +364,17 @@ $$("[data-game]").forEach(g => {
     }
     if (mode === "delivery") {
       stages[4].classList.add("wait");
-      write("⏸ Continuous DELIVERY: artifact waits in production environment for human approval…");
+      write("Continuous DELIVERY: artifact waits in production environment for human approval…");
       $("#pipeApprove").disabled = false;
       await new Promise(r => waitResolve = r);
       $("#pipeApprove").disabled = true;
-      stages[4].className = "stage ok"; write("✍ Approved by a human.");
+      stages[4].className = "stage ok"; write("Approved by a human.");
     } else {
       stages[4].classList.add("run"); await sleep(800);
-      stages[4].className = "stage ok"; write("🤖 Continuous DEPLOYMENT: automated checks passed — no human needed.");
+      stages[4].className = "stage ok"; write("Continuous DEPLOYMENT: automated checks passed — no human needed.");
     }
     stages[5].classList.add("run"); await sleep(600);
-    stages[5].className = "stage ok"; write("🚀 Deployed to production!");
+    stages[5].className = "stage ok"; write("Deployed to production!");
     running = false;
   };
 })();
@@ -411,7 +416,7 @@ $$("[data-game]").forEach(g => {
       c.classList.toggle("bad"); c.textContent = c.classList.contains("bad") ? "?!" : "✓?";
     });
     $("#matrixNote").textContent = fixed
-      ? "📦 Every app ships with its own libraries & dependencies inside a container → works the same in every environment."
+      ? "Every app ships with its own libraries & dependencies inside a container → works the same in every environment."
       : "Red = dependency conflict ('works on my machine' but not here). Every cell is a risk you must check.";
   }
   $("#matrixFix").onclick = () => draw(true);
@@ -476,8 +481,8 @@ $$("[data-vm]").forEach(b => b.onclick = () => {
     // names and images are typed by the user, so escape them before building HTML
     $("#imgList").innerHTML = images.size ? [...images].map(i => `<div class="ctr"><span>${esc(i)}</span><span class="hint">image</span></div>`).join("") : `<div class="hint">none — try docker pull</div>`;
     $("#ctrList").innerHTML = ctrs.length ? ctrs.map(c => `<div class="ctr"><span>${esc(c.name)}<br><small class="hint">${esc(c.image)}</small></span><span class="st ${c.state}">${c.state}</span></div>`).join("") : `<div class="hint">none</div>`;
-    while (mi < missions.length && missions[mi][1]() && (mi === 0 || true)) { mi++; if (mi < missions.length) print("🎯 Mission complete! Next: " + missions[mi][0], "info"); }
-    $("#mission").innerHTML = mi < missions.length ? `${mi + 1}/${missions.length}: ${missions[mi][0]}` : "🏆 All missions done! You know the full container lifecycle.";
+    while (mi < missions.length && missions[mi][1]() && (mi === 0 || true)) { mi++; if (mi < missions.length) print("Mission complete! Next: " + missions[mi][0], "info"); }
+    $("#mission").innerHTML = mi < missions.length ? `${mi + 1}/${missions.length}: ${missions[mi][0]}` : "All missions done! You know the full container lifecycle.";
   }
   function needImage(img) {
     if (!KNOWN.includes(img) && !images.has(img)) { print(`Unable to find image '${img}' — try: ${KNOWN.join(", ")}`, "err"); return false; }
@@ -604,7 +609,7 @@ Images available: ${KNOWN.join(", ")}`, "info");
   const quick = ["help", "docker pull busybox", "docker images", "docker create --name my_busybox busybox", "docker ps -a", "docker start my_busybox", "docker ps", "docker logs my_busybox", "docker exec -it my_busybox ping www.example.com", "docker pause my_busybox", "docker unpause my_busybox", "docker stop my_busybox", "docker kill my_busybox", "docker rm my_busybox", "docker rmi busybox", "docker run hello-world", "docker run busybox ls", "docker system prune"];
   $("#quick").innerHTML = quick.map(q => `<button>${q}</button>`).join("");
   $$("#quick button").forEach(b => b.onclick = () => { run(b.textContent); inp.focus(); });
-  print("Welcome to the Docker practice terminal 🐳  Type 'help' or tap a command below.", "info");
+  print("Welcome to the Docker practice terminal. Type 'help' or tap a command below.", "info");
   refresh();
 })();
 
@@ -626,7 +631,7 @@ function makeQuiz(el) {
   function start() {
     let pool = key === "all" ? [...examSet].flatMap(k => QUIZ[k] || []) : QUIZ[key];
     if (key === "all" && examMistakes) pool = Object.keys(wrong).map(id => QID[id]).filter(Boolean);
-    if (!pool.length) { el.innerHTML = `<div class="result"><div class="big">🌟</div><p>No mistakes to practise — great work!</p></div>`; return; }
+    if (!pool.length) { el.innerHTML = `<div class="result"><div class="big"></div><p>No mistakes to practise — great work!</p></div>`; return; }
     qs = shuffle(pool).slice(0, key === "all" ? 25 : pool.length); i = 0; score = 0; missed = []; show();
   }
   el.restart = start;
@@ -636,7 +641,7 @@ function makeQuiz(el) {
       const best = store.get("best", {}); best[key] = Math.max(best[key] || 0, pct); store.set("best", best);
       if (pct >= 80) confetti();
       el.innerHTML = `<div class="result"><div class="big">${pct}%</div><p>${score} / ${qs.length} correct · best: ${best[key]}%</p>
-        <p>${pct >= 80 ? "🔥 Exam ready!" : pct >= 50 ? "👍 Good — review the mistakes below, then retry." : "📚 Go back through the chapters and memory hooks, then retry."}</p>
+        <p>${pct >= 80 ? "Exam ready!" : pct >= 50 ? "Good — review the mistakes below, then retry." : "Go back through the chapters and memory hooks, then retry."}</p>
         <div class="row" style="justify-content:center"><button class="btn" data-again>Try again</button>${missed.length ? `<button class="btn ghost" data-redo>Retry only my ${missed.length} mistakes</button>` : ""}</div></div>
         ${missed.length ? `<div class="mistakes"><h3>Review your mistakes</h3>${missed.map(q => `<div class="mk-item"><b>${q.q}</b><span>✓ ${q.o[q.a]}</span><small>${q.why}</small></div>`).join("")}</div>` : ""}`;
       $("[data-again]", el).onclick = start;
@@ -660,7 +665,7 @@ function makeQuiz(el) {
         b.classList.add(ok ? "right" : "wrong");
         $$("button", ans)[order.findIndex(o => o.k === q.a)].classList.add("right");
         const w = $(".why", el); w.classList.add("show");
-        w.innerHTML = (ok ? "✅ <b>Correct.</b> " : "❌ <b>Not quite.</b> ") + q.why;
+        w.innerHTML = (ok ? "<b>Correct.</b> " : "<b>Not quite.</b> ") + q.why;
         $("[data-next]", el).disabled = false;
       };
       ans.appendChild(b);
@@ -673,7 +678,7 @@ function makeQuiz(el) {
 /* exam mode: choose which lectures to include, or only past mistakes */
 $("#examPick").innerHTML = `<button class="chip on" data-pick="all">All lectures</button><button class="chip" data-pick="mist" id="mistChip"></button>` +
   LECTURES.map(l => `<button class="chip" data-pick="${l.id}" style="--accent:var(--${l.id})">L${l.n} ${l.short}</button>`).join("");
-function paintMistakeChip() { $("#mistChip").textContent = `❗ My mistakes (${Object.keys(wrong).length})`; }
+function paintMistakeChip() { $("#mistChip").textContent = `My mistakes (${Object.keys(wrong).length})`; }
 paintMistakeChip();
 $$("[data-quiz]").forEach(makeQuiz);
 $$("#examPick button").forEach(b => b.onclick = () => {
@@ -721,8 +726,8 @@ function makeDeck(el) {
   function show() {
     if (!cards.length) {
       el.innerHTML = key === "review" && reviewScope === "due"
-        ? `<div class="result"><div class="big">✅</div><p>Nothing due right now. Come back tomorrow — or learn some new cards.</p><button class="btn" data-new>Learn 15 new cards</button></div>`
-        : `<div class="result"><div class="big">🎉</div><p>Session complete! Rated cards will come back when they're due.</p><button class="btn" data-re>Go again</button></div>`;
+        ? `<div class="result"><div class="big"></div><p>Nothing due right now. Come back tomorrow — or learn some new cards.</p><button class="btn" data-new>Learn 15 new cards</button></div>`
+        : `<div class="result"><div class="big"></div><p>Session complete! Rated cards will come back when they're due.</p><button class="btn" data-re>Go again</button></div>`;
       const n = $("[data-new]", el); if (n) n.onclick = () => setScope("new");
       const r = $("[data-re]", el); if (r) r.onclick = () => el.reset();
       return;
@@ -735,7 +740,7 @@ function makeDeck(el) {
         <div class="face front"><div class="big">${c.f}</div><small>tap or Space to flip</small></div>
         <div class="face back">${c.b}</div></div></div>
       <div class="ctrl"><button class="btn ghost" data-a="prev" aria-label="Previous">◀</button>
-        <button class="btn ghost again" data-a="again">🔁 Again <kbd>A</kbd></button>
+        <button class="btn ghost again" data-a="again">Again <kbd>A</kbd></button>
         <button class="btn know" data-a="know">✓ I know it <kbd>K</kbd></button>
         <button class="btn ghost" data-a="next" aria-label="Next">▶</button></div>`;
     const card = $(".flip", el);
@@ -784,10 +789,10 @@ function renderDash() {
   $("#dash").innerHTML = `
     ${lastL ? `<a class="continue" href="#${last.id}" style="--c:var(--${lastL.id})"><small>Continue where you left off</small><b>${lastL.n} · ${lastL.title}</b><span>${last.querySelector("h2").textContent.replace(/^[\d✓]+/, "").trim()} →</span></a>`
       : `<a class="continue" href="#l01" style="--c:var(--l01)"><small>Start here</small><b>01 · Introduction to Cloud Computing</b><span>Begin chapter 1 →</span></a>`}
-    <div class="stat"><span>🔥</span><b>${s}</b><small>day streak${s ? "" : " — study today!"}</small></div>
-    <div class="stat"><span>✅</span><b>${got}<i>/${all}</i></b><small>chapters learned</small></div>
-    <a class="stat" href="#review"><span>🧠</span><b>${due}</b><small>${due ? "cards due — review now" : "cards due"}</small></a>
-    <a class="stat" href="#exam"><span>🎯</span><b>${best != null ? best + "%" : "—"}</b><small>best exam score</small></a>`;
+    <div class="stat"><span></span><b>${s}</b><small>day streak${s ? "" : " — study today!"}</small></div>
+    <div class="stat"><span></span><b>${got}<i>/${all}</i></b><small>chapters learned</small></div>
+    <a class="stat" href="#review"><span></span><b>${due}</b><small>${due ? "cards due — review now" : "cards due"}</small></a>
+    <a class="stat" href="#exam"><span></span><b>${best != null ? best + "%" : "—"}</b><small>best exam score</small></a>`;
 }
 
 /* ---------- cheat sheet: memory hooks & exam traps collected from every lecture ---------- */

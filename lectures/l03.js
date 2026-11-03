@@ -3,7 +3,7 @@ addLecture(`
 <section class="page" id="l03" style="--accent:var(--l03)">
   <div class="lec-head">
     <div class="kicker">Lecture 03 · Cloud Computing</div>
-    <h1>Compute &amp; Storage — Part I 🖥️</h1>
+    <h1>Compute &amp; Storage — Part I </h1>
     <p class="lead">Outline: <b>Virtualization / containerization recap → Software-defined compute → Cloud compute services → Instance types → Tenancy &amp; purchasing options → Instance lifecycle → Placement groups</b>.</p>
     <div class="toc" data-toc></div>
   </div>
@@ -46,12 +46,12 @@ addLecture(`
     <h2><span class="n">4</span>Types of Compute Instances</h2>
     <p>Six families. Each is tuned for a different job. Tap to flip.</p>
     <div class="grid3">
-      <div class="flip" style="min-height:170px"><div class="inner"><div class="face front"><div class="big">⚖ General Purpose</div><small>tap</small></div><div class="face back">Balanced CPU, memory and networking. Web servers, small databases, dev/test.</div></div></div>
-      <div class="flip" style="min-height:170px"><div class="inner"><div class="face front"><div class="big">🧠 Compute Optimized</div><small>tap</small></div><div class="face back">High-performance CPUs. Batch processing, gaming servers, scientific modelling, video encoding.</div></div></div>
-      <div class="flip" style="min-height:170px"><div class="inner"><div class="face front"><div class="big">🐘 Memory Optimized</div><small>tap</small></div><div class="face back">Lots of RAM. In-memory databases, big caches, real-time big-data analytics.</div></div></div>
-      <div class="flip" style="min-height:170px"><div class="inner"><div class="face front"><div class="big">💽 Storage Optimized</div><small>tap</small></div><div class="face back">Fast, high-throughput local disks (high IOPS). Data warehousing, large transactional DBs.</div></div></div>
-      <div class="flip" style="min-height:170px"><div class="inner"><div class="face front"><div class="big">🎮 Accelerated Computing</div><small>tap</small></div><div class="face back">Hardware accelerators such as <b>GPUs / FPGAs</b>. Machine learning, graphics rendering.</div></div></div>
-      <div class="flip" style="min-height:170px"><div class="inner"><div class="face front"><div class="big">🎈 Burstable Instances</div><small>tap</small></div><div class="face back">Low baseline CPU that can <b>burst</b> above it for short spikes (using credits). Cheap; good for low-traffic sites.</div></div></div>
+      <div class="flip" style="min-height:170px"><div class="inner"><div class="face front"><div class="big">General Purpose</div><small>tap</small></div><div class="face back">Balanced CPU, memory and networking. Web servers, small databases, dev/test.</div></div></div>
+      <div class="flip" style="min-height:170px"><div class="inner"><div class="face front"><div class="big">Compute Optimized</div><small>tap</small></div><div class="face back">High-performance CPUs. Batch processing, gaming servers, scientific modelling, video encoding.</div></div></div>
+      <div class="flip" style="min-height:170px"><div class="inner"><div class="face front"><div class="big">Memory Optimized</div><small>tap</small></div><div class="face back">Lots of RAM. In-memory databases, big caches, real-time big-data analytics.</div></div></div>
+      <div class="flip" style="min-height:170px"><div class="inner"><div class="face front"><div class="big">Storage Optimized</div><small>tap</small></div><div class="face back">Fast, high-throughput local disks (high IOPS). Data warehousing, large transactional DBs.</div></div></div>
+      <div class="flip" style="min-height:170px"><div class="inner"><div class="face front"><div class="big">Accelerated Computing</div><small>tap</small></div><div class="face back">Hardware accelerators such as <b>GPUs / FPGAs</b>. Machine learning, graphics rendering.</div></div></div>
+      <div class="flip" style="min-height:170px"><div class="inner"><div class="face front"><div class="big">Burstable Instances</div><small>tap</small></div><div class="face back">Low baseline CPU that can <b>burst</b> above it for short spikes (using credits). Cheap; good for low-traffic sites.</div></div></div>
     </div>
     <div class="box mem"><b>Memory hook: "Good Cooks Make Spicy Asian Burgers"</b>General · Compute · Memory · Storage · Accelerated · Burstable.</div>
   </article>
@@ -60,11 +60,11 @@ addLecture(`
     <h2><span class="n">5</span>Tenancy Options</h2>
     <p>"Tenancy" = who else shares the physical server with you.</p>
     <div class="grid3">
-      <div class="tile"><h4>🏨 Default / Shared</h4>Your VM runs on hardware <b>shared with other customers</b>. Cheapest.</div>
-      <div class="tile"><h4>🏠 Dedicated Instances</h4>Your VMs run on hardware <b>dedicated to your account</b> — no other customers — but you don't control which physical server.</div>
-      <div class="tile"><h4>🏰 Dedicated Hosts</h4>A <b>whole physical server</b> for you, with visibility/control of the host (sockets, cores). Useful for per-core software licences and compliance.</div>
+      <div class="tile"><h4>Default / Shared</h4>Your VM runs on hardware <b>shared with other customers</b>. Cheapest.</div>
+      <div class="tile"><h4>Dedicated Instances</h4>Your VMs run on hardware <b>dedicated to your account</b> — no other customers — but you don't control which physical server.</div>
+      <div class="tile"><h4>Dedicated Hosts</h4>A <b>whole physical server</b> for you, with visibility/control of the host (sockets, cores). Useful for per-core software licences and compliance.</div>
     </div>
-    <div class="box mem"><b>Memory hook: hotel 🏨</b>Shared = hostel dorm. Dedicated instance = a private room (hotel picks which). Dedicated host = you rent the whole house and know its address.</div>
+    <div class="box mem"><b>Memory hook: hotel </b>Shared = hostel dorm. Dedicated instance = a private room (hotel picks which). Dedicated host = you rent the whole house and know its address.</div>
   </article>
 
   <article class="chapter" id="l03-buy" data-ch="l03">
@@ -76,7 +76,7 @@ addLecture(`
       <div class="tile"><h4>4 · Savings Plan</h4>Commit to a fixed <b>spend per hour</b> for 1 or 3 years, flexible across instance types.</div>
     </div>
     <div class="box mem"><b>Memory hook: travel ✈</b>On-demand = walk-up ticket. Reserved = season ticket. Spot = last-minute standby seat (cheap, may get bumped). Savings plan = prepaid travel card.</div>
-    <h3>🎮 Game: pick the purchasing option</h3>
+    <h3>Game: pick the purchasing option</h3>
     <div class="game" data-game="l03"></div>
   </article>
 
@@ -103,7 +103,7 @@ addLecture(`
       <div class="tile"><h4>AWS — Spread</h4>Each instance on <b>distinct hardware</b> → maximum isolation for a small number of critical instances.</div>
       <div class="tile"><h4>Azure — Proximity Placement Group</h4>Keep VMs <b>physically close</b> for low latency (Azure's answer to cluster).</div>
     </div>
-    <div class="box mem"><b>Memory hook: "CPS" — "Close, Partitioned, Spread"</b>Cluster = huddle together 🤝 · Partition = teams on separate tables · Spread = everyone in a different room. Azure only has <b>P</b>roximity.</div>
+    <div class="box mem"><b>Memory hook: "CPS" — "Close, Partitioned, Spread"</b>Cluster = huddle together · Partition = teams on separate tables · Spread = everyone in a different room. Azure only has <b>P</b>roximity.</div>
   </article>
 
   ${studyTabs("l03")}
