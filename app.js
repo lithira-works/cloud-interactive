@@ -43,6 +43,8 @@ function route() {
   const id = (location.hash || "#home").slice(1).split("-")[0];
   const page = $("#" + id) && $("#" + id).classList.contains("page") ? id : "home";
   $$(".page").forEach(p => p.classList.toggle("show", p.id === page));
+  const L = LECTURES.find(l => l.id === page), SITE = "Cloud Computing";
+  document.title = page === "home" ? SITE : L ? `${+L.n}. ${L.title} · ${SITE}` : `${{ review: "Daily review", exam: "Exam mode", cheat: "Cheat sheet" }[page] || "Study"} · ${SITE}`;
   $$(".nav a, .pill").forEach(a => a.classList.toggle("active", a.dataset.page === page));
   const pill = $(`.pill[data-page="${page}"]`);
   if (pill) { const r = $("#rail"); r.scrollTo({ left: pill.offsetLeft - r.clientWidth / 2 + pill.clientWidth / 2 }); }
