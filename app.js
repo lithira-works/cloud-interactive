@@ -629,50 +629,65 @@ let wrong = store.get("wrong", {});
 let examSet = new Set(LIDS), examMistakes = false;
 function makeQuiz(el) {
   const key = el.dataset.quiz;
-  let qs, i, score, missed;
+  // picked[n] keeps the chosen answer and option order, so answered questions can be reopened read-only
+  let qs, i, score, missed, picked, finished;
+  function begin(list) { qs = list; i = 0; score = 0; missed = []; picked = []; finished = false; show(); }
   function start() {
     let pool = key === "all" ? [...examSet].flatMap(k => QUIZ[k] || []) : QUIZ[key];
     if (key === "all" && examMistakes) pool = Object.keys(wrong).map(id => QID[id]).filter(Boolean);
     if (!pool.length) { el.innerHTML = `<div class="result"><div class="big"></div><p>No mistakes to practise — great work!</p></div>`; return; }
-    qs = shuffle(pool).slice(0, key === "all" ? 25 : pool.length); i = 0; score = 0; missed = []; show();
+    begin(shuffle(pool).slice(0, key === "all" ? 25 : pool.length));
   }
   el.restart = start;
+  function results() {
+    const pct = Math.round(score / qs.length * 100);
+    const best = store.get("best", {}); best[key] = Math.max(best[key] || 0, pct); store.set("best", best);
+    if (pct >= 80 && !finished) confetti();
+    finished = true;
+    const misses = qs.map((q, n) => ({ q, mine: picked[n].k })).filter(x => x.mine !== x.q.a);
+    el.innerHTML = `<div class="result"><div class="big">${pct}%</div><p>${score} / ${qs.length} correct · best: ${best[key]}%</p>
+      <p>${pct >= 80 ? "Exam ready!" : pct >= 50 ? "Good — review the mistakes below, then retry." : "Go back through the chapters and memory hooks, then retry."}</p>
+      <div class="row" style="justify-content:center"><button class="btn" data-review>◀ Review all my answers</button><button class="btn ghost" data-again>Try again</button>${missed.length ? `<button class="btn ghost" data-redo>Retry only my ${missed.length} mistakes</button>` : ""}</div></div>
+      ${misses.length ? `<div class="mistakes"><h3>Review your mistakes</h3>${misses.map(({ q, mine }) => `<div class="mk-item"><b>${q.q}</b><small>Your answer: ${q.o[mine]}</small><span>✓ ${q.o[q.a]}</span><small>${q.why}</small></div>`).join("")}</div>` : ""}`;
+    $("[data-review]", el).onclick = () => { i = 0; show(); el.scrollIntoView({ behavior: "smooth" }); };
+    $("[data-again]", el).onclick = start;
+    if (missed.length) $("[data-redo]", el).onclick = () => begin(shuffle(missed));
+  }
   function show() {
-    if (i >= qs.length) {
-      const pct = Math.round(score / qs.length * 100);
-      const best = store.get("best", {}); best[key] = Math.max(best[key] || 0, pct); store.set("best", best);
-      if (pct >= 80) confetti();
-      el.innerHTML = `<div class="result"><div class="big">${pct}%</div><p>${score} / ${qs.length} correct · best: ${best[key]}%</p>
-        <p>${pct >= 80 ? "Exam ready!" : pct >= 50 ? "Good — review the mistakes below, then retry." : "Go back through the chapters and memory hooks, then retry."}</p>
-        <div class="row" style="justify-content:center"><button class="btn" data-again>Try again</button>${missed.length ? `<button class="btn ghost" data-redo>Retry only my ${missed.length} mistakes</button>` : ""}</div></div>
-        ${missed.length ? `<div class="mistakes"><h3>Review your mistakes</h3>${missed.map(q => `<div class="mk-item"><b>${q.q}</b><span>✓ ${q.o[q.a]}</span><small>${q.why}</small></div>`).join("")}</div>` : ""}`;
-      $("[data-again]", el).onclick = start;
-      if (missed.length) $("[data-redo]", el).onclick = () => { qs = shuffle(missed); i = 0; score = 0; missed = []; show(); };
-      return;
-    }
-    const q = qs[i];
-    const order = shuffle(q.o.map((t, k) => ({ t, k })));
-    el.innerHTML = `<div class="qtop"><span>Question ${i + 1} / ${qs.length}${key === "all" ? ` · <b style="color:var(--${q.l})">L${q.l.slice(1)}</b>` : ""}</span><span>Score ${score}</span></div>
+    if (i >= qs.length) return results();
+    const q = qs[i], seen = picked[i], order = seen ? seen.order : shuffle(q.o.map((t, k) => ({ t, k }))), last = i === qs.length - 1;
+    el.innerHTML = `<div class="qtop"><span>Question ${i + 1} / ${qs.length}${key === "all" ? ` · <b style="color:var(--${q.l})">L${q.l.slice(1)}</b>` : ""}${seen ? " · your answer" : ""}</span><span>Score ${score}</span></div>
       <div class="bar" style="margin:0 0 14px"><i style="width:${i / qs.length * 100}%"></i></div>
       <div class="q">${q.q}</div><div class="ans"></div><div class="why"></div>
-      <div class="row" style="margin-top:12px"><button class="btn" disabled data-next>Next ▶</button><span class="hint">keys 1–4 · Enter</span></div>`;
+      <div class="row" style="margin-top:12px"><button class="btn ghost" data-prev${i ? "" : " disabled"}>◀ Previous</button><button class="btn" disabled data-next>${last ? (finished ? "Back to results" : "See results") : "Next"} ▶</button>${finished && !last ? `<button class="btn ghost" data-results>Back to results</button>` : ""}<span class="hint">keys 1–4 · Enter · ← →</span></div>`;
     const ans = $(".ans", el);
+    const reveal = chosen => {
+      const ok = chosen === q.a;
+      $$("button", ans).forEach((x, n) => {
+        x.disabled = true;
+        if (order[n].k === q.a) x.classList.add("right");
+        else if (order[n].k === chosen) x.classList.add("wrong");
+      });
+      const w = $(".why", el); w.classList.add("show");
+      w.innerHTML = (ok ? "<b>Correct.</b> " : "<b>Not quite.</b> ") + q.why;
+      $("[data-next]", el).disabled = false;
+    };
     order.forEach(({ t, k }, n) => {
       const b = document.createElement("button"); b.innerHTML = `<kbd>${n + 1}</kbd> ${t}`;
       b.onclick = () => {
-        $$("button", ans).forEach(x => x.disabled = true);
+        picked[i] = { k, order };
         const ok = k === q.a; touch();
         if (ok) { score++; delete wrong[q.id]; } else { missed.push(q); wrong[q.id] = 1; }
         store.set("wrong", wrong); paintMistakeChip();
-        b.classList.add(ok ? "right" : "wrong");
-        $$("button", ans)[order.findIndex(o => o.k === q.a)].classList.add("right");
-        const w = $(".why", el); w.classList.add("show");
-        w.innerHTML = (ok ? "<b>Correct.</b> " : "<b>Not quite.</b> ") + q.why;
-        $("[data-next]", el).disabled = false;
+        reveal(k);
+        $(".qtop span:last-child", el).textContent = `Score ${score}`;
       };
       ans.appendChild(b);
     });
+    if (seen) reveal(seen.k);
+    $("[data-prev]", el).onclick = () => { i--; show(); };
     $("[data-next]", el).onclick = () => { i++; show(); };
+    const r = $("[data-results]", el); if (r) r.onclick = () => { i = qs.length; show(); };
   }
   start();
 }
@@ -826,6 +841,8 @@ document.addEventListener("keydown", e => {
   }
   const quiz = $$(".page.show [data-quiz]").find(inView);
   if (!quiz) return;
+  if (e.key === "ArrowLeft") { const p = $("[data-prev]", quiz); if (p && !p.disabled) p.click(); }
+  if (e.key === "ArrowRight") { const n = $("[data-next]", quiz); if (n && !n.disabled) n.click(); }
   if (/^[1-4]$/.test(e.key)) { const b = $$(".ans button", quiz)[+e.key - 1]; if (b && !b.disabled) b.click(); }
   if (e.key === "Enter") { const n = $("[data-next]", quiz); if (n && !n.disabled) { e.preventDefault(); n.click(); } }
 });

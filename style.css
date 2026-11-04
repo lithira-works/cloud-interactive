@@ -817,3 +817,5 @@ footer { background: var(--bg); }
 :root[data-theme="dark"] .l-os { background: #C493A7; } :root[data-theme="dark"] .l-hyp { background: #A190C6; }
 :root[data-theme="dark"] .l-host { background: #82A5C7; } :root[data-theme="dark"] .l-hw { background: #929DA4; }
 :root[data-theme="dark"] .l-eng { background: #76B3A7; }
+
+.quiz { scroll-margin-top: 150px; }
